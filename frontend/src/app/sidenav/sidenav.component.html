@@ -1,0 +1,45 @@
+<!--
+  ~ Copyright (c) 2022 NEXTWELL INTL SRL. All Rights Reserved.
+  ~ This software is the proprietary information of NEXTWELL INTL SRL.
+  ~ Use is subject to license and non-disclosure terms
+  -->
+
+<div class="collapsible-sidenav-wrapper" [ngClass]="{'collapsed' : collapsed}">
+
+  <div class="mobile-menu-button">
+    <h4 class="ml"> dadadaa </h4>
+    <h4 class="ml"> dadadaa </h4>
+    <h4 class="ml"> dadadaa </h4>
+    <h4 class="ml"> dadadaa </h4>
+    <h4 class="ml"> dadadaa </h4>
+    <h4 class="ml"> dadadaa </h4>
+    <h4 class="ml"> dadadaa </h4>
+    <h4 class="ml"> dadadaa </h4>
+    <div class=" pull-right">
+      <button pButton type="button" icon="ui-icon-apps" class="m-sm flat red-ripple close"
+              (click)="toggleMobileMenu()"></button>
+    </div>
+  </div>
+
+  <div class="collapsible-sidenav m-none p-none card" [ngClass]="{'collapsed' : collapsed, 'mobile': mobileMenu}">
+    <div class="header">
+      <div class="full-header" *ngIf="!collapsed">
+
+
+        <button pButton type="button" icon="ui-icon-chevron-left" class="m-sm flat red-ripple close"
+                (click)="close()"></button>
+      </div>
+
+      <div class="full-header" *ngIf="collapsed">
+
+        <button pButton type="button" icon="ui-icon-chevron-right" class="m-sm flat red-ripple open"
+                (click)="open()"></button>
+      </div>
+
+
+    </div>
+    <div class="body mobile-scroll">
+      <ng-content select="div.side-menu"></ng-content>
+    </div>
+  </div>
+</div>

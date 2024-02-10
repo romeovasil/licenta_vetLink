@@ -1,0 +1,35 @@
+<div class="container">
+<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+
+<div class="card flex justify-content-center">
+    <span class="p-float-label">
+        <input pInputText
+               id="username"
+               name="username"
+               [(ngModel)]="userDTO.email"
+               required
+        />
+        <label for="username">Username</label>
+    </span>
+</div>
+
+
+<div class="card flex justify-content-center">
+    <span class="p-float-label">
+        <input pInputText
+               id="password"
+               name="password"
+               [(ngModel)]="userDTO.password"
+               required
+        />
+        <label for="username">Password</label>
+    </span>
+</div>
+  <button type="submit"
+          pButton
+          label="Login"
+          class="p-button">
+  </button>
+
+</form>
+</div>

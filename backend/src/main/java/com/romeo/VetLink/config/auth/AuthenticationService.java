@@ -3,6 +3,7 @@ package com.romeo.VetLink.config.auth;
 import com.romeo.VetLink.config.JWTService;
 import com.romeo.VetLink.user.Role;
 import com.romeo.VetLink.user.User;
+import com.romeo.VetLink.user.UserDTO;
 import com.romeo.VetLink.user.UserJpaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -17,22 +18,22 @@ public class AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final JWTService jwtService;
     private final AuthenticationManager authenticationManager;
-    public AuthenticationResponse authenticate(AuthenticationRequest request) {
+    public AuthenticationResponse authenticate(UserDTO userDTO) {
         authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(request.getEmail(),request.getPassword())
+                new UsernamePasswordAuthenticationToken(userDTO.getEmail(),userDTO.getPassword())
         );
-        var user = userJpaRepository.findByEmail(request.getEmail()).orElseThrow();
+        var user = userJpaRepository.findByEmail(userDTO.getEmail()).orElseThrow();
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder().token(jwtToken).build();
 
     }
 
-    public AuthenticationResponse register(RegisterRequest request) {
+    public AuthenticationResponse register(UserDTO userDTO) {
         var user = User.builder()
-                .firstname(request.getFirstName())
-                .firstname(request.getLastname())
-                .email(request.getEmail())
-                .password(passwordEncoder.encode(request.getPassword()))
+                .firstname(userDTO.getFirstName())
+                .lastname(userDTO.getLastName())
+                .email(userDTO.getEmail())
+                .password(passwordEncoder.encode(userDTO.getPassword()))
                 .role(Role.USER)
                 .build();
 
