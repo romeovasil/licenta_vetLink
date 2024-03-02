@@ -8,19 +8,19 @@ import org.springframework.security.core.context.SecurityContextHolder;
 @MappedSuperclass
 public class OwnedEntity {
 
-    private String owner;
+    protected Integer owner;
 
-    public String getOwner() {
+    public Integer getOwner() {
         return owner;
     }
 
-    public void setOwner(String owner) {
+    public void setOwner(Integer owner) {
         this.owner = owner;
     }
 
     @PrePersist
     public void prePersist(){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        this.owner = user.getId().toString();
+        this.owner = user.getId();
     }
 }

@@ -43,7 +43,7 @@ public class JWTService {
             Optional<User> user = userJpaRepository.findByEmail(userDetails.getUsername());
             List<VetClinic> vetClinicList = null;
             if(user.isPresent()){
-                 vetClinicList = vetClinicJpaRepository.findAllByOwner(user.get().getId().toString());
+                 vetClinicList = vetClinicJpaRepository.findAllByOwner(user.get().getId());
             }
 
 
