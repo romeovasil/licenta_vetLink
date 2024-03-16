@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class ShopItemDTO {
-    String id;
+    Integer id;
      String name;
      String category;
      String price;

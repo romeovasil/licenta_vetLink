@@ -1,0 +1,17 @@
+.button-container {
+  margin-top:2%;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 50px;
+}
+
+.asta {
+  background: lightblue;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 50px;
+
+}

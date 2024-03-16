@@ -1,0 +1,31 @@
+<div class="grid-item">
+  <p-card  [style]="{ width: '450px' , height: '450px'}" >
+    <ng-template pTemplate="header">
+      <div style="background-color: rgba(223,246,6,0.48); padding: 1rem;">
+        <h2><b>{{subscriptionDTO?.name}}</b></h2>
+        <h3> <i class="pi pi-calendar" style="font-size: 1rem; margin-left: 0.5rem;"></i>  {{subscriptionDTO?.recurrence}}</h3>
+      </div>
+    </ng-template>
+    <div *ngFor="let shopItem of subscriptionDTO?.shopItemDTOs">
+      <i class="pi pi-shopping-bag" style="font-size: 1rem"></i>
+        <b> {{shopItem.name}}</b>
+    </div>
+    <p>
+      <i class="pi pi-spin pi-book" style="font-size: 1rem"></i>
+      {{subscriptionDTO?.shortDescription}}
+    </p>
+    <p>
+      <i class="pi pi-money-bill" style="font-size: 1rem"></i>
+      {{subscriptionDTO?.price}} <b>RON</b></p>
+    <ng-template pTemplate="footer">
+      <p-button label="Sterge" icon="pi pi-times" styleClass="p-button-secondary"
+                [style]="{ 'margin-left': '.5em' }"
+                >
+      </p-button>
+      <p-button label="Editeaza" icon="pi pi-pencil" styleClass="p-button-secondary"
+                [style]="{ 'margin-left': '.5em' }"
+      >
+      </p-button>
+    </ng-template>
+  </p-card>
+</div>

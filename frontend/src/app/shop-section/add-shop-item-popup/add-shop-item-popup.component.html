@@ -1,0 +1,101 @@
+
+<div class="container">
+<form #shopItemForm="ngForm" (ngSubmit)="onSubmit(shopItemForm)">
+
+  <h3>Adauga un produs nou</h3>
+
+  <div class="card flex justify-content-center">
+            <span class="p-float-label">
+                <input pInputText
+                       id="name"
+                       name="name"
+                       [(ngModel)]="shopItemDTO.name"
+                       [style]="{width:'100%'}"
+                       required
+                />
+                <label for="name">Nume</label>
+            </span>
+  </div>
+
+<!--  <div class="card flex justify-content-center">-->
+<!--            <span class="p-float-label">-->
+<!--                <input pInputText-->
+<!--                       id="category"-->
+<!--                       name="category"-->
+<!--                       [(ngModel)]="shopItemDTO.category"-->
+<!--                       required-->
+<!--                />-->
+<!--                <label for="name">Category</label>-->
+<!--            </span>-->
+<!--  </div>-->
+
+  <div class="card flex justify-content-center">
+    <span class="p-float-label">
+        <p-dropdown [options]="categories"
+                    [(ngModel)]="shopItemDTO.category"
+                    placeholder="Select a category"
+                    [style]="{width:'100%'}"
+                    id="category"
+                    [showClear]="true"
+                    appendTo="body"
+                    name="category">
+        </p-dropdown>
+                <label for="category">Categorie</label>
+    </span>
+  </div>
+
+
+
+
+
+  <div class="card flex justify-content-center">
+            <span class="p-float-label">
+                <input pInputText
+                       id="price"
+                       [(ngModel)]="shopItemDTO.price"
+                       [style]="{width:'100%'}"
+                       name="price"
+                       required
+                />
+                <label for="price">Pret</label>
+            </span>
+  </div>
+
+
+  <div class="card flex justify-content-center">
+            <span class="p-float-label">
+                <input pInputText
+                       id="quantity"
+                       [(ngModel)]="shopItemDTO.quantity"
+                       [style]="{width:'100%'}"
+                       name="city"
+                       required
+                />
+                <label for="quantity">Cantitate</label>
+            </span>
+  </div>
+
+
+
+  <div class="card flex justify-content-center">
+            <span class="p-float-label">
+                <input pInputText id="shortDescription"
+                       [(ngModel)]="shopItemDTO.shortDescription"
+                       [style]="{width:'100%'}"
+                       name="shortDescription"
+                       required
+                />
+                <label for="shortDescription">Scurta descriere</label>
+            </span>
+  </div>
+
+
+
+  <p-button  [style]="{margin:'10px'}"
+    class="register-button"
+    type="submit"  >Adauga</p-button>
+</form>
+
+
+
+</div>

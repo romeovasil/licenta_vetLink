@@ -6,6 +6,8 @@ import {HttpClient, HttpClientModule, HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {FormUtils} from "../../utils/form-utils";
 import {VetClinicDto} from "../domain/vet-clinic-dto";
+import {DropdownModule} from "primeng/dropdown";
+import {CommonModule} from "@angular/common";
 const headers = new HttpHeaders()
   .set('content-type', 'application/json')
   .set('Access-Control-Allow-Origin', '*');
@@ -17,7 +19,9 @@ const headers = new HttpHeaders()
     FormsModule,
     InputTextModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule,
+    DropdownModule
   ],
   templateUrl: './add-vet-clinic-page.component.html',
   styleUrl: './add-vet-clinic-page.component.scss'

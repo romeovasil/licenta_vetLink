@@ -1,0 +1,16 @@
+<div class="button-container">
+  <p-button (click)="openPopup()">Add item</p-button>
+</div>
+
+
+<div class="grid-container">
+  <div *ngFor="let shopItem of shopItemDtos">
+    <app-shop-item-card
+      [shopItem]="shopItem"
+      (delete)="onDelete($event)"
+    ></app-shop-item-card>
+  </div>
+
+</div>
+
+

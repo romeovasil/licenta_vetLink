@@ -1,0 +1,16 @@
+
+<p-button
+  class="button-container"
+  (click)="createSubscription()">
+  Adauga un abonament nou
+</p-button>
+
+<div class="grid-container">
+  <div *ngFor="let subscription of subscriptions">
+    <app-subscription-card
+      [subscriptionDTO]="subscription"
+    ></app-subscription-card>
+  </div>
+
+</div>
+

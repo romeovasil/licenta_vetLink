@@ -10,11 +10,12 @@ import {MenuItem} from "primeng/api";
 import {SidenavComponent} from "./sidenav/sidenav.component";
 import {MatSidenavContainer, MatSidenavModule} from "@angular/material/sidenav";
 import {MatGridList, MatGridTile} from "@angular/material/grid-list";
+import {HttpClientModule} from "@angular/common/http";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, FormsModule, SliderModule, InputTextModule, MenubarModule, ButtonModule, SidenavComponent, MatSidenavContainer, MatSidenavModule, MatGridList, MatGridTile],
+  imports: [CommonModule, RouterOutlet, FormsModule, SliderModule, InputTextModule, MenubarModule, ButtonModule, SidenavComponent, MatSidenavContainer, MatSidenavModule, MatGridList, MatGridTile, HttpClientModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -30,94 +31,18 @@ export class AppComponent implements OnInit {
     this.items = [
       {
         label: 'Rezervari',
-        icon: 'pi pi-fw pi-file',
-        items: [
-          {
-            label: 'New',
-            icon: 'pi pi-fw pi-plus',
-            items: [
-              {
-                label: 'Bookmark',
-                icon: 'pi pi-fw pi-bookmark'
-              },
-              {
-                label: 'Video',
-                icon: 'pi pi-fw pi-video'
-              }
-            ]
-          },
-          {
-            label: 'Delete',
-            icon: 'pi pi-fw pi-trash'
-          },
-          {
-            separator: true
-          },
-          {
-            label: 'Export',
-            icon: 'pi pi-fw pi-external-link'
-          }
-        ]
+        icon: 'pi pi-fw pi-file'
       },
       {
         label: 'Abonamente',
         icon: 'pi pi-fw pi-pencil',
-        items: [
-          {
-            label: 'Left',
-            icon: 'pi pi-fw pi-align-left'
-          },
-          {
-            label: 'Right',
-            icon: 'pi pi-fw pi-align-right'
-          },
-          {
-            label: 'Center',
-            icon: 'pi pi-fw pi-align-center'
-          },
-          {
-            label: 'Justify',
-            icon: 'pi pi-fw pi-align-justify'
-          }
-        ]
+        routerLink: '/subscriptions',
+
       },
       {
         label: 'Shop',
         icon: 'pi pi-fw pi-user',
-        items: [
-          {
-            label: 'New',
-            icon: 'pi pi-fw pi-user-plus'
-          },
-          {
-            label: 'Delete',
-            icon: 'pi pi-fw pi-user-minus'
-          },
-          {
-            label: 'Search',
-            icon: 'pi pi-fw pi-users',
-            items: [
-              {
-                label: 'Filter',
-                icon: 'pi pi-fw pi-filter',
-                items: [
-                  {
-                    label: 'Print',
-                    icon: 'pi pi-fw pi-print'
-                  }
-                ]
-              },
-              {
-                icon: 'pi pi-fw pi-bars',
-                label: 'List'
-              }
-            ]
-          }
-        ]
-      },
-      {
-        label: 'Quit',
-        icon: 'pi pi-fw pi-power-off'
+        routerLink: '/shop'
       }
     ];
   }

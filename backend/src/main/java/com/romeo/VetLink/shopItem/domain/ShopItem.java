@@ -1,10 +1,14 @@
 package com.romeo.VetLink.shopItem.domain;
 
 import com.romeo.VetLink.config.OwnedEntity;
+import com.romeo.VetLink.subscription.domain.Subscription;
 import com.romeo.VetLink.user.User;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.context.SecurityContextHolder;
+
+import java.util.List;
+import java.util.Set;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -23,6 +27,9 @@ public class ShopItem extends OwnedEntity {
     private String price;
     private String quantity;
     private String shortDescription;
+
+    @ManyToMany(mappedBy = "shopItems", fetch = FetchType.EAGER)
+    private List<Subscription> subscriptions;
 
     @Override
     public void prePersist(){

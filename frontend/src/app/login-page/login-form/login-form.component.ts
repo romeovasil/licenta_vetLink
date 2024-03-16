@@ -4,6 +4,9 @@ import {InputTextModule} from "primeng/inputtext";
 import {FormsModule, NgForm, ReactiveFormsModule} from "@angular/forms";
 import {UserDTO} from "../../auth/domain/user-dto";
 import {FormUtils} from "../../utils/form-utils";
+import {DropdownModule} from "primeng/dropdown";
+import {CommonModule} from "@angular/common";
+
 
 @Component({
   selector: 'app-login-form',
@@ -12,7 +15,8 @@ import {FormUtils} from "../../utils/form-utils";
     ButtonModule,
     InputTextModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    DropdownModule
   ],
   templateUrl: './login-form.component.html',
   styleUrl: './login-form.component.scss'
@@ -24,7 +28,7 @@ export class LoginFormComponent {
   @Output() submitForm: EventEmitter<UserDTO> = new EventEmitter<UserDTO>();
 
 
-
+  categories: string[] = ['Mancare','Jucarii','Ingrijire','Accesorii','Tratement'];
   onSubmit(loginForm: NgForm) {
     FormUtils.markAllAsDirty(loginForm);
     FormUtils.markAllAsTouched(loginForm);

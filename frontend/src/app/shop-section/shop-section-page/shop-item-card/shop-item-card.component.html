@@ -1,0 +1,24 @@
+<div class="grid-item">
+  <p-card class="rounded-card" [style]="{ width: '450px', height:'450px' }">
+    <ng-template pTemplate="header">
+      <div style="background-color: rgba(190,3,255,0.48); padding: 1rem;">
+        <h2><b>{{shopItem?.name}}</b></h2>
+        <h3> <i class="pi pi-calendar" style="font-size: 1rem; margin-left: 0.5rem;"></i>{{shopItem?.category}}</h3>
+      </div>
+    </ng-template>
+
+    <h3> <i class="pi pi-spin pi-calendar" style="font-size: 1rem; margin-left: 0.5rem;"></i>  {{shopItem?.shortDescription}}</h3>
+    <p> <i class="pi pi-shopping-bag" style="font-size: 1rem; margin-left: 0.5rem;"></i><b> Pret: </b>{{shopItem?.price}} RON </p>
+    <p> <i class="pi pi-calculator" style="font-size: 1rem; margin-left: 0.5rem;"></i><b> Cantitate : </b>{{shopItem?.quantity}} </p>
+    <ng-template pTemplate="footer">
+      <p-button label="Sterge" icon="pi pi-times" styleClass="p-button-secondary"
+                [style]="{ 'margin-left': '.5em' }"
+                (click)="deleteShopItem(shopItem?.id)">
+      </p-button>
+      <p-button label="Editeaza" icon="pi pi-pencil" styleClass="p-button-secondary"
+                [style]="{ 'margin-left': '.5em' }"
+                >
+      </p-button>
+    </ng-template>
+  </p-card>
+</div>

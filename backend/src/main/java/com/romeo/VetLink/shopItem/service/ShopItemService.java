@@ -22,11 +22,12 @@ public class ShopItemService {
         ShopItem shopItem = this.shopItemJpaRepository.save(this.shopItemDTOMapper.mapDtoToEntity(shopItemDTO));
     }
 
-    public List<ShopItem> getAllByOwner() {
+    public List<ShopItemDTO> getAllByOwner() {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return this.shopItemJpaRepository.findAllByOwner(user.getClinicId());
+        List<ShopItem> shopItems = this.shopItemJpaRepository.findAllByOwner(user.getClinicId());
+        return shopItems.stream().map(this.shopItemDTOMapper::mapEntityToDTO).toList();
     }
-
+    @Transactional
     public void deleteById(Integer shopItemId) {
         this.shopItemJpaRepository.deleteById(shopItemId);
     }

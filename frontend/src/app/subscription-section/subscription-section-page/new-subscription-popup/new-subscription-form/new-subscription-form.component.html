@@ -1,0 +1,103 @@
+
+<div class="container">
+<form #subscriptionForm="ngForm" (ngSubmit)="onSubmit(subscriptionForm)">
+
+  <h3>Adauga un abonament nou</h3>
+
+  <div class="card flex justify-content-center">
+            <span class="p-float-label">
+                <input pInputText
+                       id="name"
+                       name="name"
+                       [(ngModel)]="subscriptionDTO.name"
+                       [style]="{width:'100%'}"
+                       required
+                />
+                <label for="name">Nume</label>
+            </span>
+  </div>
+
+
+  <div class="card flex justify-content-center">
+            <span class="p-float-label">
+                <input pInputText
+                       id="price"
+                       [style]="{width:'100%'}"
+                       [(ngModel)]="subscriptionDTO.price"
+                       name="price"
+                       required
+                />
+                <label for="price">Pret</label>
+            </span>
+  </div>
+
+  <div class="card flex justify-content-center form-field">
+    <span class="p-float-label">
+        <p-dropdown [options]="recurrence"
+                    placeholder="Select a recurrence"
+                    [required]="true"
+                    id="recurrence"
+                    [(ngModel)]="subscriptionDTO.recurrence"
+                    [showClear]="true"
+                    [style]="{width:'100%'}"
+
+                    appendTo="body"
+                    name="recurrence">
+        </p-dropdown>
+                <label for="recurrence">Recurenta</label>
+    </span>
+  </div>
+
+
+<!--  <div class="card flex justify-content-center">-->
+<!--            <span class="p-float-label">-->
+<!--                <input pInputText-->
+<!--                       id="quantity"-->
+<!--                       [style]="{width:'100%'}"-->
+<!--                       name="city"-->
+<!--                       required-->
+<!--                />-->
+<!--                <label for="quantity">Cantitate</label>-->
+<!--            </span>-->
+<!--  </div>-->
+
+
+
+  <div class="card flex justify-content-center">
+            <span class="p-float-label">
+                <input pInputText id="shortDescription"
+                       name="shortDescription"
+                       [(ngModel)]="subscriptionDTO.shortDescription"
+                       required
+                       [style]="{width:'100%'}"
+                />
+                <label for="shortDescription">Scurta descriere</label>
+            </span>
+  </div>
+
+
+  <div class="card flex justify-content-center">
+    <p-multiSelect
+      [options]="shopItemDTOs"
+      optionLabel="name"
+      [(ngModel)]="subscriptionDTO.shopItemDTOs"
+      placeholder="Select items"
+      name="shopItems"
+      id="shopItems"
+      [required]="true"
+      [style]="{width:'100%'}"
+      display="chip">
+
+    </p-multiSelect>
+  </div>
+
+  <p-button
+    [style]="{margin:'30px 70px'}"
+    class="register-button"
+    type="submit">
+    Adauga
+  </p-button>
+</form>
+
+
+</div>
