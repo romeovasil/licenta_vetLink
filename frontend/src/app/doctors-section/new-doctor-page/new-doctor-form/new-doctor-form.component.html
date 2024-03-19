@@ -1,0 +1,55 @@
+
+<div class="container">
+  <form #subscriptionForm="ngForm" (ngSubmit)="onSubmit(subscriptionForm)">
+
+    <h3>Adauga un doctor nou</h3>
+
+    <div class="card flex justify-content-center">
+            <span class="p-float-label">
+                <input pInputText
+                       id="firstName"
+                       name="firstName"
+                       [(ngModel)]="doctorDto.firstName"
+                       [style]="{width:'100%'}"
+                       required
+                />
+                <label for="firstName">Prenume</label>
+            </span>
+    </div>
+
+    <div class="card flex justify-content-center">
+            <span class="p-float-label">
+                <input pInputText
+                       id="lastName"
+                       name="lastName"
+                       [(ngModel)]="doctorDto.lastName"
+                       [style]="{width:'100%'}"
+                       required
+                />
+                <label for="lastName">Nume</label>
+            </span>
+    </div>
+
+    <div class="card flex justify-content-center">
+            <span class="p-float-label">
+                <input pInputText
+                       id="speciality"
+                       name="speciality"
+                       [(ngModel)]="doctorDto.speciality"
+                       [style]="{width:'100%'}"
+                       required
+                />
+                <label for="speciality">Specialitate</label>
+            </span>
+    </div>
+
+    <p-button
+      [style]="{margin:'30px 70px'}"
+      class="register-button"
+      type="submit">
+      Adauga
+    </p-button>
+  </form>
+
+
+</div>
