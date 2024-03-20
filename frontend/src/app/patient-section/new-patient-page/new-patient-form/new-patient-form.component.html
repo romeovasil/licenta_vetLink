@@ -1,0 +1,114 @@
+
+<div class="container">
+  <form #patientForm="ngForm" (ngSubmit)="onSubmit(patientForm)">
+
+    <h3>Adauga un pacient nou</h3>
+
+    <div class="card flex justify-content-center">
+            <span class="p-float-label">
+               <p-dropdown [options]="animalTypes"
+                           placeholder="Selecteaza un animal"
+                           [required]="true"
+                           id="type"
+                           [(ngModel)]="patientDto.type"
+                           [showClear]="true"
+                           [style]="{width:'100%'}"
+
+                           appendTo="body"
+                           name="type">
+        </p-dropdown>
+              <label for="type">Animal</label>
+            </span>
+    </div>
+
+    <div class="card flex justify-content-center">
+            <span class="p-float-label">
+                <input pInputText
+                       id="race"
+                       name="race"
+                       [(ngModel)]="patientDto.race"
+                       [style]="{width:'100%'}"
+                       required
+                />
+                <label for="race">Rasa</label>
+            </span>
+    </div>
+
+    <div class="card flex justify-content-center">
+            <span class="p-float-label">
+                <input pInputText
+                       id="subRace"
+                       name="subRace"
+                       [(ngModel)]="patientDto.subRace"
+                       [style]="{width:'100%'}"
+                       required
+                />
+                <label for="subRace">Sub-rasa</label>
+            </span>
+    </div>
+
+    <div class="card flex justify-content-center">
+            <span class="p-float-label">
+                <input pInputText
+                       id="name"
+                       name="name"
+                       [(ngModel)]="patientDto.name"
+                       [style]="{width:'100%'}"
+                       required
+                />
+                <label for="name">Nume</label>
+            </span>
+    </div>
+
+    <div class="card flex justify-content-center">
+            <span class="p-float-label">
+                <input pInputText
+                       id="age"
+                       name="age"
+                       [(ngModel)]="patientDto.age"
+                       [style]="{width:'100%'}"
+                       required
+                />
+                <label for="age">Varsta</label>
+            </span>
+    </div>
+
+    <div class="card flex justify-content-center">
+            <span class="p-float-label">
+                <textarea pInputTextarea
+                       id="healthProblems"
+                       name="healthProblems"
+                       [(ngModel)]="patientDto.healthProblems"
+                       [style]="{width:'100%'}"
+                       required>
+
+                </textarea>
+                <label for="healthProblems">Probleme sanatate</label>
+            </span>
+    </div>
+
+
+    <div class="card flex justify-content-center">
+            <span class="p-float-label">
+                <textarea pInputTextarea
+                       id="allergy"
+                       name="allergy"
+                       [(ngModel)]="patientDto.allergy"
+                       [style]="{width:'100%'}"
+                       required>
+
+                </textarea>
+                <label for="allergy">Alergii</label>
+            </span>
+    </div>
+
+    <p-button
+      [style]="{margin:'30px 70px'}"
+      class="register-button"
+      type="submit">
+      Adauga
+    </p-button>
+  </form>
+
+
+</div>
