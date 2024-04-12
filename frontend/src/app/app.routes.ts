@@ -2,7 +2,6 @@ import {RouterModule, Routes} from '@angular/router';
 import {LoginPageComponent} from "./login-page/login-page.component";
 import {RegisterPageComponent} from "./register-page/register-page.component";
 import {NgModule} from "@angular/core";
-import {HomePageComponent} from "./home-page/home-page.component";
 import {AddVetClinicPageComponent} from "./clinic-feature/add-vet-clinic-page/add-vet-clinic-page.component";
 import {HomeSectionPageComponent} from "./home-section/home-section-page/home-section-page.component";
 import {ShopSectionPageComponent} from "./shop-section/shop-section-page/shop-section-page.component";
@@ -14,6 +13,14 @@ import {
   NewSubscriptionPopupComponent
 } from "./subscription-section/subscription-section-page/new-subscription-popup/new-subscription-popup.component";
 import {HttpClientModule} from "@angular/common/http";
+import {AppointmentSectionComponent} from "./appointment-section/appointment-section.component";
+import {DoctorsSectionComponent} from "./doctors-section/doctors-section.component";
+import {NewDoctorPageComponent} from "./doctors-section/new-doctor-page/new-doctor-page.component";
+import {PatientSectionComponent} from "./patient-section/patient-section.component";
+import {NewPatientFormComponent} from "./patient-section/new-patient-page/new-patient-form/new-patient-form.component";
+import {NewPatientPageComponent} from "./patient-section/new-patient-page/new-patient-page.component";
+import {NewAppointmentPageComponent} from "./appointment-section/new-appointment-page/new-appointment-page.component";
+
 
 export const routes: Routes = [
   {path:"",component:LoginPageComponent},
@@ -42,6 +49,43 @@ export const routes: Routes = [
       {
         path: 'new',
         component: NewSubscriptionPopupComponent,
+      }
+    ],
+  },
+  {
+    path: "appointments",
+    children: [
+      {
+        path: '',
+        component: AppointmentSectionComponent
+      },
+      {
+        path: 'new',
+        component: NewAppointmentPageComponent
+      },
+    ],
+  },
+  {
+    path: "doctors",
+    children: [
+      {
+        path: '',
+        component: DoctorsSectionComponent
+      },
+      {path: 'new',
+        component: NewDoctorPageComponent
+      }
+    ],
+  },
+  {
+    path: "patients",
+    children: [
+      {
+        path: '',
+        component: PatientSectionComponent
+      },
+      {path: 'new',
+        component: NewPatientPageComponent
       }
     ],
   },

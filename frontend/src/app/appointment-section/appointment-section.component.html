@@ -1,0 +1,38 @@
+<p-button
+  class="button-container"
+  (click)="addAppointment()">
+  Adauga o programare noua
+</p-button>
+<div class="container" >
+
+    <div class="mbsc-grid mbsc-no-padding">
+      <div class="mbsc-row">
+        <div class="mbsc-col-sm-9 docs-appointment-calendar">
+          <mbsc-eventcalendar [data]="scheduledAppoints" [colors]="myColors" [options]="calendarOptions"></mbsc-eventcalendar>
+        </div>
+        <mbsc-dropcontainer
+          class="mbsc-col-sm-3 docs-appointment-cont"
+          (onItemDrop)="onItemDrop($event)"
+          (onItemDragEnter)="onItemDragEnter($event)"
+          (onItemDragLeave)="onItemDragLeave()"
+          [ngStyle]="{ background: contBg }"
+        >
+          <div class="mbsc-form-group-title second-title"><b>Unscheduled appointments</b></div>
+
+          <div
+            mbsc-draggable
+            *ngFor="let task of appointments"
+            [dragData]="task"
+            class="docs-appointment-task"
+            [ngStyle]="{ background: task.color }"
+          >
+            <div>{{ task.title }} - {{ task.job }}</div>
+            <div>{{ task.eventLength }} hours</div>
+          </div>
+        </mbsc-dropcontainer>
+      </div>
+    </div>
+
+</div>
+
+
