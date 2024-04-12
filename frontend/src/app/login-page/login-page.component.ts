@@ -94,7 +94,7 @@ export class LoginPageComponent {
             if (res.length < 1) {
               this.router.navigate(['/add-vet-clinic'])
             }else{
-              this.router.navigate(['/home'])
+              this.router.navigate(['/appointments'])
             }
           }
         );

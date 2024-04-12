@@ -43,7 +43,7 @@ export class AddVetClinicPageComponent {
       this.http.post('http://localhost:8080/api/v1/vet-clinic',this.vetClinicDTO, {headers:authHeaders}).subscribe(
         (res: any) => {
           console.log('Response:', res);
-          this.router.navigate(["/home"]);
+          this.router.navigate(["/appointments"]);
         },
         (error) => {
           console.error('Error:', error);

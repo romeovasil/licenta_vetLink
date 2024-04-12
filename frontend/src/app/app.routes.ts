@@ -3,7 +3,6 @@ import {LoginPageComponent} from "./login-page/login-page.component";
 import {RegisterPageComponent} from "./register-page/register-page.component";
 import {NgModule} from "@angular/core";
 import {AddVetClinicPageComponent} from "./clinic-feature/add-vet-clinic-page/add-vet-clinic-page.component";
-import {HomeSectionPageComponent} from "./home-section/home-section-page/home-section-page.component";
 import {ShopSectionPageComponent} from "./shop-section/shop-section-page/shop-section-page.component";
 import {
   SubscriptionSectionPageComponent
@@ -17,7 +16,6 @@ import {AppointmentSectionComponent} from "./appointment-section/appointment-sec
 import {DoctorsSectionComponent} from "./doctors-section/doctors-section.component";
 import {NewDoctorPageComponent} from "./doctors-section/new-doctor-page/new-doctor-page.component";
 import {PatientSectionComponent} from "./patient-section/patient-section.component";
-import {NewPatientFormComponent} from "./patient-section/new-patient-page/new-patient-form/new-patient-form.component";
 import {NewPatientPageComponent} from "./patient-section/new-patient-page/new-patient-page.component";
 import {NewAppointmentPageComponent} from "./appointment-section/new-appointment-page/new-appointment-page.component";
 
@@ -26,7 +24,6 @@ export const routes: Routes = [
   {path:"",component:LoginPageComponent},
   {path:"register",component:RegisterPageComponent},
   {path:"add-vet-clinic",component:AddVetClinicPageComponent},
-  {path:"home",component:HomeSectionPageComponent},
   {
     path: "shop",
     children: [
