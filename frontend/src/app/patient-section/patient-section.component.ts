@@ -3,15 +3,16 @@ import {ButtonModule} from "primeng/button";
 import {Router} from "@angular/router";
 import {PatientService} from "./patient.service";
 import {PatientDto} from "./domain/patient-dto";
-import {JsonPipe} from "@angular/common";
+import {JsonPipe, NgForOf} from "@angular/common";
 
 @Component({
   selector: 'app-patient-section',
   standalone: true,
-  imports: [
-    ButtonModule,
-    JsonPipe
-  ],
+    imports: [
+        ButtonModule,
+        JsonPipe,
+        NgForOf
+    ],
   templateUrl: './patient-section.component.html',
   styleUrl: './patient-section.component.scss'
 })

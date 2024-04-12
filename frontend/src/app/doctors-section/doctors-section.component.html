@@ -5,4 +5,21 @@
 </p-button>
 
 
-{{doctors | json}}
+<div class="table-container">
+  <table class="styled-table">
+    <thead>
+    <tr>
+      <th>Nume</th>
+      <th>Specializare</th>
+      <th>Experiență</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let doctor of doctors">
+      <td>{{ doctor.firstName }}</td>
+      <td>{{ doctor.lastName }}</td>
+      <td>{{ doctor.speciality }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

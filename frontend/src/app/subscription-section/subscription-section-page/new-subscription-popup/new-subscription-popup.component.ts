@@ -23,7 +23,9 @@ export class NewSubscriptionPopupComponent implements OnInit{
 
   submitForm($event: SubscriptionDto) {
      this.subscriptionResourceService.save($event).subscribe(
+       (res: any) => {
+         this.router.navigate(["/subscriptions"]);
+       },
      )
-    this.router.navigate(['subscriptions']);
   }
 }

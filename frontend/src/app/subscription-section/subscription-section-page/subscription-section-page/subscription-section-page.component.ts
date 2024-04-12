@@ -1,10 +1,9 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {ButtonModule} from "primeng/button";
-import {ActivatedRoute, Router, RouterModule} from "@angular/router";
+import { Router, RouterModule} from "@angular/router";
 import {SubscriptionResourceService} from "../../../utils/resource-service/subscription-resource-service";
 import {NgForOf} from "@angular/common";
 import {ShopItemCardComponent} from "../../../shop-section/shop-section-page/shop-item-card/shop-item-card.component";
-import {SubscriptionDto} from "../../domain/subscription-dto";
 import {SubscriptionCardComponent} from "../subscription-card/subscription-card.component";
 
 @Component({
@@ -21,8 +20,7 @@ import {SubscriptionCardComponent} from "../subscription-card/subscription-card.
   styleUrl: './subscription-section-page.component.scss'
 })
 export class SubscriptionSectionPageComponent implements OnInit{
-  router = inject(Router)
-   route = inject(ActivatedRoute)
+  router = inject(Router);
   subscriptions : any = [];
   private subscriptionResourceService = inject(SubscriptionResourceService);
 
@@ -33,7 +31,6 @@ export class SubscriptionSectionPageComponent implements OnInit{
   }
 
   createSubscription() {
-    // Navigate to the desired URL
     this.router.navigate(['subscriptions', 'new']);
   }
 }

@@ -24,7 +24,6 @@ export class AppComponent implements OnInit {
   constructor(private router: Router) {}
 
   isLoginPageOrRegisterPage(): boolean {
-    console.log(this.router.url)
     return this.router.url.endsWith('/') || this.router.url.includes('/register');
   }
   ngOnInit() {

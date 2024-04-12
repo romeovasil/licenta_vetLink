@@ -1,4 +1,4 @@
-package com.romeo.VetLink.appointment.service.dtos.mapper;
+package com.romeo.VetLink.appointment.service.dtos;
 
 
 import com.romeo.VetLink.patients.service.dtos.PatientDTO;
@@ -13,4 +13,5 @@ public class AppointmentDTO {
     private Boolean unscheduled;
 
     private PatientDTO patientDTO;
+    private ConfirmedScheduleDTO confirmedScheduleDTO;
 }

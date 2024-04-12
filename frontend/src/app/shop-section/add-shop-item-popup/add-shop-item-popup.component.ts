@@ -1,5 +1,5 @@
 import {Component, inject} from '@angular/core';
-import {MatDialog, MatDialogActions, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
+import {MatDialogActions, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
 import {MatButton} from "@angular/material/button";
 import {ButtonModule} from "primeng/button";
 import {FormsModule, NgForm, ReactiveFormsModule} from "@angular/forms";
@@ -14,8 +14,8 @@ import {FormUtils} from "../../utils/form-utils";
 import {HttpClient, HttpClientModule, HttpHeaders} from "@angular/common/http";
 import {Router, RouterModule} from "@angular/router";
 import {ToastModule} from "primeng/toast";
-import {FileUploadEvent, FileUploadHandlerEvent, FileUploadModule} from "primeng/fileupload";
-import {Messages} from "primeng/messages";
+import {FileUploadModule} from "primeng/fileupload";
+
 
 const headers = new HttpHeaders()
   .set('content-type', 'application/json')
@@ -50,7 +50,6 @@ export class AddShopItemPopupComponent {
   shopItemDTO: ShopItemDto = new ShopItemDto();
   categories: string[] = ['Mancare','Jucarii','Ingrijire','Accesorii','Tratement'];
   http = inject(HttpClient);
-  messageService = inject(MessageService);
   router = inject(Router);
   constructor() {}
 
@@ -65,7 +64,6 @@ export class AddShopItemPopupComponent {
 
       this.http.post('http://localhost:8080/api/v1/shop-item',this.shopItemDTO, {headers:authHeaders}).subscribe(
         (res: any) => {
-          console.log('Response:', res);
           this.router.navigate(["/shop"]);
         },
         (error) => {

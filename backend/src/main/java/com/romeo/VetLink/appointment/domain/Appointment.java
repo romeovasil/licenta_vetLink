@@ -29,6 +29,9 @@ public class Appointment extends OwnedEntity {
     @JoinColumn(name = "patient_id", foreignKey = @ForeignKey(name = "FK_APPOINTMENT__PATIENT"))
     private Patient patient;
 
+    @OneToOne()
+    @JoinColumn(name = "confirmed_schedule_id", foreignKey = @ForeignKey(name = "FK_APPOINTMENT__CONFIRMED_SCHEDULED"))
+    private ConfirmedSchedule confirmedSchedule;
 
     @Override
     public void prePersist(){

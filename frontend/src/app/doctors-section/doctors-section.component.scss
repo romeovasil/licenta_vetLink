@@ -4,3 +4,35 @@
   justify-content: flex-end;
   margin-right: 50px;
 }
+.table-container {
+  overflow-x: auto;
+  margin:30px 50px;
+}
+
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #dc9494;
+}
+
+.styled-table th {
+  background-color: #ffffff;
+  font-weight: bold;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+  background-color: #7d9f62;
+}
+
+.styled-table tbody tr:nth-of-type(odd) {
+  background-color: rgba(255, 252, 117, 0.24);
+}
+
+

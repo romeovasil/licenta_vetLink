@@ -1,7 +1,8 @@
 package com.romeo.VetLink.appointment.web;
 
 import com.romeo.VetLink.appointment.service.AppointmentService;
-import com.romeo.VetLink.appointment.service.dtos.mapper.AppointmentDTO;
+import com.romeo.VetLink.appointment.service.dtos.AppointmentDTO;
+import com.romeo.VetLink.appointment.service.dtos.ConfirmedScheduleDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +30,13 @@ public class AppointmentController {
     @DeleteMapping(value = "/{appointmentId}")
     public ResponseEntity<?> deleteById(@PathVariable Integer appointmentId){
         appointmentService.deleteById(appointmentId);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping(value="/{appointmentId}/confirm-schedule")
+    public ResponseEntity<?> confirmSchedule(@PathVariable Integer appointmentId,
+            @RequestBody ConfirmedScheduleDTO confirmedScheduleDTO){
+        appointmentService.confirmScheduleForAppointment(appointmentId,confirmedScheduleDTO);
         return ResponseEntity.ok().build();
     }
 }

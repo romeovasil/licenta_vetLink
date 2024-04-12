@@ -22,10 +22,10 @@ export class NewPatientPageComponent {
   router = inject(Router);
 
   submitForm($event: PatientDto) {
-    console.log("nu?,DC")
         this.patientService.save($event).subscribe(
+          () =>this.router.navigate(['patients'])
         );
-        this.router.navigate(['patients']);
+
   }
 
 

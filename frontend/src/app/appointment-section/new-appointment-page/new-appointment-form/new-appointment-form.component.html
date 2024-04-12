@@ -1,0 +1,63 @@
+<div class="container">
+  <form #appointmentForm="ngForm" (ngSubmit)="onSubmit(appointmentForm)">
+
+    <h3>Adauga o programare noua</h3>
+
+    <div class="card flex justify-content-center">
+            <span class="p-float-label">
+                 <p-dropdown [options]="patients"
+                             placeholder="Selecteaza un pacient"
+                             [required]="true"
+                             [optionLabel]="'name'"
+                             id="pacient"
+                             [(ngModel)]="appointmentDTO.patientDTO"
+                             [showClear]="true"
+                             [style]="{width:'100%'}"
+                             appendTo="body"
+                             name="type">
+                </p-dropdown>
+
+                <label for="pacient">Pacient</label>
+            </span>
+    </div>
+
+    <div class="card flex justify-content-center">
+            <span class="p-float-label">
+                <input pInputText
+                       id="job"
+                       name="job"
+                       [(ngModel)]="appointmentDTO.job"
+                       [style]="{width:'100%'}"
+                       required
+                />
+                <label for="job">Interventie</label>
+            </span>
+    </div>
+
+    <div class="card flex justify-content-center">
+            <span class="p-float-label">
+              <p-dropdown [options]="durations"
+                          placeholder="Selecteaza o durata"
+                          [required]="true"
+                          id="eventLength"
+                          [(ngModel)]="appointmentDTO.eventLength"
+                          [showClear]="true"
+                          [style]="{width:'100%'}"
+                          appendTo="body"
+                          name="eventLength">
+                </p-dropdown>
+
+                <label for="eventLength">Durata(h)</label>
+            </span>
+    </div>
+
+    <p-button
+      [style]="{margin:'30px 70px'}"
+      class="register-button"
+      type="submit">
+      Adauga
+    </p-button>
+  </form>
+
+
+</div>
