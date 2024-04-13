@@ -8,6 +8,7 @@ import {VetClinicDto} from "../auth/domain/vet-clinic-dto";
 import {LoginFormComponent} from "./login-form/login-form.component";
 import {UserDTO} from "../auth/domain/user-dto";
 import {RegisterSuggestionPanelComponent} from "./register-suggestion-panel/register-suggestion-panel.component";
+import {SetBackgroundImageModule} from "../utils/set-background-image.module";
 const headers = new HttpHeaders()
   .set('content-type', 'application/json')
   .set('Access-Control-Allow-Origin', '*');
@@ -20,7 +21,8 @@ const headers = new HttpHeaders()
     ButtonModule,
     HttpClientModule,
     LoginFormComponent,
-    RegisterSuggestionPanelComponent
+    RegisterSuggestionPanelComponent,
+    SetBackgroundImageModule
   ],
 
   templateUrl: './login-page.component.html',

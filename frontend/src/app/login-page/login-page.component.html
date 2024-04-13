@@ -1,5 +1,5 @@
 
-<div class="container">
+<div class="container" setBackgroundImage [imageUrl]="'/assets/cats.jpg'">
 
   <div class="input-section">
     <app-login-form (submitForm)="onSubmit($event)"></app-login-form>
@@ -10,6 +10,4 @@
 
 
 
-
-<p-button (onClick)="register()">register</p-button>
 
