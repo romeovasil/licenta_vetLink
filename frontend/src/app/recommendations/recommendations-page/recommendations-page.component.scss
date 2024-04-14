@@ -1,0 +1,63 @@
+:host ::ng-deep {
+  .drop-column {
+    border: 1px solid transparent;
+    transition: border-color .2s;
+
+    &.p-draggable-enter {
+      border-color: var(--primary-color);
+    }
+  }
+
+  [pDraggable] {
+    cursor: move;
+  }
+}
+
+li {
+  background-color: #eaba00;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  text-align: center;
+  line-height: 50px;
+
+}
+.flex-container {
+  display: flex;
+}
+
+.card {
+  flex: 1;
+}
+
+.drop-zone{
+  background-color: rgba(184, 230, 158, 0.5);
+  border-radius:20px;
+  text-align:center;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top:7%;
+}
+
+.drag-items{
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top:10%;
+  list-style: none;
+}
+
+.generate-button {
+  margin-top:2%;
+  display: flex;
+  justify-content: center;
+}
+
+.message-panel {
+  margin-top: 4%;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(48, 47, 47, 0.09);
+  margin-left: 20%;
+  margin-right: 20%;
+  border-radius:20px;
+  padding: 20px;
+}

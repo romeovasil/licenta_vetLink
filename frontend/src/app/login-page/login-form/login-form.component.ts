@@ -5,7 +5,6 @@ import {FormsModule, NgForm, ReactiveFormsModule} from "@angular/forms";
 import {UserDTO} from "../../auth/domain/user-dto";
 import {FormUtils} from "../../utils/form-utils";
 import {DropdownModule} from "primeng/dropdown";
-import {CommonModule} from "@angular/common";
 
 
 @Component({

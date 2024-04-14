@@ -1,7 +1,7 @@
 
 
 export class ConfirmedScheduleDto {
-  id: string | null = null;
+  id: number | null = null;
   start: string | null = null
   end: string | null = null;
   color: string | null = null;

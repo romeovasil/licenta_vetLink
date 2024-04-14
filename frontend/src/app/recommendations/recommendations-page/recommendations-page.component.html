@@ -1,0 +1,78 @@
+<div class="flex-container">
+  <div class="card flex flex-wrap gap-3">
+    <div class="drag-items">
+      <li (onDragEnd)="dragEnd()" (onDragStart)="dragStart(product)" *ngFor="let product of availablePets"
+          class="p-2 border-round shadow-1" pDraggable>
+        {{ product.name }}
+      </li>
+    </div>
+  </div>
+
+  <div class="card flex flex-wrap gap-3">
+    <div class="drag-items">
+      <li (onDragEnd)="dragEnd()" (onDragStart)="dragStart(product)" *ngFor="let product of availableAllergies"
+          class="p-2 border-round shadow-1" pDraggable>
+        {{ product.name }}
+      </li>
+    </div>
+
+
+  </div>
+
+  <div class="card flex flex-wrap gap-3">
+    <div class="drag-items">
+      <li (onDragEnd)="dragEnd()" (onDragStart)="dragStart(product)" *ngFor="let product of availableInvestigations"
+          class="p-2 border-round shadow-1" pDraggable>
+        {{ product.name }}
+      </li>
+    </div>
+
+
+  </div>
+</div>
+
+<div class="flex-container zones">
+  <div class="card flex flex-wrap gap-3">
+    <div (onDrop)="drop('pet')" class="p-2 w-15rem h-10rem drop-column drop-zone" pDroppable>
+      <p class="text-center surface-border border-bottom-1">Animal</p>
+      <div *ngIf="selectedPets" class="list-none flex flex-column gap-2 p-0 m-0">
+        <li *ngFor="let product of selectedPets" class="p-2 border-round shadow-1">
+          {{ product.name }}
+        </li>
+      </div>
+    </div>
+  </div>
+  <div class="card flex flex-wrap gap-3">
+    <div (onDrop)="drop('allergy')" class="p-2 w-15rem h-10rem drop-column drop-zone" pDroppable>
+      <p class="text-center surface-border border-bottom-1">Alergie</p>
+      <div *ngIf="selectedAllergies" class="list-none flex flex-column gap-2 p-0 m-0">
+        <li *ngFor="let product of selectedAllergies" class="p-2 border-round shadow-1">
+          {{ product.name }}
+        </li>
+      </div>
+    </div>
+  </div>
+  <div class="card flex flex-wrap gap-3">
+    <div (onDrop)="drop('investigation')" class="p-2 w-15rem h-10rem drop-column drop-zone" pDroppable>
+      <p class="text-center surface-border border-bottom-1">Investigatie</p>
+      <div *ngIf="selectedInvestigations" class="list-none flex flex-column gap-2 p-0 m-0">
+        <li *ngFor="let product of selectedInvestigations" class="p-2 border-round shadow-1">
+          {{ product.name }}
+        </li>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="generate-button">
+  <p-button (click)="getInfo()">Obtine informatii</p-button>
+</div>
+
+@if (receivedMessage){
+  <div class="message-panel">
+    {{receivedMessage | json}}
+  </div>
+}
+
+

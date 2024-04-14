@@ -46,6 +46,7 @@ public class AppointmentDTOMapper {
         if(appointment.getConfirmedSchedule() != null){
             ConfirmedScheduleDTO confirmedScheduleDTO = new ConfirmedScheduleDTO();
 
+            confirmedScheduleDTO.setId(appointment.getConfirmedSchedule().getId());
             confirmedScheduleDTO.setEnd(appointment.getConfirmedSchedule().getEndTime());
             confirmedScheduleDTO.setStart(appointment.getConfirmedSchedule().getStart());
             confirmedScheduleDTO.setDoctorNumber(appointment.getConfirmedSchedule().getDoctorNumber());

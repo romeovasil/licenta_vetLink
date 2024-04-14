@@ -6,4 +6,5 @@ export class PatientDto {
   age : number | null = null;
   allergy : string | null = null;
   healthProblems : string | null = null;
+  id: number | null = null;
 }

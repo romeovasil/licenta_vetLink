@@ -18,6 +18,7 @@ import {NewDoctorPageComponent} from "./doctors-section/new-doctor-page/new-doct
 import {PatientSectionComponent} from "./patient-section/patient-section.component";
 import {NewPatientPageComponent} from "./patient-section/new-patient-page/new-patient-page.component";
 import {NewAppointmentPageComponent} from "./appointment-section/new-appointment-page/new-appointment-page.component";
+import {RecommendationsPageComponent} from "./recommendations/recommendations-page/recommendations-page.component";
 
 
 export const routes: Routes = [
@@ -83,6 +84,15 @@ export const routes: Routes = [
       },
       {path: 'new',
         component: NewPatientPageComponent
+      }
+    ],
+  },
+  {
+    path: "recommendations",
+    children: [
+      {
+        path: '',
+        component: RecommendationsPageComponent
       }
     ],
   },

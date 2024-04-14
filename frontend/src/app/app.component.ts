@@ -54,6 +54,11 @@ export class AppComponent implements OnInit {
         label: 'Pacienti',
         icon: 'pi pi-fw pi-id-card',
         routerLink: '/patients'
+      },
+      {
+        label: 'Recomandari',
+        icon: 'pi pi-fw pi-book',
+        routerLink: '/recommendations'
       }
     ];
   }
