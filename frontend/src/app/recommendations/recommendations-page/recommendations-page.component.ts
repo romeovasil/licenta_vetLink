@@ -24,7 +24,7 @@ import {Notifications} from "@mobiscroll/angular";
   styleUrl: './recommendations-page.component.scss'
 })
 export class RecommendationsPageComponent implements OnInit {
-  openAi = new OpenAI({apiKey: "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", dangerouslyAllowBrowser: true});
+  openAi = new OpenAI({apiKey: "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", dangerouslyAllowBrowser: true});
   receivedMessage: string | undefined = "";
 
   appointmentService = inject(AppointmentSectionService);
@@ -60,7 +60,8 @@ export class RecommendationsPageComponent implements OnInit {
         messages: [{
           role: "user",
           content: `Comporta-te cu mine ca si cum as fi veterinar .Fa mi o recomandare mie care sunt un veterinar despre " +
-          "ce ar trebui făcut in cazul in care un ${this.selectedPets[0]} are alergie la ${this.selectedAllergies[0]} dar trebuie sa ii efectuam ${this.selectedInvestigations[0]} . " +
+          "ce ar trebui făcut in cazul in care un ${this.selectedPets[0]} are alergie la ${this.selectedAllergies[0]}
+           dar trebuie sa ii efectuam ${this.selectedInvestigations[0]} . " +
           "Eu sunt veterinarul, nu ma trimite la alt veterinar, sugestia ta nu ar trebui sa implice alt veterinar" +
           "Vreau sa fie de 30 de cuvinte si sa fie tehnic având in vedere ca eu sunt veterinarul." +
           " Nu mă trimite la veterinar sau nu imi spune ca un veterinar ar trebui consulat`
