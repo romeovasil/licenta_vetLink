@@ -20,6 +20,7 @@ import {NewPatientPageComponent} from "./patient-section/new-patient-page/new-pa
 import {NewAppointmentPageComponent} from "./appointment-section/new-appointment-page/new-appointment-page.component";
 import {RecommendationsPageComponent} from "./recommendations/recommendations-page/recommendations-page.component";
 import {EditPatientPageComponent} from "./patient-section/edit-patient-page/edit-patient-page.component";
+import {EditDoctorPageComponent} from "./doctors-section/edit-doctor-page/edit-doctor-page.component";
 
 
 export const routes: Routes = [
@@ -74,7 +75,9 @@ export const routes: Routes = [
       },
       {path: 'new',
         component: NewDoctorPageComponent
-      }
+      },
+      {path: 'edit/:doctorId',
+        component: EditDoctorPageComponent}
     ],
   },
   {

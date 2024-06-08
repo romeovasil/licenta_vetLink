@@ -5,13 +5,15 @@ import {FormsModule} from "@angular/forms";
 import {InputTextModule} from "primeng/inputtext";
 import {MultiSelectModule} from "primeng/multiselect";
 import {HttpClient} from "@angular/common/http";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {DoctorDto} from "../domain/doctor-dto";
 import {DoctorSectionService} from "../doctor-section.service";
 import {NewDoctorFormComponent} from "../new-doctor-form/new-doctor-form.component";
+import {Subject, takeUntil} from "rxjs";
+import {PatientDto} from "../../patient-section/domain/patient-dto";
 
 @Component({
-  selector: 'app-new-doctor-page',
+  selector: 'app-edit-doctor-page',
   standalone: true,
   imports: [
     ButtonModule,
@@ -21,21 +23,38 @@ import {NewDoctorFormComponent} from "../new-doctor-form/new-doctor-form.compone
     MultiSelectModule,
     NewDoctorFormComponent
   ],
-  templateUrl: './new-doctor-page.component.html',
-  styleUrl: './new-doctor-page.component.scss'
+  templateUrl: './edit-doctor-page.component.html',
+  styleUrl: './edit-doctor-page.component.scss'
 })
-export class NewDoctorPageComponent implements OnInit{
+export class EditDoctorPageComponent implements OnInit{
+
+  doctorDto : DoctorDto = new DoctorDto();
+
+
   http = inject(HttpClient);
   router = inject(Router);
   doctorService = inject(DoctorSectionService);
 
 
-  ngOnInit(): void {
+  route = inject(ActivatedRoute);
+  destroy$ = new Subject<boolean>();
 
+
+  ngOnInit() {
+    this.route.params
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(data => {
+        this.doctorService.getDetails(data['doctorId']).subscribe(res => {
+          this.doctorDto = res;
+        })
+      })
+  }
+  ngOnDestroy(): void {
+    this.destroy$.next(true);
   }
 
   saveDoctor($event: DoctorDto) {
-      this.doctorService.save($event).subscribe(
+      this.doctorService.edit($event).subscribe(
         res=> this.router.navigate(["/doctors"])
       )
   }

@@ -49,7 +49,7 @@ public class AppointmentDTOMapper {
             confirmedScheduleDTO.setId(appointment.getConfirmedSchedule().getId());
             confirmedScheduleDTO.setEnd(appointment.getConfirmedSchedule().getEndTime());
             confirmedScheduleDTO.setStart(appointment.getConfirmedSchedule().getStart());
-            confirmedScheduleDTO.setDoctorNumber(appointment.getConfirmedSchedule().getDoctorNumber());
+            confirmedScheduleDTO.setDoctorNumber(appointment.getConfirmedSchedule().getDoctor().getId());
 
             appointmentDTO.setConfirmedScheduleDTO(confirmedScheduleDTO);
         }

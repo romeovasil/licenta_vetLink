@@ -2,6 +2,7 @@ package com.romeo.VetLink.doctors.web;
 
 import com.romeo.VetLink.doctors.service.DoctorService;
 import com.romeo.VetLink.doctors.service.dtos.DoctorDTO;
+import com.romeo.VetLink.patients.service.dtos.PatientDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,4 +32,17 @@ public class DoctorController {
         doctorService.deleteById(doctorId);
         return ResponseEntity.ok().build();
     }
+
+    @PutMapping
+    public ResponseEntity<?> update(@RequestBody DoctorDTO doctorDTO){
+        doctorService.update(doctorDTO);
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping(value = "/{doctorId}")
+    public ResponseEntity<?> getDetails(@PathVariable Integer doctorId){
+
+        return ResponseEntity.ok(doctorService.getDetails(doctorId));
+    }
+
 }

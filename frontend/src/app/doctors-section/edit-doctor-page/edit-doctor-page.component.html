@@ -1,0 +1,10 @@
+@if (doctorDto){
+  <app-new-doctor-form
+    (submitForm)="saveDoctor($event)"
+    [doctorDto]=doctorDto
+  >
+
+  </app-new-doctor-form>
+}
+
+

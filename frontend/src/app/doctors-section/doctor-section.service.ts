@@ -1,6 +1,4 @@
 import {inject, Injectable} from '@angular/core';
-import {SubscriptionResourceService} from "../utils/resource-service/subscription-resource-service";
-import {SubscriptionDto} from "../subscription-section/domain/subscription-dto";
 import {Observable} from "rxjs";
 import {DoctorResourceService} from "../utils/resource-service/doctor-resource-service";
 import {DoctorDto} from "./domain/doctor-dto";
@@ -18,4 +16,17 @@ export class DoctorSectionService {
   findAll(): Observable<any>{
     return this.doctorResourceService.findAll();
   }
+
+  delete(id: number) : Observable<any>{
+    return this.doctorResourceService.delete(id);
+  }
+
+  edit(doctorDto: DoctorDto) : Observable<any>{
+    return this.doctorResourceService.edit(doctorDto);
+  }
+
+  getDetails(id: number) : Observable<any>{
+    return this.doctorResourceService.findById(id);
+  }
+
 }

@@ -1,11 +1,10 @@
 package com.romeo.VetLink.appointment.domain;
 
 import com.romeo.VetLink.config.OwnedEntity;
+import com.romeo.VetLink.doctors.domain.Doctor;
+import com.romeo.VetLink.patients.domain.Patient;
 import com.romeo.VetLink.user.User;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.context.SecurityContextHolder;
 
@@ -26,7 +25,9 @@ public class ConfirmedSchedule extends OwnedEntity {
 
     private LocalDateTime start;
     private LocalDateTime endTime;
-    private Integer doctorNumber;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "doctor_number", foreignKey = @ForeignKey(name = "FK_CONFIRMED_SCHEDULE__DOCTOR"))
+    private Doctor doctor;
 
 
     @Override

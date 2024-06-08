@@ -1,9 +1,10 @@
-import {Component, EventEmitter, Output} from '@angular/core';
-import {DoctorDto} from "../../domain/doctor-dto";
-import {FormsModule, NgForm} from "@angular/forms";
-import {FormUtils} from "../../../utils/form-utils";
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+
 import {ButtonModule} from "primeng/button";
 import {InputTextModule} from "primeng/inputtext";
+import {FormsModule, NgForm} from "@angular/forms";
+import {DoctorDto} from "../domain/doctor-dto";
+import {FormUtils} from "../../utils/form-utils";
 
 @Component({
   selector: 'app-new-doctor-form',
@@ -17,7 +18,7 @@ import {InputTextModule} from "primeng/inputtext";
   styleUrl: './new-doctor-form.component.scss'
 })
 export class NewDoctorFormComponent {
-  doctorDto : DoctorDto = new DoctorDto();
+  @Input() doctorDto : DoctorDto = new DoctorDto();
 
   @Output() submitForm: EventEmitter<DoctorDto> = new EventEmitter<DoctorDto>();
 

@@ -29,4 +29,15 @@ public class DoctorDTOMapper {
 
         return doctorDTO;
     }
+
+    public Doctor updateEntityFromDTO(Doctor doctor, DoctorDTO doctorDTO) {
+
+        doctor.setId(doctor.getId());
+
+        doctor.setFirstName(doctorDTO.getFirstName());
+        doctor.setLastName(doctorDTO.getLastName());
+        doctor.setSpeciality(doctorDTO.getSpeciality());
+
+        return doctor;
+    }
 }

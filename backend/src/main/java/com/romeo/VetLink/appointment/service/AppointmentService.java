@@ -9,6 +9,9 @@ import com.romeo.VetLink.appointment.service.dtos.mapper.AppointmentDTOMapper;
 import com.romeo.VetLink.appointment.service.dtos.AppointmentDTO;
 
 import com.romeo.VetLink.appointment.service.exceptions.AppointmentNotFoundException;
+import com.romeo.VetLink.doctors.domain.Doctor;
+import com.romeo.VetLink.doctors.domain.DoctorJpaRepository;
+import com.romeo.VetLink.doctors.exceptions.DoctorNotFoundException;
 import com.romeo.VetLink.user.User;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -22,6 +25,7 @@ import java.util.List;
 public class AppointmentService {
     private final AppointmentJpaRepository appointmentJpaRepository;
     private final ConfirmedScheduleJpaRepository confirmedScheduleJpaRepository;
+    private final DoctorJpaRepository doctorJpaRepository;
     private final AppointmentDTOMapper appointmentDTOMapper;
 
     @Transactional
@@ -45,11 +49,12 @@ public class AppointmentService {
     @Transactional
     public void confirmScheduleForAppointment(Integer appointmentId, ConfirmedScheduleDTO confirmedScheduleDTO) {
         Appointment appointment = this.appointmentJpaRepository.findById(appointmentId).orElseThrow(AppointmentNotFoundException::new);
+        Doctor doctor = this.doctorJpaRepository.findById(confirmedScheduleDTO.getDoctorNumber()).orElseThrow(DoctorNotFoundException::new);
 
         ConfirmedSchedule confirmedSchedule = new ConfirmedSchedule();
         confirmedSchedule.setStart(confirmedScheduleDTO.getStart());
         confirmedSchedule.setEndTime(confirmedScheduleDTO.getEnd());
-        confirmedSchedule.setDoctorNumber(confirmedScheduleDTO.getDoctorNumber());
+        confirmedSchedule.setDoctor(doctor);
 
         this.confirmedScheduleJpaRepository.save(confirmedSchedule);
 

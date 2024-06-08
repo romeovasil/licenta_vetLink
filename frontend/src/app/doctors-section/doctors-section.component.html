@@ -12,6 +12,7 @@
       <th>Nume</th>
       <th>Specializare</th>
       <th>Experiență</th>
+      <th>Actiuni</th>
     </tr>
     </thead>
     <tbody>
@@ -19,6 +20,11 @@
       <td>{{ doctor.firstName }}</td>
       <td>{{ doctor.lastName }}</td>
       <td>{{ doctor.speciality }}</td>
+      <td>
+        <p-button (click)="editDoctor(doctor)" icon="pi pi-pencil" class="p-button-outlined p-button-rounded" [style]="{margin:'5px '}" ></p-button>
+        <br>
+        <p-button (click)="deleteDoctor(doctor)" icon="pi pi-trash" class="p-button-outlined p-button-rounded p-button-danger" [style]="{margin:'5px '}"></p-button>
+      </td>
     </tr>
     </tbody>
   </table>
