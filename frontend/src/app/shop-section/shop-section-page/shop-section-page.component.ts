@@ -15,6 +15,7 @@ import {ShopItemDto} from "../domain/shop-item-dto";
 import {ShopItemCardComponent} from "./shop-item-card/shop-item-card.component";
 import {DialogModule} from "primeng/dialog";
 import {ShopSectionService} from "./shop-section-service";
+import {Notifications} from "@mobiscroll/angular";
 const headers = new HttpHeaders()
   .set('content-type', 'application/json')
   .set('Access-Control-Allow-Origin', '*');
@@ -46,6 +47,7 @@ export class ShopSectionPageComponent implements OnInit{
   http = inject(HttpClient);
   router = inject(Router);
   shopItemDtos: ShopItemDto[] = [];
+  notify = inject(Notifications);
   visible: boolean = false;
   openPopup() {
 
@@ -68,11 +70,15 @@ export class ShopSectionPageComponent implements OnInit{
 
     this.http.delete(`http://localhost:8080/api/v1/shop-item/${$event}`, {headers:authHeaders}).subscribe(
       (res: any) => {
-        console.log('Response:', res);
+        this.notify.toast({
+          message: "Produs sters cu succes!"
+        });
         this.getAllShopItems();
       },
       (error) => {
-        console.error('Error:', error);
+        this.notify.toast({
+          message: "Produsul nu poate fi sters doarece face parte dintr-un abonament"
+        });
       }
     );
   }
