@@ -3,9 +3,6 @@ import {NewPatientFormComponent} from "./new-patient-form/new-patient-form.compo
 import {PatientDto} from "../domain/patient-dto";
 import {PatientService} from "../patient.service";
 import {Router} from "@angular/router";
-import {
-  NewSubscriptionFormComponent
-} from "../../subscription-section/subscription-section-page/new-subscription-popup/new-subscription-form/new-subscription-form.component";
 
 @Component({
   selector: 'app-new-patient-page',

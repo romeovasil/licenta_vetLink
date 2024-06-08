@@ -6,7 +6,7 @@ import {MatButton} from "@angular/material/button";
 import {MatDialogActions} from "@angular/material/dialog";
 import {DropdownModule} from "primeng/dropdown";
 import {CommonModule} from "@angular/common";
-import {HttpClient, HttpClientModule, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {ShopItemResourceService} from "../../../../utils/resource-service/shop-item-resource-service";
 import {MultiSelectModule} from "primeng/multiselect";

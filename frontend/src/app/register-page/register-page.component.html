@@ -1,65 +1,60 @@
-
-<div class='acontainer'>
-<form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
-  <div class="background-card">
-    <div class="card flex justify-content-center">
-            <span class="p-float-label">
-                <input pInputText
-                       id="email"
-                       name="email"
-                       [(ngModel)]="userDTO.email"
-                       required
-                />
-                <label for="email">Email</label>
-            </span>
-            <div class = "email-error">
-              {{errorMessage}}
-            </div>
-        </div>
-
-
+<div class="main-container">
+  <div class="acontainer">
+    <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+      <div class="background-card">
         <div class="card flex justify-content-center">
-            <span class="p-float-label">
-                <input pInputText
-                       id="password"
-                       [(ngModel)]="userDTO.password"
-                       name="password"
-                       required
-                />
-                <label for="password">Password</label>
-            </span>
+          <span class="p-float-label">
+            <input pInputText
+                   id="email"
+                   name="email"
+                   [(ngModel)]="userDTO.email"
+                   required
+            />
+            <label for="email">Email</label>
+          </span>
+          <div class="email-error">
+            {{errorMessage}}
+          </div>
         </div>
-
-
         <div class="card flex justify-content-center">
-            <span class="p-float-label">
-                <input pInputText
-                       id="firstName"
-                       [(ngModel)]="userDTO.firstName"
-                       name="firstname"
-                       required
-                />
-                <label for="firstName">Nume</label>
-            </span>
+          <span class="p-float-label">
+            <input pInputText
+                   id="password"
+                   [(ngModel)]="userDTO.password"
+                   name="password"
+                   required
+            />
+            <label for="password">Password</label>
+          </span>
         </div>
-
-
         <div class="card flex justify-content-center">
-            <span class="p-float-label">
-                <input pInputText id="lastName"
-                       [(ngModel)]="userDTO.lastName"
-                       name="lastname"
-                       required
-                />
-                <label for="lastName">Prenume</label>
-            </span>
+          <span class="p-float-label">
+            <input pInputText
+                   id="firstName"
+                   [(ngModel)]="userDTO.firstName"
+                   name="firstname"
+                   required
+            />
+            <label for="firstName">Nume</label>
+          </span>
         </div>
-
-
-        <p-button class="register-button" type="submit"  >register</p-button>
-          <p-button class="back-button" type="button" (click)="backToLogin()"  >inapoi</p-button>
+        <div class="card flex justify-content-center">
+          <span class="p-float-label">
+            <input pInputText id="lastName"
+                   [(ngModel)]="userDTO.lastName"
+                   name="lastname"
+                   required
+            />
+            <label for="lastName">Prenume</label>
+          </span>
+        </div>
+        <p-button class="register-button" type="submit">register</p-button>
+        <p-button class="back-button" type="button" (click)="backToLogin()">inapoi</p-button>
+      </div>
+    </form>
   </div>
-</form>
-
+  <div class="icon-container">
+    <!-- Add your icon here -->
+    <img src="/assets/home-screen-background.jpg" alt="Icon" class="icon">
+  </div>
 </div>
-

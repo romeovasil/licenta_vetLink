@@ -3,11 +3,9 @@ import {ButtonModule} from "primeng/button";
 import {CardModule} from "primeng/card";
 import {SharedModule} from "primeng/api";
 import {ShopItemDto} from "../../domain/shop-item-dto";
-import {HttpClient, HttpClientModule, HttpHeaders} from "@angular/common/http";
+import {HttpClientModule} from "@angular/common/http";
 import {NgStyle} from "@angular/common";
-const headers = new HttpHeaders()
-  .set('content-type', 'application/json')
-  .set('Access-Control-Allow-Origin', '*');
+
 @Component({
   selector: 'app-shop-item-card',
   standalone: true,
@@ -24,7 +22,7 @@ const headers = new HttpHeaders()
 export class ShopItemCardComponent {
   @Input() shopItem: ShopItemDto | null = null;
   @Output() delete : EventEmitter<any> = new EventEmitter<any>();
-  http = inject(HttpClient);
+
   deleteShopItem($event: number | null | undefined) {
     this.delete.emit($event);
   }

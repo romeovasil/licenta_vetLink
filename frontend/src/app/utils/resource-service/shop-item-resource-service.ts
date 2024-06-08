@@ -1,4 +1,4 @@
-import {inject, Injectable} from "@angular/core";
+import { Injectable} from "@angular/core";
 import {AbstractResourceService} from "./abstract-resource-service";
 import {HttpClient} from "@angular/common/http";
 import {ShopItemDto} from "../../shop-section/domain/shop-item-dto";

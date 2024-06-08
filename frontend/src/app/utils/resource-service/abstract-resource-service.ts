@@ -1,11 +1,5 @@
-/*
- * Copyright (c) 2018 Well Solutions SRL. All Rights Reserved.
- * This software is the proprietary information of Well Solutions SRL.
- * Use is subject to license and non-disclosure terms
- */
-
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Injectable} from '@angular/core';
 
 @Injectable()
 export abstract class AbstractResourceService<D> {
@@ -24,20 +18,25 @@ export abstract class AbstractResourceService<D> {
 
   }
 
-
   findAll() {
-    const token = localStorage.getItem("token");
-    const authHeaders = this.headers.set('Authorization', `Bearer ${token}`);
-    return this.httpClient.get(`http://localhost:8080/api/v1/${this.url}`, {headers:authHeaders})
+    return this.httpClient.get(`http://localhost:8080/api/v1/${this.url}`, {headers:this.getHeaders()})
   }
 
   save(resource: D) {
-    const token = localStorage.getItem("token");
-    const authHeaders = this.headers.set('Authorization', `Bearer ${token}`);
-    return this.httpClient.post(`http://localhost:8080/api/v1/${this.url}`, resource,{headers:authHeaders})
+    return this.httpClient.post(`http://localhost:8080/api/v1/${this.url}`, resource,{headers:this.getHeaders()})
+  }
+
+  edit(resource: D) {
+    return this.httpClient.put(`http://localhost:8080/api/v1/${this.url}`, resource,{headers:this.getHeaders()})
+  }
+
+  delete(id: Number) {
+    return this.httpClient.delete(`http://localhost:8080/api/v1/${this.url}/${id}`,{headers:this.getHeaders()})
   }
 
 
-
-
+  getHeaders(){
+    const token = localStorage.getItem("token");
+    return this.headers.set('Authorization', `Bearer ${token}`)
+  }
 }
