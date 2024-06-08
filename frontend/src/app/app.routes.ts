@@ -21,14 +21,16 @@ import {NewAppointmentPageComponent} from "./appointment-section/new-appointment
 import {RecommendationsPageComponent} from "./recommendations/recommendations-page/recommendations-page.component";
 import {EditPatientPageComponent} from "./patient-section/edit-patient-page/edit-patient-page.component";
 import {EditDoctorPageComponent} from "./doctors-section/edit-doctor-page/edit-doctor-page.component";
+import {AuthGuard} from "./auth/auth.guard";
 
 
 export const routes: Routes = [
   {path:"",component:LoginPageComponent},
   {path:"register",component:RegisterPageComponent},
-  {path:"add-vet-clinic",component:AddVetClinicPageComponent},
+  {path:"add-vet-clinic",component:AddVetClinicPageComponent, canActivate: [AuthGuard]},
   {
     path: "shop",
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -42,6 +44,7 @@ export const routes: Routes = [
   },
   {
     path: "subscriptions",
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -55,6 +58,7 @@ export const routes: Routes = [
   },
   {
     path: "appointments",
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -68,6 +72,7 @@ export const routes: Routes = [
   },
   {
     path: "doctors",
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -82,6 +87,7 @@ export const routes: Routes = [
   },
   {
     path: "patients",
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -96,6 +102,7 @@ export const routes: Routes = [
   },
   {
     path: "recommendations",
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
