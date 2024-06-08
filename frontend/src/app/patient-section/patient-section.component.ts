@@ -45,6 +45,7 @@ export class PatientSectionComponent implements OnInit {
         (res) => {
           this.notify.toast({
             message: "Patient sters cu succes!"
+            , color:"success"
           });
           this.patientService.findAll().subscribe(
             (res) => {
@@ -54,7 +55,8 @@ export class PatientSectionComponent implements OnInit {
         },
         (error) => {
           this.notify.toast({
-            message: "Patientul nu poate fi sters deoarece are programari"
+            message: "Patientul nu poate fi sters deoarece are programari",
+            color:"danger"
           });
         }
       );

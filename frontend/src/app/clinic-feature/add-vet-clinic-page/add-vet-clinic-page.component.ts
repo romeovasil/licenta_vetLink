@@ -8,6 +8,7 @@ import {FormUtils} from "../../utils/form-utils";
 import {VetClinicDto} from "../domain/vet-clinic-dto";
 import {DropdownModule} from "primeng/dropdown";
 import {CommonModule} from "@angular/common";
+import {VetClinicFormComponent} from "../vet-clinic-form/vet-clinic-form.component";
 const headers = new HttpHeaders()
   .set('content-type', 'application/json')
   .set('Access-Control-Allow-Origin', '*');
@@ -21,26 +22,23 @@ const headers = new HttpHeaders()
     ReactiveFormsModule,
     HttpClientModule,
     CommonModule,
-    DropdownModule
+    DropdownModule,
+    VetClinicFormComponent
   ],
   templateUrl: './add-vet-clinic-page.component.html',
   styleUrl: './add-vet-clinic-page.component.scss'
 })
 export class AddVetClinicPageComponent {
   http = inject(HttpClient);
-  vetClinicDTO: VetClinicDto = new VetClinicDto();
   router = inject(Router);
-  onSubmit(clinicForm: NgForm) {
-    FormUtils.markAllAsDirty(clinicForm);
-    FormUtils.markAllAsTouched(clinicForm);
-    console.log(clinicForm)
-    if (clinicForm.valid) {
+
+  onSubmit(vetClinicDto: VetClinicDto) {
       const token = localStorage.getItem("token");
 
       const authHeaders = headers.set('Authorization', `Bearer ${token}`);
 
 
-      this.http.post('http://localhost:8080/api/v1/vet-clinic',this.vetClinicDTO, {headers:authHeaders}).subscribe(
+      this.http.post('http://localhost:8080/api/v1/vet-clinic', vetClinicDto, {headers:authHeaders}).subscribe(
         (res: any) => {
           console.log('Response:', res);
           this.router.navigate(["/appointments"]);
@@ -49,7 +47,7 @@ export class AddVetClinicPageComponent {
           console.error('Error:', error);
         }
       );
-    }
+
 
 
   }

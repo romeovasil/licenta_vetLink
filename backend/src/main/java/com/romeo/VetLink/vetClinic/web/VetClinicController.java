@@ -24,4 +24,10 @@ public class VetClinicController {
     public ResponseEntity<?> getExistingVetClinicForCurrentUser(){
         return  ResponseEntity.ok(vetClinicService.getExistingVetClinicForCurrentUser());
     }
+
+    @PutMapping()
+    public ResponseEntity<?> updateVetClinic(@RequestBody VetClinicDTO vetClinicDTO){
+        ;
+        return  ResponseEntity.ok(vetClinicService.update(vetClinicDTO));
+    }
 }

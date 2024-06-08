@@ -72,12 +72,14 @@ export class ShopSectionPageComponent implements OnInit{
       (res: any) => {
         this.notify.toast({
           message: "Produs sters cu succes!"
+          , color:"success"
         });
         this.getAllShopItems();
       },
       (error) => {
         this.notify.toast({
-          message: "Produsul nu poate fi sters doarece face parte dintr-un abonament"
+          message: "Produsul nu poate fi sters doarece face parte dintr-un abonament",
+          color:"danger"
         });
       }
     );

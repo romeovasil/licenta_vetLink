@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface VetClinicJpaRepository extends JpaRepository<VetClinic, Integer> {
     List<VetClinic> findAllByOwner(Integer owner);
+    VetClinic findByOwner(Integer owner);
 }

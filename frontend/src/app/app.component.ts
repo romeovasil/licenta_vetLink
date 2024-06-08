@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
   constructor(private router: Router) {}
 
   isLoginPageOrRegisterPage(): boolean {
-    return this.router.url.endsWith('/') || this.router.url.includes('/register');
+    return this.router.url.endsWith('/') || this.router.url.includes('/register') || this.router.url.endsWith('add-vet-clinic');
   }
   ngOnInit() {
     this.items = [
@@ -59,6 +59,11 @@ export class AppComponent implements OnInit {
         label: 'Recomandari',
         icon: 'pi pi-fw pi-book',
         routerLink: '/recommendations'
+      },
+      {
+        label: 'Profil cabinetul meu',
+        icon: 'pi pi-fw pi-building',
+        routerLink: '/edit-vet-clinic'
       }
     ];
   }

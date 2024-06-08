@@ -23,6 +23,7 @@ public class VetClinic extends OwnedEntity {
     private String county;
     private String city;
     private String street;
+    private String number;
     private String phoneNumber;
     private String shortDescription;
 

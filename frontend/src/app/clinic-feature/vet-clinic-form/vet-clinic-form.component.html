@@ -1,0 +1,95 @@
+
+<div class="container">
+
+  <form #clinicForm="ngForm" (ngSubmit)="onSubmit(clinicForm)">
+
+    <div class="card flex justify-content-center">
+              <span class="p-float-label">
+                  <input pInputText
+                         id="name"
+                         name="name"
+                         [(ngModel)]="vetClinic.name"
+                         required
+                  />
+                  <label for="name">Nume</label>
+              </span>
+    </div>
+
+
+    <div class="card flex justify-content-center">
+              <span class="p-float-label">
+                  <input pInputText
+                         id="county"
+                         [(ngModel)]="vetClinic.county"
+                         name="county"
+                         required
+                  />
+                  <label for="county">Judet</label>
+              </span>
+    </div>
+
+
+    <div class="card flex justify-content-center">
+              <span class="p-float-label">
+                  <input pInputText
+                         id="city"
+                         [(ngModel)]="vetClinic.city"
+                         name="city"
+                         required
+                  />
+                  <label for="city">Oras</label>
+              </span>
+    </div>
+
+
+    <div class="card flex justify-content-center">
+              <span class="p-float-label">
+                  <input pInputText id="street"
+                         [(ngModel)]="vetClinic.street"
+                         name="street"
+                         required
+                  />
+                  <label for="street">Strada</label>
+              </span>
+    </div>
+
+    <div class="card flex justify-content-center">
+              <span class="p-float-label">
+                  <input pInputText id="number"
+                         [(ngModel)]="vetClinic.number"
+                         name="number"
+                         required
+                  />
+                  <label for="number">Numar</label>
+              </span>
+    </div>
+
+    <div class="card flex justify-content-center">
+              <span class="p-float-label">
+                  <input pInputText id="phoneNumber"
+                         [(ngModel)]="vetClinic.phoneNumber"
+                         name="phoneNumber"
+                         required
+                  />
+                  <label for="phoneNumber">Numar telefon</label>
+              </span>
+    </div>
+
+    <div class="card flex justify-content-center">
+              <span class="p-float-label">
+                  <input pInputText id="shortDescription"
+                         [(ngModel)]="vetClinic.shortDescription"
+                         name="shortDescription"
+                         required
+                  />
+                  <label for="shortDescription">Scurta descriere</label>
+              </span>
+    </div>
+
+
+
+
+
+    <p-button class="register-button" type="submit"       [style]="{margin:'30px 40px'}" >Salveaza</p-button>
+  </form>
+</div>

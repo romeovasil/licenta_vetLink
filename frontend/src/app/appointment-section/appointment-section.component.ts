@@ -123,11 +123,13 @@ export class AppointmentSectionComponent implements OnInit {
     onEventCreateFailed: (args) => {
       this.notify.toast({
         message: args.event.start! <= today ? "Nu se pot adauga programari in trecut!" : 'Exista deja o programare in perioada respectiva!',
+        color:"danger"
       });
     },
     onEventUpdateFailed: (args) => {
       this.notify.toast({
         message: args.event.start! <= today ? "Nu se pot adauga programari in trecut!" : 'Exista deja o programare in perioada respectiva!',
+        color:"danger"
       });
     },
     onEventDelete: (args) => {

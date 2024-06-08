@@ -28,8 +28,19 @@ public class VetClinicService {
 
     }
 
-    public List<VetClinic> getExistingVetClinicForCurrentUser() {
+    public VetClinic getExistingVetClinicForCurrentUser() {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return this.vetClinicJpaRepository.findAllByOwner(user.getId());
+        return this.vetClinicJpaRepository.findByOwner(user.getId());
+    }
+
+    @Transactional
+    public VetClinicDTO update(VetClinicDTO vetClinicDTO) {
+        VetClinic vetClinic = this.vetClinicJpaRepository.findById(vetClinicDTO.getId()).orElseThrow();
+
+        vetClinic = this.vetClinicDTOMapper.updateEntityFromDto(vetClinic, vetClinicDTO);
+
+        this.vetClinicJpaRepository.save(vetClinic);
+
+        return this.vetClinicDTOMapper.mapEntityToDto(vetClinic);
     }
 }

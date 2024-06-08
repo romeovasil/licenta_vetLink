@@ -1,0 +1,12 @@
+<br>
+<h1 class="content-center">Informatii cabinetul tau veterinar</h1>
+
+@if (vetClinic){
+  <app-vet-clinic-form
+    [vetClinic]="vetClinic"
+    (submitVetClinic)="editVetClinic($event)">
+
+  </app-vet-clinic-form>
+}
+
+

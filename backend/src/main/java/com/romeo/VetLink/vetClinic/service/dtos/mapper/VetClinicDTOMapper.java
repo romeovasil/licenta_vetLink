@@ -14,6 +14,7 @@ public class VetClinicDTOMapper {
         vetClinic.setName(vetClinicDTO.getName());
         vetClinic.setCity(vetClinicDTO.getCity());
         vetClinic.setCounty(vetClinicDTO.getCounty());
+        vetClinic.setNumber(vetClinicDTO.getNumber());
         vetClinic.setStreet(vetClinicDTO.getStreet());
         vetClinic.setPhoneNumber(vetClinicDTO.getPhoneNumber());
         vetClinic.setShortDescription(vetClinicDTO.getShortDescription());
@@ -29,11 +30,26 @@ public class VetClinicDTOMapper {
 
         vetClinicDTO.setName(vetClinic.getName());
         vetClinicDTO.setCity(vetClinic.getCity());
+        vetClinicDTO.setNumber(vetClinic.getNumber());
         vetClinicDTO.setCounty(vetClinic.getCounty());
         vetClinicDTO.setStreet(vetClinic.getStreet());
         vetClinicDTO.setPhoneNumber(vetClinic.getPhoneNumber());
         vetClinicDTO.setShortDescription(vetClinic.getShortDescription());
 
         return vetClinicDTO;
+    }
+
+    public VetClinic updateEntityFromDto(VetClinic vetClinic, VetClinicDTO vetClinicDTO){
+
+        vetClinic.setId(vetClinicDTO.getId());
+        vetClinic.setName(vetClinicDTO.getName());
+        vetClinic.setCity(vetClinicDTO.getCity());
+        vetClinic.setCounty(vetClinicDTO.getCounty());
+        vetClinic.setNumber(vetClinicDTO.getNumber());
+        vetClinic.setStreet(vetClinicDTO.getStreet());
+        vetClinic.setPhoneNumber(vetClinicDTO.getPhoneNumber());
+        vetClinic.setShortDescription(vetClinicDTO.getShortDescription());
+
+        return vetClinic;
     }
 }

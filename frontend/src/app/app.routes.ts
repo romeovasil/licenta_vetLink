@@ -22,12 +22,14 @@ import {RecommendationsPageComponent} from "./recommendations/recommendations-pa
 import {EditPatientPageComponent} from "./patient-section/edit-patient-page/edit-patient-page.component";
 import {EditDoctorPageComponent} from "./doctors-section/edit-doctor-page/edit-doctor-page.component";
 import {AuthGuard} from "./auth/auth.guard";
+import {EditVetClinicPageComponent} from "./clinic-feature/edit-vet-clinic-page/edit-vet-clinic-page.component";
 
 
 export const routes: Routes = [
   {path:"",component:LoginPageComponent},
   {path:"register",component:RegisterPageComponent},
   {path:"add-vet-clinic",component:AddVetClinicPageComponent, canActivate: [AuthGuard]},
+  {path:"edit-vet-clinic",component:EditVetClinicPageComponent, canActivate: [AuthGuard]},
   {
     path: "shop",
     canActivate: [AuthGuard],
