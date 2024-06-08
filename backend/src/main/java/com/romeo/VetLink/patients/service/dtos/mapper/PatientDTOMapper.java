@@ -39,4 +39,19 @@ public class PatientDTOMapper {
 
         return patientDTO;
     }
+
+    public Patient updateEntityFromDTO(Patient patient, PatientDTO patientDTO){
+
+
+        patient.setId(patientDTO.getId());
+        patient.setType(patientDTO.getType());
+        patient.setRace(patientDTO.getRace());
+        patient.setSubRace(patientDTO.getSubRace());
+        patient.setName(patientDTO.getName());
+        patient.setAge(patientDTO.getAge());
+        patient.setAllergy(patientDTO.getAllergy());
+        patient.setHealthProblems(patientDTO.getHealthProblems());
+
+        return patient;
+    }
 }

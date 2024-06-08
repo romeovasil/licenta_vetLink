@@ -1,8 +1,9 @@
 import {Component, inject} from '@angular/core';
-import {NewPatientFormComponent} from "./new-patient-form/new-patient-form.component";
+
 import {PatientDto} from "../domain/patient-dto";
 import {PatientService} from "../patient.service";
 import {Router} from "@angular/router";
+import {NewPatientFormComponent} from "../new-patient-form/new-patient-form.component";
 
 @Component({
   selector: 'app-new-patient-page',

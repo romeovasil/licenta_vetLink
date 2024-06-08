@@ -16,6 +16,7 @@
       <th>Varsta</th>
       <th>Alergii</th>
       <th>Probleme de sanatate</th>
+      <th>Actiuni</th>
     </tr>
     </thead>
     <tbody>
@@ -27,6 +28,11 @@
       <td>{{ patient.age }}</td>
       <td>{{ patient.allergy }}</td>
       <td>{{ patient.healthProblems }}</td>
+      <td>
+        <p-button (click)="editPatient(patient)" icon="pi pi-pencil" class="p-button-outlined p-button-rounded" [style]="{margin:'5px '}" ></p-button>
+        <br>
+        <p-button (click)="deletePatient(patient)" icon="pi pi-trash" class="p-button-outlined p-button-rounded p-button-danger" [style]="{margin:'5px '}"></p-button>
+      </td>
     </tr>
     </tbody>
   </table>

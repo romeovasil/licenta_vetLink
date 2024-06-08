@@ -4,23 +4,27 @@ import {Router} from "@angular/router";
 import {PatientService} from "./patient.service";
 import {PatientDto} from "./domain/patient-dto";
 import {JsonPipe, NgForOf} from "@angular/common";
+import {Notifications} from "@mobiscroll/angular";
+import {error} from "@angular/compiler-cli/src/transformers/util";
 
 @Component({
   selector: 'app-patient-section',
   standalone: true,
-    imports: [
-        ButtonModule,
-        JsonPipe,
-        NgForOf
-    ],
+  imports: [
+    ButtonModule,
+    JsonPipe,
+    NgForOf
+  ],
   templateUrl: './patient-section.component.html',
   styleUrl: './patient-section.component.scss'
 })
-export class PatientSectionComponent implements OnInit{
+export class PatientSectionComponent implements OnInit {
   router = inject(Router);
   patientService = inject(PatientService);
+  notify = inject(Notifications);
 
-  patients : PatientDto[] = [];
+  patients: PatientDto[] = [];
+
   addPatient() {
     this.router.navigate(['patients', 'new']);
   }
@@ -30,4 +34,31 @@ export class PatientSectionComponent implements OnInit{
       res => this.patients = res
     )
   }
+
+  editPatient(patient: PatientDto) {
+    this.router.navigate(['patients', 'edit', patient.id]);
+  }
+
+  deletePatient(patient: PatientDto) {
+    if (patient.id) {
+      this.patientService.delete(patient.id).subscribe(
+        (res) => {
+          this.notify.toast({
+            message: "Patient sters cu succes!"
+          });
+          this.patientService.findAll().subscribe(
+            (res) => {
+              this.patients = res;
+            }
+          );
+        },
+        (error) => {
+          this.notify.toast({
+            message: "Patientul nu poate fi sters deoarece are programari"
+          });
+        }
+      );
+    }
+  }
+
 }

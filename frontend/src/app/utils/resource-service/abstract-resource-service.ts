@@ -30,6 +30,10 @@ export abstract class AbstractResourceService<D> {
     return this.httpClient.put(`http://localhost:8080/api/v1/${this.url}`, resource,{headers:this.getHeaders()})
   }
 
+  findById(id: Number) {
+    return this.httpClient.get(`http://localhost:8080/api/v1/${this.url}/${id}`,{headers:this.getHeaders()})
+  }
+
   delete(id: Number) {
     return this.httpClient.delete(`http://localhost:8080/api/v1/${this.url}/${id}`,{headers:this.getHeaders()})
   }

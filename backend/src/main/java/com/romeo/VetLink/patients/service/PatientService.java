@@ -5,6 +5,7 @@ import com.romeo.VetLink.patients.domain.Patient;
 import com.romeo.VetLink.patients.domain.PatientJpaRepository;
 import com.romeo.VetLink.patients.service.dtos.PatientDTO;
 import com.romeo.VetLink.patients.service.dtos.mapper.PatientDTOMapper;
+import com.romeo.VetLink.patients.service.exceptions.PatientNotFoundException;
 import com.romeo.VetLink.user.User;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -32,5 +33,21 @@ public class PatientService {
     @Transactional
     public void deleteById(Integer patientId) {
         this.patientJpaRepository.deleteById(patientId);
+    }
+
+    @Transactional
+    public void update(PatientDTO patientDTO) {
+        Patient patient = this.patientJpaRepository.findById(patientDTO.getId())
+                .orElseThrow(PatientNotFoundException::new);
+
+        patient = this.patientDTOMapper.updateEntityFromDTO(patient,patientDTO);
+
+        this.patientJpaRepository.save(patient);
+    }
+
+    public PatientDTO getDetails(Integer patientId) {
+        Patient patient = this.patientJpaRepository.findById(patientId).orElseThrow(PatientNotFoundException::new);
+
+        return this.patientDTOMapper.mapEntityToDTO(patient);
     }
 }

@@ -32,4 +32,16 @@ public class PatientController {
         patientService.deleteById(patientId);
         return ResponseEntity.ok().build();
     }
+
+    @PutMapping
+    public ResponseEntity<?> update(@RequestBody PatientDTO patientDTO){
+        patientService.update(patientDTO);
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping(value = "/{patientId}")
+    public ResponseEntity<?> getDetails(@PathVariable Integer patientId){
+
+        return ResponseEntity.ok(patientService.getDetails(patientId));
+    }
 }

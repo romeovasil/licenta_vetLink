@@ -17,4 +17,16 @@ export class PatientService {
     return this.patientResourceService.findAll();
   }
 
+  delete(id: number) : Observable<any>{
+    return this.patientResourceService.delete(id);
+  }
+
+  edit(patientDto: PatientDto) : Observable<any>{
+    return this.patientResourceService.edit(patientDto);
+  }
+
+  getDetails(id: number) : Observable<any>{
+    return this.patientResourceService.findById(id);
+  }
+
 }
