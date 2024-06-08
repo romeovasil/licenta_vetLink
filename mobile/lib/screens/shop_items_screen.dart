@@ -100,9 +100,12 @@ class _ShopItemsScreenState extends State<ShopItemsScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Image.asset(
+                  ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                      child: Image.asset(
                         'assets/vetclinic.jpg',
                       ),
+                  ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical:10),
                         child: Row(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vetlink/screens/shop_items_screen.dart';
+import 'package:vetlink/screens/subscriptions_screen.dart';
 
 import '../utils/colors.dart';
 
@@ -104,7 +105,11 @@ class _ClinicDetailsScreenState extends State<ClinicDetailsScreen> {
                     children: [
                       ElevatedButton(
                         onPressed: () {
-                          print("First Button pressed!");
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => SubscriptionsScreen(clinicUuid: widget.snap['id'].toString()),
+                            ),
+                          );
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.deepOrangeAccent,
