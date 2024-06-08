@@ -22,6 +22,11 @@ export class AppointmentResourceService extends AbstractResourceService<Appointm
     return this.httpClient.post(`http://localhost:8080/api/v1/${this.url}/${appointmentId}/confirm-schedule`, confirmedScheduleDTO,{headers:authHeaders})
   }
 
+  updateSchedule(updatedScheduleDTO: ConfirmedScheduleDto) {
+    const token = localStorage.getItem("token");
+    const authHeaders = this.headers.set('Authorization', `Bearer ${token}`);
+    return this.httpClient.post(`http://localhost:8080/api/v1/${this.url}/update-schedule`, updatedScheduleDTO,{headers:authHeaders})
+  }
 
 
 }

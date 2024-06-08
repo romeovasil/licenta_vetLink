@@ -39,4 +39,11 @@ public class AppointmentController {
         appointmentService.confirmScheduleForAppointment(appointmentId,confirmedScheduleDTO);
         return ResponseEntity.ok().build();
     }
+
+    @PostMapping(value="/update-schedule")
+    public ResponseEntity<?> updateSchedule(
+                                             @RequestBody ConfirmedScheduleDTO updatedScheduleDTO){
+        appointmentService.updateSchedule(updatedScheduleDTO);
+        return ResponseEntity.ok().build();
+    }
 }

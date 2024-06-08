@@ -34,4 +34,8 @@ export class AppointmentSectionService {
   confirmSchedule(confirmedScheduleDto: ConfirmedScheduleDto, appointmentId: string) : Observable<any>{
     return this.appointmentResourceService.confirmSchedule(confirmedScheduleDto, appointmentId);
   }
+
+  updateSchedule(updatedScheduleDto: ConfirmedScheduleDto) : Observable<any>{
+    return this.appointmentResourceService.updateSchedule(updatedScheduleDto);
+  }
 }

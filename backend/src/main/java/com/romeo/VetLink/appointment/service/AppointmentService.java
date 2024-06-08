@@ -62,4 +62,17 @@ public class AppointmentService {
         appointment.setUnscheduled(false);
         this.appointmentJpaRepository.save(appointment);
     }
+
+    @Transactional
+    public void updateSchedule(ConfirmedScheduleDTO updatedScheduleDTO) {
+
+        ConfirmedSchedule confirmedSchedule = this.confirmedScheduleJpaRepository.findById(updatedScheduleDTO.getId()).orElseThrow();
+        Doctor doctor = this.doctorJpaRepository.findById(updatedScheduleDTO.getDoctorNumber()).orElseThrow(DoctorNotFoundException::new);
+
+        confirmedSchedule.setDoctor(doctor);
+        confirmedSchedule.setStart(updatedScheduleDTO.getStart());
+        confirmedSchedule.setEndTime(updatedScheduleDTO.getEnd());
+
+        this.confirmedScheduleJpaRepository.save(confirmedSchedule);
+    }
 }

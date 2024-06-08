@@ -2,7 +2,7 @@ import {Component, inject, OnInit} from '@angular/core';
 import {
   MbscCalendarColor,
   MbscCalendarEvent, MbscEventcalendarModule,
-  MbscEventcalendarOptions, MbscSegmentedModule,
+  MbscEventcalendarOptions, MbscEventUpdateEvent, MbscSegmentedModule,
   Notifications,
   setOptions,
 } from '@mobiscroll/angular';
@@ -13,7 +13,7 @@ import {ButtonModule} from "primeng/button";
 import {Router} from "@angular/router";
 import {AppointmentDto} from "./domain/appointment-dto";
 import {ConfirmedScheduleDto} from "./domain/confirmed-schedule-dto";
-
+import {EventcalendarBase} from "@mobiscroll/angular/dist/js/core/components/eventcalendar/eventcalendar";
 
 setOptions({
   theme: 'ios',
@@ -108,14 +108,26 @@ export class AppointmentSectionComponent implements OnInit {
         this.appointments = this.appointments.filter((item) => item.id !== args.event.id);
       });
     },
+    onEventUpdated: (args: MbscEventUpdateEvent,) => {
+
+      let updatedConfirmedScheduleDTO: ConfirmedScheduleDto = new ConfirmedScheduleDto();
+
+      updatedConfirmedScheduleDTO.start= new Date(args.event.start as any).toISOString().toString();
+      updatedConfirmedScheduleDTO.end= new Date(args.event.end as any).toISOString().toString();
+      updatedConfirmedScheduleDTO.doctorNumber = args.event.resource as number;
+      updatedConfirmedScheduleDTO.id = args.event.id as number;
+
+      this.appointmentService.updateSchedule(updatedConfirmedScheduleDTO).subscribe();
+    },
+
     onEventCreateFailed: (args) => {
       this.notify.toast({
-        message: args.event.start! <= today ? "Can't add event in the past" : 'Make sure not to double book',
+        message: args.event.start! <= today ? "Nu se pot adauga programari in trecut!" : 'Exista deja o programare in perioada respectiva!',
       });
     },
     onEventUpdateFailed: (args) => {
       this.notify.toast({
-        message: args.event.start! <= today ? "Can't add event in the past" : 'Make sure not to double book',
+        message: args.event.start! <= today ? "Nu se pot adauga programari in trecut!" : 'Exista deja o programare in perioada respectiva!',
       });
     },
     onEventDelete: (args) => {
@@ -136,12 +148,15 @@ export class AppointmentSectionComponent implements OnInit {
       ];
     },
     onEventDragLeave: () => {
+      console.log("bbb");
+
       this.myColors = [];
     },
   };
 
 
   onItemDrop(args: any): void {
+    console.log("aaa");
     if (args.data) {
       const event: MyEvent = args.data;
       event.unscheduled = true;
@@ -152,12 +167,14 @@ export class AppointmentSectionComponent implements OnInit {
 
   onItemDragEnter(args: any): void {
     const event: MyEvent = args.data;
+    console.log("ccc");
     if (!(event && event.unscheduled)) {
       this.contBg = '#d0e7d2cc';
     }
   }
 
   onItemDragLeave(): void {
+    console.log("dd");
     this.contBg = '';
   }
 
