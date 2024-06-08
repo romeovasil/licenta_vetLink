@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "655670864397",
+    "project_id": "vetlink-firestore",
+    "storage_bucket": "vetlink-firestore.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:655670864397:android:e94f4b6adad184ef460344",
+        "android_client_info": {
+          "package_name": "com.romeo.vetlink"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuoe4bTNJXomzKOQOTfvIjuoH7bLHFlkM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
