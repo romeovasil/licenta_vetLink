@@ -30,7 +30,18 @@ public class ShopItemDTOMapper {
         shopItemDTO.setPrice(shopItem.getPrice());
         shopItemDTO.setShortDescription(shopItem.getShortDescription());
         shopItemDTO.setQuantity(shopItem.getQuantity());
+        shopItemDTO.setOwner(shopItem.getOwner());
 
         return shopItemDTO;
+    }
+
+    public ShopItem updateEntity(ShopItemDTO shopItemDTO, ShopItem shopItem){
+        shopItem.setName(shopItemDTO.getName());
+        shopItem.setCategory(shopItemDTO.getCategory());
+        shopItem.setPrice(shopItemDTO.getPrice());
+        shopItem.setShortDescription(shopItemDTO.getShortDescription());
+        shopItem.setQuantity(shopItemDTO.getQuantity());
+        shopItem.setOwner(shopItem.getOwner());
+        return shopItem;
     }
 }

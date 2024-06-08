@@ -10,5 +10,5 @@ public class ShopItemDTO {
      String price;
      String quantity;
      String shortDescription;
-    String owner;
+    Integer owner;
 }

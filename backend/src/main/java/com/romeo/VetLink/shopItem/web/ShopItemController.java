@@ -21,6 +21,13 @@ public class ShopItemController {
         return ResponseEntity.ok().build();
     }
 
+    @PutMapping()
+    public ResponseEntity<?> edit(
+            @RequestBody ShopItemDTO shopItemDTO){
+        shopItemService.edit(shopItemDTO);
+        return ResponseEntity.ok().build();
+    }
+
     @GetMapping()
     public ResponseEntity<?> getAllByOwner(){
         return ResponseEntity.ok(shopItemService.getAllByOwner());

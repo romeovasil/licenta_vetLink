@@ -8,7 +8,7 @@ import lombok.*;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.util.List;
-import java.util.Set;
+
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -18,9 +18,6 @@ import java.util.Set;
 @Entity
 @Table(name = "shop_item")
 public class ShopItem extends OwnedEntity {
-    @Id
-    @GeneratedValue
-    private Integer id;
 
     private String name;
     private String category;
@@ -36,6 +33,4 @@ public class ShopItem extends OwnedEntity {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         this.owner = user.getClinicId();
     }
-
-
 }

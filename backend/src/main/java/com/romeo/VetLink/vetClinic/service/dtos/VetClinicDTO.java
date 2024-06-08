@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class VetClinicDTO {
-    String id;
+    Integer id;
     String name;
     String county;
     String city;

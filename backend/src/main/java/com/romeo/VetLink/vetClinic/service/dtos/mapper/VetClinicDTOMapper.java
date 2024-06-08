@@ -20,4 +20,20 @@ public class VetClinicDTOMapper {
 
         return vetClinic;
     }
+
+    public VetClinicDTO mapEntityToDto(VetClinic vetClinic){
+
+        VetClinicDTO vetClinicDTO = new VetClinicDTO();
+
+        vetClinicDTO.setId(vetClinic.getId());
+
+        vetClinicDTO.setName(vetClinic.getName());
+        vetClinicDTO.setCity(vetClinic.getCity());
+        vetClinicDTO.setCounty(vetClinic.getCounty());
+        vetClinicDTO.setStreet(vetClinic.getStreet());
+        vetClinicDTO.setPhoneNumber(vetClinic.getPhoneNumber());
+        vetClinicDTO.setShortDescription(vetClinic.getShortDescription());
+
+        return vetClinicDTO;
+    }
 }

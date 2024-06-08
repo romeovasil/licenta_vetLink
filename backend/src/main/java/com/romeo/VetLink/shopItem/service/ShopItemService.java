@@ -19,7 +19,7 @@ public class ShopItemService {
 
     @Transactional
     public void save (ShopItemDTO shopItemDTO){
-        ShopItem shopItem = this.shopItemJpaRepository.save(this.shopItemDTOMapper.mapDtoToEntity(shopItemDTO));
+        this.shopItemJpaRepository.save(this.shopItemDTOMapper.mapDtoToEntity(shopItemDTO));
     }
 
     public List<ShopItemDTO> getAllByOwner() {
@@ -27,8 +27,18 @@ public class ShopItemService {
         List<ShopItem> shopItems = this.shopItemJpaRepository.findAllByOwner(user.getClinicId());
         return shopItems.stream().map(this.shopItemDTOMapper::mapEntityToDTO).toList();
     }
+
     @Transactional
     public void deleteById(Integer shopItemId) {
         this.shopItemJpaRepository.deleteById(shopItemId);
     }
+
+    @Transactional
+    public void edit(ShopItemDTO shopItemDTO) {
+        ShopItem shopItem = shopItemJpaRepository.findById(shopItemDTO.getId()).orElseThrow();
+        shopItem = this.shopItemDTOMapper.updateEntity(shopItemDTO,shopItem);
+
+        this.shopItemJpaRepository.save(shopItem);
+    }
+
 }
