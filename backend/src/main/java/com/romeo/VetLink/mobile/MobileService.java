@@ -5,6 +5,10 @@ import com.romeo.VetLink.shopItem.domain.ShopItem;
 import com.romeo.VetLink.shopItem.domain.ShopItemJpaRepository;
 import com.romeo.VetLink.shopItem.service.dtos.ShopItemDTO;
 import com.romeo.VetLink.shopItem.service.dtos.mapper.ShopItemDTOMapper;
+import com.romeo.VetLink.subscription.domain.Subscription;
+import com.romeo.VetLink.subscription.domain.SubscriptionJpaRepository;
+import com.romeo.VetLink.subscription.service.dtos.SubscriptionDTO;
+import com.romeo.VetLink.subscription.service.dtos.SubscriptionDTOMapper;
 import com.romeo.VetLink.vetClinic.domain.VetClinic;
 import com.romeo.VetLink.vetClinic.domain.VetClinicJpaRepository;
 import com.romeo.VetLink.vetClinic.service.dtos.VetClinicDTO;
@@ -20,8 +24,10 @@ public class MobileService {
 
     private final VetClinicJpaRepository vetClinicJpaRepository;
     private final ShopItemJpaRepository shopItemJpaRepository;
+    private final SubscriptionJpaRepository subscriptionJpaRepository;
     private final VetClinicDTOMapper vetClinicDTOMapper;
     private final ShopItemDTOMapper shopItemDTOMapper;
+    private final SubscriptionDTOMapper subscriptionDTOMapper;
 
     public List<VetClinicDTO> getAllClinics() {
 
@@ -33,5 +39,11 @@ public class MobileService {
 
         List<ShopItem> vetClinic = this.shopItemJpaRepository.findAllByOwner(ownerUuid);
         return vetClinic.stream().map(this.shopItemDTOMapper::mapEntityToDTO).toList();
+    }
+
+    public List<SubscriptionDTO> getAllSubscriptionsByOwnerUuid(Integer ownerUuid) {
+
+        List<Subscription> subscriptions = this.subscriptionJpaRepository.findAllByOwner(ownerUuid);
+        return subscriptions.stream().map(this.subscriptionDTOMapper::mapEntityToDTO).toList();
     }
 }

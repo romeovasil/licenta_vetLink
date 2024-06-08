@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "http://localhost:55365", maxAge = 3600, allowCredentials="true")
+@CrossOrigin(origins = "http://localhost:58221", maxAge = 3600, allowCredentials="true")
 @RestController
 @RequestMapping("api/v1/mobile")
 @RequiredArgsConstructor
@@ -19,6 +19,11 @@ public class MobileController {
     @GetMapping(value = "/shop-items/{clinicUuid}")
     public ResponseEntity<?> getAllShopItemsByOwnerUuid(@PathVariable("clinicUuid") Integer ownerUuid){
         return ResponseEntity.ok(mobileService.getAllShopItemsByOwnerUuid(ownerUuid));
+    }
+
+    @GetMapping(value = "/subscriptions/{clinicUuid}")
+    public ResponseEntity<?> getAllSubscriptionsByOwnerUuid(@PathVariable("clinicUuid") Integer ownerUuid){
+        return ResponseEntity.ok(mobileService.getAllSubscriptionsByOwnerUuid(ownerUuid));
     }
 
 
