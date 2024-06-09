@@ -17,13 +17,10 @@ class HomeScreen extends StatelessWidget {
       'Content-Type': 'application/json; charset=utf-8',
     };
     var response = await http.get(url, headers: headers);
-
-
     if (response.statusCode == 200) {
-
       return json.decode(response.body);
     } else {
-      throw Exception('Failed to load companies');
+      throw Exception('Failed to load clinics');
     }
   }
 

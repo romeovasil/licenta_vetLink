@@ -1,6 +1,5 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../model/user.dart' as model;
@@ -28,7 +27,6 @@ class AuthMethods {
       if (email.isNotEmpty || password.isNotEmpty || username.isNotEmpty) {
         UserCredential cred = await _auth.createUserWithEmailAndPassword(
             email: email, password: password);
-        print(cred.user!.uid);
         model.User user =
             model.User(email: email, uid: cred.user!.uid, username: username);
         await _firebaseFirestore.collection("user").doc(cred.user!.uid).set(

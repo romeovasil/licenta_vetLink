@@ -80,12 +80,9 @@ class FirestoreMethods {
 
 
   Future<void> addShopItem(String uid, int clinicId, int shopItemId, BuildContext context) async {
-    print(uid);
     DocumentReference userShoppingList =
     _firebaseFirestore.collection("shoppingLists").doc(uid);
-    print(userShoppingList);
     var snapshot = await userShoppingList.get();
-    print(snapshot.exists);
     var currentShopItems =
     snapshot.exists ? List<int>.from(snapshot['shopItems']) : [];
     int? actualClinicId =  snapshot.exists ? snapshot['clinicId'] : null;
@@ -115,11 +112,9 @@ class FirestoreMethods {
     if (currentShopItems.isEmpty) {
       await userShoppingList.set(
           {'shopItems': currentShopItems, 'clinicId': null});
-      print("aici");
     }
     else {
       await userShoppingList.update({'shopItems': currentShopItems});
-      print("dincoace");
     }
   }
 
@@ -129,7 +124,6 @@ class FirestoreMethods {
       await _firebaseFirestore.collection("pets").doc(petId).delete();
 
     } catch (e) {
-      print("Error deleting pet: $e");
     }
   }
 

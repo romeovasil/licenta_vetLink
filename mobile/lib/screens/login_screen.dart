@@ -7,7 +7,6 @@ import '../responsive/responsive_layout_screen.dart';
 import '../responsive/web_screen_layout.dart';
 import '../utils/colors.dart';
 import '../utils/utils.dart';
-import '../widgets/text_field_input.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -57,14 +56,14 @@ class _LoginScreenState extends State<LoginScreen> {
         Container(
           height: double.infinity,
           width: double.infinity,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             gradient: LinearGradient(colors: [
               Color(0xff332301),
               Color(0xfff67408),
             ]),
           ),
-          child: Padding(
-            padding: const EdgeInsets.only(top: 60.0, left: 22),
+          child: const Padding(
+            padding: EdgeInsets.only(top: 60.0, left: 22),
             child: Text(
               'Bine ai venit\nConecteaza-te!',
               style: TextStyle(
@@ -77,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
         Padding(
           padding: const EdgeInsets.only(top: 300.0),
           child: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(40),
                     topRight: Radius.circular(40)),
@@ -92,7 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     TextField(
                       controller: _emailController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         suffixIcon: Icon(Icons.mail, color: Colors.grey,),
                         label: Text('Email', style: TextStyle(
                             fontWeight: FontWeight.bold,
@@ -103,7 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     TextField(
                       controller: _passwordController,
                       obscureText: true,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         suffixIcon: Icon(Icons.visibility_off, color: Colors.grey,),
                         label: Text('Parola', style: TextStyle(
                             fontWeight: FontWeight.bold,
@@ -116,7 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       width: 300,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(30),
-                        gradient: LinearGradient(
+                        gradient: const LinearGradient(
                           colors: [
                             Color(0xff332301),
                             Color(0xfff67408),
@@ -134,19 +133,19 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),)),
                       )
                     ),
-                    SizedBox(height: 250,),
+                    const SizedBox(height: 250,),
                     Align(
                       alignment: Alignment.bottomRight,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.end,
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            Text("Nu ai cont?", style: TextStyle(
+                            const Text("Nu ai cont?", style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Color(0xffec7d00)
                             ),),
                             GestureDetector(
-                              child: Text("Inregistreaza-te!", style: TextStyle(
+                              child: const Text("Inregistreaza-te!", style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18,
                                   color: Color(0xff3a2a05),
