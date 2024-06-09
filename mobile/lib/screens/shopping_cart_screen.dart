@@ -106,7 +106,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                     margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
                     height: 120.0,
                     decoration: BoxDecoration(
-                      color: Color(0xffffffff),
+                      color: const Color(0xffffffff),
                       borderRadius: BorderRadius.circular(12.0),
                       boxShadow: [
                         BoxShadow(
@@ -119,8 +119,8 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                     ),
                     child: Row(
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
+                        const Padding(
+                          padding: EdgeInsets.all(8.0),
                           child: CircleAvatar(
                             backgroundImage: AssetImage('assets/vetclinic.jpg'),
                             radius: 30.0,
@@ -134,31 +134,31 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                               children: [
                                 Text(
                                   shoppingList[index].name,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 18.0,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.black
                                   ),
                                 ),
-                                SizedBox(height: 3),
+                                const SizedBox(height: 3),
                                 Text(
                                   shoppingList[index].shortDescription,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontSize: 12.0,
                                       color: Colors.grey
                                   ),
                                 ),
-                                SizedBox(height: 10),
+                                const SizedBox(height: 10),
                                 Container(
                                   decoration: BoxDecoration(
-                                      color:Color(0xEFF37171),
+                                      color:const Color(0xEFF37171),
                                       borderRadius: BorderRadius.circular(30)
                                   ) ,
                                   child:  Padding(
-                                    padding:  EdgeInsets.symmetric(vertical: 6.0, horizontal: 22),
+                                    padding:  const EdgeInsets.symmetric(vertical: 6.0, horizontal: 22),
                                     child: Text(
                                       shoppingList[index].category,
-                                      style: TextStyle(color: Colors.black,
+                                      style: const TextStyle(color: Colors.black,
                                           fontWeight: FontWeight.bold,
                                           fontSize: 10),
                                     ),
@@ -181,10 +181,10 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                     await deleteShopItem(userProvider.getUser!.uid.toString(), shoppingList[index].id);
                                   },
                                 ),
-                                SizedBox(height: 8),
+                                const SizedBox(height: 8),
                                 Text(
                                   '${shoppingList[index].price} RON',
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 16.0,
                                     fontWeight: FontWeight.bold,
                                     color: Color(0xFFFF5900),
@@ -203,7 +203,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
             ),
           ),
           Positioned(
-            bottom: 56.0,
+            bottom: 106.0,
             left: 16.0,
             right: 16.0,
             child: Container(
@@ -214,21 +214,105 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                 color: Colors.white60
               ),
 
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Text(
-                  'Total: ${shoppingList.fold<int>(0, (sum, item) => sum + int.parse(item.price))} RON',
-                  style: TextStyle(
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(36.0, 25.0, 16.0, 4.0),
+                    child: Row(
+                      children: [
+                        const Icon(
+                          Icons.attach_money,
+                          color: Colors.yellow,
+                          size: 24.0,
+                        ),
+                        const SizedBox(width: 8.0),
+                        const Text(
+                          'Total: ',
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                        Text(
+                          '${shoppingList.fold<int>(0, (sum, item) => sum + int.parse(item.price))} RON',
+                          style: const TextStyle(
+                            fontSize: 18.0,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(36.0, 10.0, 1.0, 4.0),
+                    child: Row(
+                      children: [
+                        const Icon(
+                          Icons.shopping_basket,
+                          color: Colors.green,
+                          size: 24.0,
+                        ),
+                        const SizedBox(width: 8.0),
+                        const Text(
+                          'Numa produse: ',
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                        Text(
+                          '${shoppingList.length}',
+                          style: const TextStyle(
+                            fontSize: 18.0,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.fromLTRB(36.0, 1.0, 16.0, 8.0),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.local_shipping,
+                          color: Colors.black,
+                          size: 24.0,
+                        ),
+                        const Divider(
+                          color: Colors.blue,
+                          thickness: 1.0,
+                          height: 30.0,
+                        ),
+                        Text(
+                          ' Pret transport: ',
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                        Text(
+                          '29.99 RON',
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
+
+
             ),
           ),
           Positioned(
-            bottom: 16.0,
+            bottom: 46.0,
             left: 16.0,
             right: 16.0,
             child: ElevatedButton(
@@ -236,11 +320,14 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                 await clearShoppingList();
               },
               style: ElevatedButton.styleFrom(
-                primary: Colors.redAccent,
+                primary: Colors.green,
                 padding: const EdgeInsets.symmetric(vertical: 12.0),
                 textStyle: const TextStyle(fontSize: 18.0),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
               ),
-              child: const Text("Clear List"),
+              child: const Text("Avanseaza la plata"),
             ),
           ),
         ],
