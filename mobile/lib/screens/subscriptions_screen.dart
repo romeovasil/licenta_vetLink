@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 import 'package:vetlink/screens/shopping_cart_screen.dart';
+import '../model/customer-subscription-dto.dart';
 import '../model/subscription.dart';
 import '../providers/user_provider.dart';
 import '../utils/colors.dart';
@@ -18,6 +19,44 @@ class SubscriptionsScreen extends StatefulWidget {
 
 class _SubscriptionsScreenState extends State<SubscriptionsScreen> {
   late UserProvider userProvider;
+
+  Future<void> subscribe(Subscription subscription) async {
+    var url = Uri.parse('http://localhost:8080/api/v1/mobile/customer-subscription');
+    var headers = {
+      'Content-Type': 'application/json; charset=utf-8',
+    };
+
+    var customerSubscriptionDTO = CustomerSubscriptionDTO(
+      customerId: userProvider.getUser!.uid!,
+      validFrom: null,
+      validUntil: null,
+      canceled: false,
+      subscriptionDTO: Subscription(
+        id: subscription.id,
+        name: subscription.name,
+        shortDescription: subscription.shortDescription,
+        recurrence: subscription.recurrence,
+        price: subscription.price,
+        shopItems: subscription.shopItems
+      ),
+    );
+
+    var body = json.encode(customerSubscriptionDTO.toMap());
+
+    var response = await http.post(url, headers: headers, body: body);
+    print(response);
+    if (response.statusCode == 200) {
+      // Handle successful subscription
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text('V-ati abonat cu succes la noul abonament!'),
+      ));
+    } else {
+      // Handle error
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text('Aveti deja un abonament valabil!'),
+      ));
+    }
+  }
 
   @override
   void didChangeDependencies() {
@@ -203,14 +242,17 @@ class _SubscriptionsScreenState extends State<SubscriptionsScreen> {
                                   );
                                 }).toList(),
                               ),
-                              SizedBox(height: 35),
+                              SizedBox(height: 30),
                               Align(
                                 alignment: Alignment.bottomCenter,
-                                child: Container(
-                                  padding: const EdgeInsets.all(12.0),
-                                  decoration: BoxDecoration(
-                                    color: Colors.green.shade500,
-                                    borderRadius: BorderRadius.circular(10),
+                                child: ElevatedButton(
+                                  onPressed: () => subscribe(subscription),
+                                  style: ElevatedButton.styleFrom(
+                                    primary: Colors.green.shade500,
+                                    padding: const EdgeInsets.all(10.0),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
                                   ),
                                   child: Text('Aboneaza-te'),
                                 ),

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:vetlink/utils/colors.dart';
 
 class TextFieldInput extends StatelessWidget {
   final TextEditingController textEditingController;
@@ -24,7 +25,7 @@ class TextFieldInput extends StatelessWidget {
         border: inputBorder,
         enabledBorder: inputBorder,
         filled: true,
-        fillColor: Color(0xEFF57511),
+        fillColor: mobileBackgroundColor,
         contentPadding: const EdgeInsets.all(15),
       ),
       keyboardType: textInputType,

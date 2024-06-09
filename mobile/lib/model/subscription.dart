@@ -3,6 +3,7 @@
 import 'package:vetlink/model/shop-item.dart';
 
 class Subscription {
+  final int id;
   final String name;
   final String recurrence;
   final String price;
@@ -11,6 +12,7 @@ class Subscription {
 
 
   const Subscription({
+    required this.id,
     required this.name,
     required this.recurrence,
     required this.price,
@@ -20,6 +22,7 @@ class Subscription {
 
   static Subscription fromMap(Map<String, dynamic> map) {
     return Subscription(
+      id: map['id'],
       name: map['name'],
       recurrence: map['recurrence'],
       price: map['price'],
@@ -32,6 +35,7 @@ class Subscription {
 
   Map<String, dynamic> toMap() {
     return {
+      'id': id,
       'name': name,
       'recurrence': recurrence,
       'price': price,
