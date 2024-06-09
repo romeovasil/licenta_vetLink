@@ -104,7 +104,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                 itemBuilder: (context, index) {
                   return Container(
                     margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
-                    height: 100.0,
+                    height: 120.0,
                     decoration: BoxDecoration(
                       color: Color(0xffffffff),
                       borderRadius: BorderRadius.circular(12.0),

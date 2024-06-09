@@ -76,7 +76,7 @@ class _SubscriptionsScreenState extends State<SubscriptionsScreen> {
                 crossAxisCount: 1,
                 crossAxisSpacing: 10,
                 mainAxisSpacing: 30,
-                childAspectRatio: 6 / 3,
+                childAspectRatio: 5 / 3,
               ),
               itemCount: snapshot.data!.length,
               itemBuilder: (context, int i) {
@@ -103,13 +103,13 @@ class _SubscriptionsScreenState extends State<SubscriptionsScreen> {
                             child: Image.asset(
                               'assets/vetclinic.jpg',
                               fit: BoxFit.cover,
-                              width: 300,
+                              width: 250,
                               height: 115,
                             ),
                           ),
                           Container(
                             height: 110,
-                            width: 300,
+                            width: 260,
                             child: Row(
                               children: [
                                 Column(
@@ -203,7 +203,7 @@ class _SubscriptionsScreenState extends State<SubscriptionsScreen> {
                                   );
                                 }).toList(),
                               ),
-                              SizedBox(height: 75),
+                              SizedBox(height: 35),
                               Align(
                                 alignment: Alignment.bottomCenter,
                                 child: Container(

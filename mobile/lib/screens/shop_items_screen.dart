@@ -81,7 +81,7 @@ class _ShopItemsScreenState extends State<ShopItemsScreen> {
                 crossAxisCount: 2,
               crossAxisSpacing: 10,
               mainAxisSpacing: 10,
-              childAspectRatio: 9/16
+              childAspectRatio: 9/17
             ),
             itemCount: snapshot.data!.length,
             itemBuilder: (context, int i){
@@ -116,7 +116,7 @@ class _ShopItemsScreenState extends State<ShopItemsScreen> {
                                 borderRadius: BorderRadius.circular(30)
                               ) ,
                               child:  Padding(
-                                padding:  EdgeInsets.symmetric(vertical: 6.0, horizontal: 22),
+                                padding:  EdgeInsets.symmetric(vertical: 7.0, horizontal: 12),
                                 child: Text(
                                   item.category,
                                   style: TextStyle(color: Colors.white,
@@ -126,25 +126,9 @@ class _ShopItemsScreenState extends State<ShopItemsScreen> {
                               ),
                             ),
                             SizedBox(width: 8),
-                            Container(
-                              decoration: BoxDecoration(
-                                  color:Colors.green.shade100,
-                                  borderRadius: BorderRadius.circular(30)
-                              ) ,
-                              child:  Padding(
-                                padding:  EdgeInsets.symmetric(vertical: 6.0, horizontal: 22),
-                                child: Text(
-                                  item.category,
-                                  style: TextStyle(color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 10),
-                                ),
-                              ),
-                            )
                           ],
                         ),
                       ),
-                      SizedBox(height: 8),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 12.0),
                         child: Text(
@@ -184,7 +168,7 @@ class _ShopItemsScreenState extends State<ShopItemsScreen> {
                                 ),
                               ],
                             ),
-                            const SizedBox(width: 55),
+                            const SizedBox(width: 45),
                              IconButton(
                               onPressed: () async {
 

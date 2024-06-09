@@ -9,7 +9,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.romeo.vetlink</string>
+	<string>com.romeo.mobile</string>
 	<key>PROJECT_ID</key>
 	<string>vetlink-firestore</string>
 	<key>STORAGE_BUCKET</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:655670864397:ios:454aa2ca44d41f54460344</string>
+	<string>1:655670864397:ios:1629273e67e3877e460344</string>
 </dict>
 </plist>

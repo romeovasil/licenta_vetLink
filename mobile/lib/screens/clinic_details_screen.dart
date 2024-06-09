@@ -58,7 +58,7 @@ class _ClinicDetailsScreenState extends State<ClinicDetailsScreen> {
                             const Icon(Icons.phone, size: 20.0),
                             const SizedBox(width: 4.0),
                             Text(
-                              'Telefon: ' + widget.snap['phoneNumber'],
+                               widget.snap['phoneNumber'],
                               style: const TextStyle(fontSize: 16.0),
                             ),
                           ],
@@ -69,7 +69,7 @@ class _ClinicDetailsScreenState extends State<ClinicDetailsScreen> {
                             const Icon(Icons.house, size: 20.0),
                             const SizedBox(width: 4.0),
                             Text(
-                              'Adresa: ' + widget.snap['street']  + ', ' + widget.snap['city'] + ', ' + widget.snap['county'],
+                              widget.snap['street']  + ', ' + widget.snap['city'] + ', ' + widget.snap['county'],
                               style: const TextStyle(fontSize: 16.0),
                             ),
                           ],
@@ -116,7 +116,7 @@ class _ClinicDetailsScreenState extends State<ClinicDetailsScreen> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30.0),
                           ),
-                          padding: const EdgeInsets.symmetric(vertical: 25.0, horizontal: 30.0),
+                          padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
                         ),
                         child: Text("Abonamente"),
                       ),
@@ -133,7 +133,7 @@ class _ClinicDetailsScreenState extends State<ClinicDetailsScreen> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30.0),
                           ),
-                          padding: const EdgeInsets.symmetric(vertical: 25.0, horizontal: 30.0),
+                          padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
                         ),
                         child: Text("Cumparaturi"),
                       ),
@@ -146,7 +146,7 @@ class _ClinicDetailsScreenState extends State<ClinicDetailsScreen> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30.0),
                           ),
-                          padding: const EdgeInsets.symmetric(vertical: 25.0, horizontal: 30.0),
+                          padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
                         ),
                         child: Text("Fa o programare"),
                       ),

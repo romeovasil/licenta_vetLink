@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vetlink/providers/user_provider.dart';
@@ -12,19 +11,9 @@ import 'package:vetlink/utils/colors.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  if (kIsWeb) {
-    await Firebase.initializeApp(
-      options: const FirebaseOptions(
-          apiKey: "AIzaSyB96PuaK-b_R5Dut2dpgeiJaFNQ2QNTGTc",
-          authDomain: "vetlink-firestore.firebaseapp.com",
-          projectId: "vetlink-firestore",
-          storageBucket: "vetlink-firestore.appspot.com",
-          messagingSenderId: "655670864397",
-          appId: "1:655670864397:web:ee83d62272a1f136460344")
-    );
-  } else {
+
     await Firebase.initializeApp();
-  }
+
   runApp(const MyApp());
 }
 
