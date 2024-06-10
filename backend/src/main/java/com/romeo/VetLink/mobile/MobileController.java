@@ -55,4 +55,9 @@ public class MobileController {
         return ResponseEntity.ok().build();
     }
 
+    @GetMapping(value = "/order-list/{customerId}")
+    public ResponseEntity<?> getOrderListForCustomer(@PathVariable("customerId") String customerId){
+
+        return ResponseEntity.ok(orderService.getAllOrdersByCustomerId(customerId));
+    }
 }

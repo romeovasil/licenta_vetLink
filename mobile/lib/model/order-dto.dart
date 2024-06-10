@@ -10,6 +10,8 @@ class OrderDTO {
   final String city;
   final String address;
   final String number;
+  final String? clinicName;
+  final DateTime? orderDate;
   final int price;
   final List<ShopItem> itemDTOs;
 
@@ -22,6 +24,8 @@ class OrderDTO {
     required this.email,
     required this.city,
     required this.address,
+    required this.clinicName,
+    required this.orderDate,
     required this.number,
     required this.price,
     required this.itemDTOs,
@@ -36,6 +40,8 @@ class OrderDTO {
       'email': email,
       'county': county,
       'city': city,
+      'clinicName': clinicName,
+      'orderDate': orderDate,
       'address': address,
       'number': number,
       'price': price,
@@ -49,8 +55,10 @@ class OrderDTO {
       lastName: map['lastName'],
       customerId: map['customerId'],
       phoneNumber: map['phoneNumber'],
+      orderDate: DateTime.parse(map['orderDate']),
       county: map['county'],
       city: map['city'],
+      clinicName: map['clinicName'],
       email: map['email'],
       address: map['address'],
       number: map['number'],

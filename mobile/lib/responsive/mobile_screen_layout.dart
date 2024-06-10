@@ -72,11 +72,18 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
             backgroundColor: primaryColor,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person,
-                color: _page == 5 ? primaryColor : secondaryColor),
+            icon: Icon(Icons.shopping_bag,
+                color: _page == 3 ? primaryColor : secondaryColor),
             label: "",
             backgroundColor: primaryColor,
           ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person,
+                color: _page == 4 ? primaryColor : secondaryColor),
+            label: "",
+            backgroundColor: primaryColor,
+          ),
+
         ],
         onTap: navigationTapped,
       ),

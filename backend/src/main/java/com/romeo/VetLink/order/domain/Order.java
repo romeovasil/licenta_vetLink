@@ -7,6 +7,7 @@ import com.romeo.VetLink.shopItem.domain.ShopItem;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -29,7 +30,9 @@ public class Order extends IdentifiableEntity {
     private String city;
     private String address;
     private String number;
-    private Double price;
+    private Integer price;
+    private String clinicName;
+    private LocalDate orderDate;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(

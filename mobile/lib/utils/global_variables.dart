@@ -3,12 +3,14 @@ import 'package:vetlink/screens/pet_screen.dart';
 
 
 import '../screens/home_screen.dart';
+import '../screens/order_list_screen.dart';
 import '../screens/profile_screen.dart';
 
 const homeScreenItems = [
   HomeScreen(),
   PetsScreen(),
   AddPetScreen(),
+  OrderListScreen(),
   ProfileScreen(),
 
 ];

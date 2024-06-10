@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class OrderService {
@@ -20,6 +22,12 @@ public class OrderService {
         Order order = orderDTOMapper.mapDTOToEntity(orderDTO);
 
         orderJpaRepository.save(order);
+    }
 
+    @Transactional(readOnly = true)
+    public List<OrderDTO> getAllOrdersByCustomerId(String customerId){
+        List<Order> orders = orderJpaRepository.findAllByCustomerId(customerId);
+
+        return orders.stream().map(orderDTOMapper::mapEntityToDTO).toList();
     }
 }

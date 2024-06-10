@@ -58,6 +58,8 @@ class _OrderScreenState extends State<OrderScreen> {
           lastName: lastName,
           phoneNumber: phoneNumber,
           county: county,
+          orderDate: null,
+          clinicName: null,
           email: email,
           city: city,
           address: address,
