@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 import 'package:vetlink/screens/shopping_cart_screen.dart';
-import '../model/customer-subscription-dto.dart';
+import 'package:vetlink/utils/StripePaymentHandle.dart';
 import '../model/subscription.dart';
 import '../providers/user_provider.dart';
 import '../utils/colors.dart';
@@ -19,44 +19,7 @@ class SubscriptionsScreen extends StatefulWidget {
 
 class _SubscriptionsScreenState extends State<SubscriptionsScreen> {
   late UserProvider userProvider;
-
-  Future<void> subscribe(Subscription subscription) async {
-    var url = Uri.parse('http://localhost:8080/api/v1/mobile/customer-subscription');
-    var headers = {
-      'Content-Type': 'application/json; charset=utf-8',
-    };
-
-    var customerSubscriptionDTO = CustomerSubscriptionDTO(
-      customerId: userProvider.getUser!.uid!,
-      validFrom: null,
-      validUntil: null,
-      canceled: false,
-      subscriptionDTO: Subscription(
-        id: subscription.id,
-        name: subscription.name,
-        shortDescription: subscription.shortDescription,
-        recurrence: subscription.recurrence,
-        price: subscription.price,
-        shopItems: subscription.shopItems
-      ),
-    );
-
-    var body = json.encode(customerSubscriptionDTO.toMap());
-
-    var response = await http.post(url, headers: headers, body: body);
-    print(response);
-    if (response.statusCode == 200) {
-      // Handle successful subscription
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text('V-ati abonat cu succes la noul abonament!'),
-      ));
-    } else {
-      // Handle error
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text('Aveti deja un abonament valabil!'),
-      ));
-    }
-  }
+  final StripePaymentHandle stripePaymentHandle = StripePaymentHandle();
 
   @override
   void didChangeDependencies() {
@@ -64,8 +27,30 @@ class _SubscriptionsScreenState extends State<SubscriptionsScreen> {
     userProvider = Provider.of<UserProvider>(context);
   }
 
+  Future<void> subscribe(Subscription subscription, String customerId) async {
+    var url = Uri.parse('http://localhost:8080/api/v1/mobile/customer-subscription/current/$customerId');
+    var headers = {
+      'Content-Type': 'application/json; charset=utf-8',
+    };
+
+    var response = await http.get(url, headers: headers);
+    if (response.statusCode == 200) {
+      try {
+        json.decode(response.body);
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text('Aveti deja un abonament valabil!'),
+        ));
+      } catch(err){
+        await stripePaymentHandle.makePayment(subscription, userProvider.getUser!.uid!, context);
+      }
+
+    }
+  }
+
   Future<List<Subscription>> fetchSubscriptions() async {
-    var url = Uri.parse('http://localhost:8080/api/v1/mobile/subscriptions/${widget.clinicUuid}');
+    var url = Uri.parse(
+        'http://localhost:8080/api/v1/mobile/subscriptions/${widget
+            .clinicUuid}');
     var headers = {
       'Content-Type': 'application/json; charset=utf-8',
     };
@@ -73,7 +58,8 @@ class _SubscriptionsScreenState extends State<SubscriptionsScreen> {
 
     if (response.statusCode == 200) {
       List<dynamic> jsonList = json.decode(response.body);
-      return jsonList.map((jsonItem) => Subscription.fromMap(jsonItem)).toList();
+      return jsonList.map((jsonItem) => Subscription.fromMap(jsonItem))
+          .toList();
     } else {
       throw Exception('Failed to load subscriptions');
     }
@@ -210,8 +196,6 @@ class _SubscriptionsScreenState extends State<SubscriptionsScreen> {
                                         ),
                                       ),
                                     ),
-
-
                                   ],
                                 ),
                               ],
@@ -246,7 +230,7 @@ class _SubscriptionsScreenState extends State<SubscriptionsScreen> {
                               Align(
                                 alignment: Alignment.bottomCenter,
                                 child: ElevatedButton(
-                                  onPressed: () => subscribe(subscription),
+                                  onPressed: () => subscribe(subscription,userProvider.getUser!.uid),
                                   style: ElevatedButton.styleFrom(
                                     primary: Colors.green.shade500,
                                     padding: const EdgeInsets.all(10.0),

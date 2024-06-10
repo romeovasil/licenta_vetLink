@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:provider/provider.dart';
 import 'package:vetlink/providers/user_provider.dart';
 import 'package:vetlink/responsive/mobile_screen_layout.dart';
@@ -11,7 +12,7 @@ import 'package:vetlink/utils/colors.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  Stripe.publishableKey = 'pk_test_51PPsyqKuUEiPobRnqZQZiSjKEDDo69swmo33KpLkcVlRfelC2CbTx8QtzKU7qSB2V9hKHFZWPzu8WbdzmvOEgqtC006yCN4xJs';
     await Firebase.initializeApp();
 
   runApp(const MyApp());
