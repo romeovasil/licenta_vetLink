@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 import 'package:vetlink/screens/shopping_cart_screen.dart';
 import 'package:vetlink/utils/StripePaymentHandle.dart';
+import '../model/customer-subscription-dto.dart';
 import '../model/subscription.dart';
 import '../providers/user_provider.dart';
 import '../utils/colors.dart';
@@ -27,6 +28,43 @@ class _SubscriptionsScreenState extends State<SubscriptionsScreen> {
     userProvider = Provider.of<UserProvider>(context);
   }
 
+  Future<void> subscribeToSubscription(Subscription subscription, String userId, BuildContext context) async {
+    var url = Uri.parse('http://localhost:8080/api/v1/mobile/customer-subscription');
+    var headers = {
+      'Content-Type': 'application/json; charset=utf-8',
+    };
+
+
+
+    var customerSubscriptionDTO = CustomerSubscriptionDTO(
+      customerId: userId,
+      validFrom: null,
+      validUntil: null,
+      canceled: false,
+      subscriptionDTO: Subscription(
+          id: subscription.id,
+          name: subscription.name,
+          shortDescription: subscription.shortDescription,
+          recurrence: subscription.recurrence,
+          price: subscription.price,
+          shopItems: subscription.shopItems
+      ),
+    );
+
+    var body = json.encode(customerSubscriptionDTO.toMap());
+
+    var response = await http.post(url, headers: headers, body: body);
+    print(response);
+    if (response.statusCode == 200) {
+      // Handle successful subscription
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text('V-ati abonat cu succes la noul abonament!'),
+      ));
+    } else {
+    }
+  }
+
+
   Future<void> subscribe(Subscription subscription, String customerId) async {
     var url = Uri.parse('http://localhost:8080/api/v1/mobile/customer-subscription/current/$customerId');
     var headers = {
@@ -41,7 +79,10 @@ class _SubscriptionsScreenState extends State<SubscriptionsScreen> {
           content: Text('Aveti deja un abonament valabil!'),
         ));
       } catch(err){
-        await stripePaymentHandle.makePayment(subscription, userProvider.getUser!.uid!, context);
+        bool resp = await  stripePaymentHandle.makePayment(subscription.price, userProvider.getUser!.uid!, context);
+        if(resp){
+          subscribeToSubscription(subscription, userProvider.getUser!.uid!, context);
+        }
       }
 
     }

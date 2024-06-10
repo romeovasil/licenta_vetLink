@@ -1,5 +1,7 @@
 package com.romeo.VetLink.mobile;
 
+import com.romeo.VetLink.order.service.OrderService;
+import com.romeo.VetLink.order.service.dtos.OrderDTO;
 import com.romeo.VetLink.subscription.service.CustomerSubscriptionService;
 import com.romeo.VetLink.subscription.service.dtos.CustomerSubscriptionDTO;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +16,7 @@ public class MobileController {
 
     private final MobileService mobileService;
     private final CustomerSubscriptionService customerSubscriptionService;
+    private final OrderService orderService;
 
     @GetMapping()
     public ResponseEntity<?> getAllClinics(){
@@ -44,5 +47,12 @@ public class MobileController {
         return ResponseEntity.ok(customerSubscriptionService.getCurrentByCustomerId(customerId));
     }
 
+    @PostMapping(value = "/order")
+    public ResponseEntity<?> saveOrder(@RequestBody OrderDTO orderDTO){
+
+        orderService.saveOrder(orderDTO);
+
+        return ResponseEntity.ok().build();
+    }
 
 }

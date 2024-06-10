@@ -71,7 +71,7 @@ class _AddPetScreenState extends State<AddPetScreen> {
         _allergyController.text.isEmpty ||
         _healthProblemsController.text.isEmpty ||
         _ageController.text.isEmpty) {
-      showSnackBar("Please fill in all fields", context);
+      showSnackBar("Completati toate campurile!", context);
       return;
     }
 
@@ -222,12 +222,7 @@ class _AddPetScreenState extends State<AddPetScreen> {
           height: screenHeight,
           child: Stack(
             children: [
-            Positioned.fill(
-              child: Image.asset(
-                'assets/dark_background.png',
-                fit: BoxFit.cover,
-              ),
-            ),
+
             Column(children: [
               _isLoading
                   ? const LinearProgressIndicator()

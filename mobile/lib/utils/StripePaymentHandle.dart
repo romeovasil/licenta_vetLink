@@ -11,9 +11,9 @@ import '../model/subscription.dart';
 class StripePaymentHandle {
   Map<String, dynamic>? paymentIntent;
 
-  Future<void> makePayment(Subscription subscription , String userId, BuildContext context) async {
+  Future<bool> makePayment(String price , String userId, BuildContext context) async {
     try {
-      paymentIntent = await createPaymentIntent(subscription.price, 'RON');
+      paymentIntent = await createPaymentIntent(price, 'RON');
 
       await Stripe.instance.initPaymentSheet(
         paymentSheetParameters: SetupPaymentSheetParameters(
@@ -26,11 +26,13 @@ class StripePaymentHandle {
 
       bool paymentSuccess = await displayPaymentSheet();
       if (paymentSuccess) {
-        await subscribe(subscription, userId, context);
+        return true;
       }
     } catch (e) {
       print("exception $e");
+      return false;
     }
+    return false;
   }
 
   Future<bool> displayPaymentSheet() async {

@@ -7,6 +7,7 @@ import '../model/shop-item.dart';
 import '../providers/user_provider.dart';
 import '../resources/firestore_methods.dart';
 import '../utils/colors.dart';
+import 'order_screen.dart';
 
 class ShoppingCartScreen extends StatefulWidget {
   const ShoppingCartScreen({Key? key}) : super(key: key);
@@ -80,9 +81,15 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
     userProvider = Provider.of<UserProvider>(context);
   }
 
-  Future<void> clearShoppingList() async {
-    await FirestoreMethods().clearShoppingList(userProvider.getUser!.uid);
-    await getShoppingList();
+
+
+  void goToOrderScreen() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => OrderScreen(shoppingList: shoppingList),
+      ),
+    );
   }
 
   @override
@@ -256,7 +263,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                         ),
                         const SizedBox(width: 8.0),
                         const Text(
-                          'Numa produse: ',
+                          'Numar produse: ',
                           style: TextStyle(
                             fontSize: 20.0,
                             fontWeight: FontWeight.bold,
@@ -296,7 +303,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                           ),
                         ),
                         Text(
-                          '29.99 RON',
+                          '30.00 RON',
                           style: TextStyle(
                             fontSize: 18.0,
                             color: Colors.white,
@@ -316,9 +323,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
             left: 16.0,
             right: 16.0,
             child: ElevatedButton(
-              onPressed: () async {
-                await clearShoppingList();
-              },
+              onPressed: goToOrderScreen,
               style: ElevatedButton.styleFrom(
                 primary: Colors.green,
                 padding: const EdgeInsets.symmetric(vertical: 12.0),
