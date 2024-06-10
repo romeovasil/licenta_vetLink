@@ -35,12 +35,19 @@ class VetClinicCard extends StatelessWidget {
               ).copyWith(right: 0),
             ),
             Container(
-              color: const Color.fromARGB(255, 253, 171, 64),
+
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                color: Colors.orange.shade300,
+              ),
               child: Row(
                 children: [
-                  SizedBox(
+                  Container(
                     height: MediaQuery.of(context).size.height * 0.25,
                     width: MediaQuery.of(context).size.width * 0.5,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30)
+                    ),
                     child: Image.asset(
                       'assets/vetclinic.jpg',
                       fit: BoxFit.cover,
