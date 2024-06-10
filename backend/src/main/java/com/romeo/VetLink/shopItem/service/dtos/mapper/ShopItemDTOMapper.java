@@ -12,6 +12,7 @@ public class ShopItemDTOMapper {
         ShopItem shopItem = new ShopItem();
 
         shopItem.setId(shopItemDTO.getId());
+        shopItem.setOwner(shopItemDTO.getOwner());
         shopItem.setName(shopItemDTO.getName());
         shopItem.setCategory(shopItemDTO.getCategory());
         shopItem.setPrice(shopItemDTO.getPrice());

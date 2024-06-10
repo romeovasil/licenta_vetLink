@@ -4,25 +4,24 @@ import 'package:flutter/material.dart';
 import '../utils/colors.dart';
 import '../utils/global_variables.dart';
 
-
 class MobileScreenLayout extends StatefulWidget {
+  final int initialPage;
 
-  const MobileScreenLayout({Key? key}) : super(key: key);
+  const MobileScreenLayout({Key? key, this.initialPage = 0}) : super(key: key);
 
   @override
   State<MobileScreenLayout> createState() => _MobileScreenLayoutState();
 }
 
 class _MobileScreenLayoutState extends State<MobileScreenLayout> {
-  int _page = 0;
+  late int _page;
   late PageController pageController;
 
   @override
   void initState() {
     super.initState();
-
-
-    pageController = PageController();
+    _page = widget.initialPage;
+    pageController = PageController(initialPage: _page);
   }
 
   @override
@@ -83,7 +82,6 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
             label: "",
             backgroundColor: primaryColor,
           ),
-
         ],
         onTap: navigationTapped,
       ),

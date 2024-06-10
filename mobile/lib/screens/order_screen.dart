@@ -82,7 +82,7 @@ class _OrderScreenState extends State<OrderScreen> {
           clearShoppingList();
           Navigator.of(context).pushReplacement(MaterialPageRoute(
             builder: (context) => const ResponsiveLayout(
-              mobileScreenLayout: MobileScreenLayout(),
+              mobileScreenLayout: MobileScreenLayout(initialPage: 3),
               webScreenLayout: WebScreenLayout(),
             ),
           ));
