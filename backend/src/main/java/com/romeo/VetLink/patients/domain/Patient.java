@@ -34,8 +34,10 @@ public class Patient extends OwnedEntity {
 
     @Override
     public void prePersist(){
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        this.owner = user.getClinicId();
+        if(this.owner == null){
+            User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            this.owner = user.getClinicId();
+        }
     }
 
 }

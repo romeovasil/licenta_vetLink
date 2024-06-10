@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:vetlink/screens/appointment_screen.dart';
 import 'package:vetlink/screens/shop_items_screen.dart';
 import 'package:vetlink/screens/subscriptions_screen.dart';
 
@@ -139,7 +140,11 @@ class _ClinicDetailsScreenState extends State<ClinicDetailsScreen> {
                       ),
                       ElevatedButton(
                         onPressed: () {
-                          print("Second button pressed!");
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => AppointmentScreen(clinicId: widget.snap['id'].toString()),
+                            ),
+                          );
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.deepOrangeAccent,

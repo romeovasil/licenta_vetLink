@@ -1,19 +1,23 @@
 package com.romeo.VetLink.appointment.service;
 
-import com.romeo.VetLink.appointment.domain.Appointment;
-import com.romeo.VetLink.appointment.domain.AppointmentJpaRepository;
-import com.romeo.VetLink.appointment.domain.ConfirmedSchedule;
-import com.romeo.VetLink.appointment.domain.ConfirmedScheduleJpaRepository;
+import com.romeo.VetLink.appointment.domain.*;
+import com.romeo.VetLink.appointment.service.dtos.AppointmentRequestDTO;
 import com.romeo.VetLink.appointment.service.dtos.ConfirmedScheduleDTO;
 import com.romeo.VetLink.appointment.service.dtos.mapper.AppointmentDTOMapper;
 import com.romeo.VetLink.appointment.service.dtos.AppointmentDTO;
 
+import com.romeo.VetLink.appointment.service.dtos.mapper.AppointmentRequestDTOMapper;
 import com.romeo.VetLink.appointment.service.exceptions.AppointmentNotFoundException;
 import com.romeo.VetLink.doctors.domain.Doctor;
 import com.romeo.VetLink.doctors.domain.DoctorJpaRepository;
 import com.romeo.VetLink.doctors.exceptions.DoctorNotFoundException;
+import com.romeo.VetLink.patients.domain.Patient;
+import com.romeo.VetLink.patients.domain.PatientJpaRepository;
+import com.romeo.VetLink.patients.service.PatientService;
+import com.romeo.VetLink.patients.service.dtos.mapper.PatientDTOMapper;
 import com.romeo.VetLink.user.User;
 import lombok.AllArgsConstructor;
+import org.apache.tomcat.util.descriptor.web.ApplicationParameter;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,6 +31,10 @@ public class AppointmentService {
     private final ConfirmedScheduleJpaRepository confirmedScheduleJpaRepository;
     private final DoctorJpaRepository doctorJpaRepository;
     private final AppointmentDTOMapper appointmentDTOMapper;
+    private final PatientDTOMapper patientDTOMapper;
+    private final PatientJpaRepository patientJpaRepository;
+    private final AppointmentRequestDTOMapper appointmentRequestDTOMapper;
+    private final AppointmentRequestJpaRepository appointmentRequestJpaRepository;
 
     @Transactional
     public void save (AppointmentDTO appointmentDTO){
@@ -74,5 +82,20 @@ public class AppointmentService {
         confirmedSchedule.setEndTime(updatedScheduleDTO.getEnd());
 
         this.confirmedScheduleJpaRepository.save(confirmedSchedule);
+    }
+
+    @Transactional
+    public AppointmentRequest saveAppointmentRequest(AppointmentRequestDTO appointmentRequestDTO){
+        Patient patient = patientDTOMapper.mapDtoToEntity(appointmentRequestDTO.getPatientDTO());
+        patient.setOwner(Integer.valueOf(appointmentRequestDTO.getClinicId()));
+
+        patientJpaRepository.save(patient);
+
+        AppointmentRequest appointmentRequest = appointmentRequestDTOMapper.toEntity(appointmentRequestDTO);
+        appointmentRequest.setPatient(patient);
+
+        appointmentRequestJpaRepository.save(appointmentRequest);
+
+        return appointmentRequest;
     }
 }

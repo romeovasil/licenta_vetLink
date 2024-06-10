@@ -1,5 +1,7 @@
 package com.romeo.VetLink.mobile;
 
+import com.romeo.VetLink.appointment.service.AppointmentService;
+import com.romeo.VetLink.appointment.service.dtos.AppointmentRequestDTO;
 import com.romeo.VetLink.order.service.OrderService;
 import com.romeo.VetLink.order.service.dtos.OrderDTO;
 import com.romeo.VetLink.subscription.service.CustomerSubscriptionService;
@@ -17,6 +19,7 @@ public class MobileController {
     private final MobileService mobileService;
     private final CustomerSubscriptionService customerSubscriptionService;
     private final OrderService orderService;
+    private final AppointmentService appointmentService;
 
     @GetMapping()
     public ResponseEntity<?> getAllClinics(){
@@ -59,5 +62,11 @@ public class MobileController {
     public ResponseEntity<?> getOrderListForCustomer(@PathVariable("customerId") String customerId){
 
         return ResponseEntity.ok(orderService.getAllOrdersByCustomerId(customerId));
+    }
+
+    @PostMapping(value = "/appointment-request")
+    public ResponseEntity<?> saveAppointmentRequest(@RequestBody AppointmentRequestDTO appointmentRequestDTO){
+
+        return ResponseEntity.ok(appointmentService.saveAppointmentRequest(appointmentRequestDTO));
     }
 }
