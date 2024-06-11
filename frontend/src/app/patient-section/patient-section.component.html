@@ -4,36 +4,95 @@
   Adauga un pacient nou
 </p-button>
 
-
 <div class="table-container">
-  <table class="styled-table">
-    <thead>
-    <tr>
-      <th>Nume</th>
-      <th>Tip</th>
-      <th>Rasa</th>
-      <th>Sub-rasa</th>
-      <th>Varsta</th>
-      <th>Alergii</th>
-      <th>Probleme de sanatate</th>
-      <th>Actiuni</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let patient of patients">
-      <td>{{ patient.name }}</td>
-      <td>{{ patient.type }}</td>
-      <td>{{ patient.race }}</td>
-      <td>{{ patient.subRace }}</td>
-      <td>{{ patient.age }}</td>
-      <td>{{ patient.allergy }}</td>
-      <td>{{ patient.healthProblems }}</td>
-      <td>
-        <p-button (click)="editPatient(patient)" icon="pi pi-pencil" class="p-button-outlined p-button-rounded" [style]="{margin:'5px '}" ></p-button>
-        <br>
-        <p-button (click)="deletePatient(patient)" icon="pi pi-trash" class="p-button-outlined p-button-rounded p-button-danger" [style]="{margin:'5px '}"></p-button>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+  <p-table
+    [value]="patients"
+    [paginator]="true"
+    [rows]="4"
+    [sortField]="''"
+    [sortOrder]="1"
+    [style]="{ 'border': '10px solid black',  'border-radius': '8px' }"
+    [responsiveLayout]="'scroll'">
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="name">Nume <p-sortIcon field="name"></p-sortIcon></th>
+        <th pSortableColumn="type">Tip <p-sortIcon field="type"></p-sortIcon></th>
+        <th pSortableColumn="race">Rasa <p-sortIcon field="race"></p-sortIcon></th>
+        <th pSortableColumn="subRace">Sub-rasa <p-sortIcon field="subRace"></p-sortIcon></th>
+        <th pSortableColumn="age">Varsta <p-sortIcon field="age"></p-sortIcon></th>
+        <th pSortableColumn="allergy">Alergii <p-sortIcon field="allergy"></p-sortIcon></th>
+        <th pSortableColumn="healthProblems">Probleme de sanatate <p-sortIcon field="healthProblems"></p-sortIcon></th>
+        <th></th>
+      </tr>
+      <tr>
+        <th>
+          <p-columnFilter
+            type="text"
+            field="name"
+            placeholder="Cauta"
+            aria-label="Filter Name"/>
+        </th>
+        <th>
+          <p-columnFilter
+            type="text"
+            field="type"
+            placeholder="Cauta"
+            aria-label="Filter Name"/>
+        </th>
+        <th>
+          <p-columnFilter
+            type="text"
+            field="race"
+            placeholder="Cauta"
+            aria-label="Filter Name"/>
+        </th>
+        <th>
+          <p-columnFilter
+            type="text"
+            field="subRace"
+            placeholder="Cauta"
+            aria-label="Filter Name"/>
+        </th>
+        <th>
+          <p-columnFilter
+            type="text"
+            field="age"
+            placeholder="Cauta"
+            aria-label="Filter Name"/>
+        </th>
+        <th>
+          <p-columnFilter
+            type="text"
+            field="allergy"
+            placeholder="Cauta"
+            aria-label="Filter Name"/>
+        </th>
+        <th>
+          <p-columnFilter
+            type="text"
+            field="healthProblems"
+            placeholder="Cauta"
+            aria-label="Filter Name"/>
+        </th>
+        <th></th>
+
+
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-patient>
+      <tr>
+        <td>{{ patient.name }}</td>
+        <td><i class="fa-solid fa-paw"></i>  {{ patient.type }}</td>
+        <td>{{ patient.race }}</td>
+        <td>{{ patient.subRace }}</td>
+        <td><i class="fa-solid fa-hourglass-half"></i>  {{ patient.age }} ani</td>
+        <td>{{ patient.allergy }}</td>
+        <td> <i class="fa-solid fa-heart-pulse"></i>  {{ patient.healthProblems }}</td>
+        <td>
+          <p-button (click)="editPatient(patient)" icon="pi pi-pencil" class="p-button-outlined p-button-rounded" [style]="{margin:'5px '}"></p-button>
+          <p-button (click)="deletePatient(patient)" icon="pi pi-trash" class="p-button-outlined p-button-rounded p-button-danger" [style]="{margin:'5px '}"></p-button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
 </div>

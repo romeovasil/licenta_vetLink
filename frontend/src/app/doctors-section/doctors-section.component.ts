@@ -5,15 +5,17 @@ import {DoctorSectionService} from "./doctor-section.service";
 import {DoctorDto} from "./domain/doctor-dto";
 import {JsonPipe, NgForOf} from "@angular/common";
 import {Notifications} from "@mobiscroll/angular";
+import {TableModule} from "primeng/table";
 
 @Component({
   selector: 'app-doctors-section',
   standalone: true,
-  imports: [
-    ButtonModule,
-    JsonPipe,
-    NgForOf
-  ],
+    imports: [
+        ButtonModule,
+        JsonPipe,
+        NgForOf,
+        TableModule
+    ],
   templateUrl: './doctors-section.component.html',
   styleUrl: './doctors-section.component.scss'
 })

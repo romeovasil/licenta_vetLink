@@ -6,26 +6,59 @@
 
 
 <div class="table-container">
-  <table class="styled-table">
-    <thead>
-    <tr>
-      <th>Nume</th>
-      <th>Specializare</th>
-      <th>Experiență</th>
-      <th>Actiuni</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let doctor of doctors">
-      <td>{{ doctor.firstName }}</td>
-      <td>{{ doctor.lastName }}</td>
-      <td>{{ doctor.speciality }}</td>
+  <p-table
+    [value]="doctors"
+    [paginator]="true"
+    [rows]="5"
+    [sortField]="''"
+    [sortOrder]="1"
+    [style]="{ 'border': '10px solid black',  'border-radius': '8px' }"
+    [responsiveLayout]="'scroll'">
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="lastName">Nume <p-sortIcon field="lastName"></p-sortIcon></th>
+        <th pSortableColumn="firstName">Prenume <p-sortIcon field="firstName"></p-sortIcon></th>
+        <th pSortableColumn="speciality">Specializare <p-sortIcon field="speciality"></p-sortIcon></th>
+        <th></th>
+
+      </tr>
+      <tr>
+        <th>
+          <p-columnFilter
+            type="text"
+            field="lastName"
+            placeholder="Cauta dupa nume"
+            aria-label="Filter Name"/>
+        </th>
+        <th>
+          <p-columnFilter
+            type="text"
+            field="firstName"
+            placeholder="Cauta dupa prenume"
+            aria-label="Filter Name"/>
+        </th>
+        <th>
+          <p-columnFilter
+            type="text"
+            field="speciality"
+            placeholder="Cauta dupa specializare"
+            aria-label="Filter Name"/>
+        </th>
+        <th></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-doctor>
+      <tr>
+        <td>{{ doctor.firstName }}</td>
+        <td>{{ doctor.lastName }}</td>
+        <td>{{ doctor.speciality }}</td>
       <td>
         <p-button (click)="editDoctor(doctor)" icon="pi pi-pencil" class="p-button-outlined p-button-rounded" [style]="{margin:'5px '}" ></p-button>
-        <br>
         <p-button (click)="deleteDoctor(doctor)" icon="pi pi-trash" class="p-button-outlined p-button-rounded p-button-danger" [style]="{margin:'5px '}"></p-button>
       </td>
-    </tr>
-    </tbody>
-  </table>
+      </tr>
+    </ng-template>
+
+
+  </p-table>
 </div>

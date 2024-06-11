@@ -5,7 +5,7 @@ import {PatientService} from "./patient.service";
 import {PatientDto} from "./domain/patient-dto";
 import {JsonPipe, NgForOf} from "@angular/common";
 import {Notifications} from "@mobiscroll/angular";
-import {error} from "@angular/compiler-cli/src/transformers/util";
+import {TableModule} from "primeng/table";
 
 @Component({
   selector: 'app-patient-section',
@@ -13,7 +13,8 @@ import {error} from "@angular/compiler-cli/src/transformers/util";
   imports: [
     ButtonModule,
     JsonPipe,
-    NgForOf
+    NgForOf,
+    TableModule
   ],
   templateUrl: './patient-section.component.html',
   styleUrl: './patient-section.component.scss'
