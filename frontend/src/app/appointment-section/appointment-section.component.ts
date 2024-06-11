@@ -16,7 +16,7 @@ import {ConfirmedScheduleDto} from "./domain/confirmed-schedule-dto";
 import {EventcalendarBase} from "@mobiscroll/angular/dist/js/core/components/eventcalendar/eventcalendar";
 
 setOptions({
-  theme: 'ios',
+  theme: 'material',
   themeVariant: 'light',
 
 });
@@ -210,11 +210,11 @@ export class AppointmentSectionComponent implements OnInit {
           .map((appointment: any) => {
           return {
             id: appointment.id,
-            title: appointment.patientDTO.name,
+            title:  appointment.patientDTO.type + ': ' + appointment.patientDTO.race + ' ' + appointment.patientDTO.subRace + ' (' + appointment.patientDTO.name +')',
             start: new Date('2024-03-19T14:00'),
             end: new Date(new Date('2024-03-19T14:00') .getTime() + appointment.eventLength * 60 * 60 * 1000),
             eventLength: appointment.eventLength,
-            color: this.getRandomColor(),
+            color: this.getColorBasedOnLength(appointment.eventLength),
             job: appointment.job,
             unscheduled: appointment.unscheduled
           };
@@ -235,12 +235,12 @@ export class AppointmentSectionComponent implements OnInit {
 
             return {
               id: appointment.id,
-              title: appointment.patientDTO.name + " - " + appointment.job,
+              title:  appointment.patientDTO.type + ': ' + appointment.patientDTO.race + ' ' + appointment.patientDTO.subRace + ' (' + appointment.patientDTO.name +')',
               start: startFormatted,
               end: endFormatted,
               resource: appointment.confirmedScheduleDTO.doctorNumber,
               eventLength: appointment.eventLength,
-              color: this.getRandomColor(),
+              color: this.getColorBasedOnLength(appointment.eventLength),
               job: appointment.job,
               unscheduled: appointment.unscheduled
             };
@@ -253,10 +253,14 @@ export class AppointmentSectionComponent implements OnInit {
       this.router.navigate(['appointments','new']);
   }
 
-  getRandomColor(): string {
+  getColorBasedOnLength(eventLength: any) {
     const colors = ['#d1891f', '#334ab9', '#a446b5']; // Example colors
-    const randomIndex = Math.floor(Math.random() * colors.length);
-    return colors[randomIndex];
+    if(eventLength<=1)
+        return colors[0];
+    if(eventLength<=2)
+        return colors[1];
+    return colors[2];
+
   }
 
 }

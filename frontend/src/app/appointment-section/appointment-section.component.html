@@ -28,8 +28,9 @@
             class="docs-appointment-task"
             [ngStyle]="{ background: task.color }"
           >
-            <div>{{ task.title }} - {{ task.job }}</div>
-            <div>{{ task.eventLength }} hours</div>
+            <div>   {{ task.title }} - {{ task.job }}</div>
+            <br>
+            <div> <i class="fa-solid fa-hourglass-half"></i> Durata interventiei: {{ task.eventLength }} ore</div>
           </div>
         </mbsc-dropcontainer>
       </div>

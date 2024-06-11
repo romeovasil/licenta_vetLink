@@ -30,8 +30,9 @@ export class NewAppointmentPageComponent implements OnInit{
 
   saveAppointment($event: AppointmentDto) {
       this.appointmentSectionServices.save($event).subscribe(
+        (res) => this.router.navigate(['appointments'])
       );
-      this.router.navigate(['appointments'])
+
 
   }
 }
