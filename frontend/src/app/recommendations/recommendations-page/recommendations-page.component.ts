@@ -8,6 +8,7 @@ import {PatientDto} from "../../patient-section/domain/patient-dto";
 import {AppointmentSectionService} from "../../appointment-section/appointment-section.service";
 import {AppointmentDto} from "../../appointment-section/domain/appointment-dto";
 import {Notifications} from "@mobiscroll/angular";
+import {CardModule} from "primeng/card";
 
 @Component({
   selector: 'app-recommendations-page',
@@ -18,13 +19,14 @@ import {Notifications} from "@mobiscroll/angular";
     PanelModule,
     NgForOf,
     NgIf,
-    JsonPipe
+    JsonPipe,
+    CardModule
   ],
   templateUrl: './recommendations-page.component.html',
   styleUrl: './recommendations-page.component.scss'
 })
 export class RecommendationsPageComponent implements OnInit {
-  openAi = new OpenAI({apiKey: "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", dangerouslyAllowBrowser: true});
+  openAi = new OpenAI({apiKey: "sk-proj-9xyMzWcBimisbwdATnafT3BlbkFJiBF3DPQEmlFMfDhlOCt9", dangerouslyAllowBrowser: true});
   receivedMessage: string | undefined = "";
 
   appointmentService = inject(AppointmentSectionService);
