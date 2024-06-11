@@ -51,7 +51,7 @@
       <tr>
         <td>{{ doctor.firstName }}</td>
         <td>{{ doctor.lastName }}</td>
-        <td>{{ doctor.speciality }}</td>
+        <td><i class="fa-solid fa-stethoscope"></i>  {{ doctor.speciality }}</td>
       <td>
         <p-button (click)="editDoctor(doctor)" icon="pi pi-pencil" class="p-button-outlined p-button-rounded" [style]="{margin:'5px '}" ></p-button>
         <p-button (click)="deleteDoctor(doctor)" icon="pi pi-trash" class="p-button-outlined p-button-rounded p-button-danger" [style]="{margin:'5px '}"></p-button>
