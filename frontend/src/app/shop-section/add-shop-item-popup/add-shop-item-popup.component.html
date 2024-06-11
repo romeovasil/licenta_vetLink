@@ -1,8 +1,10 @@
+<div class="title-container">
+  <h1 class="content-center">Adauga un produs</h1>
+</div>
 
-<div class="container">
-<form #shopItemForm="ngForm" (ngSubmit)="onSubmit(shopItemForm)">
-
-  <h3>Adauga un produs nou</h3>
+<div class="parent-container">
+  <div class="container">
+      <form #shopItemForm="ngForm" (ngSubmit)="onSubmit(shopItemForm)">
 
   <div class="card flex justify-content-center">
             <span class="p-float-label">
@@ -16,18 +18,6 @@
                 <label for="name">Nume</label>
             </span>
   </div>
-
-<!--  <div class="card flex justify-content-center">-->
-<!--            <span class="p-float-label">-->
-<!--                <input pInputText-->
-<!--                       id="category"-->
-<!--                       name="category"-->
-<!--                       [(ngModel)]="shopItemDTO.category"-->
-<!--                       required-->
-<!--                />-->
-<!--                <label for="name">Category</label>-->
-<!--            </span>-->
-<!--  </div>-->
 
   <div class="card flex justify-content-center">
     <span class="p-float-label">
@@ -91,11 +81,16 @@
 
 
 
-  <p-button  [style]="{margin:'10px'}"
+  <p-button   [style]="{margin:'30px 70px'}"
     class="register-button"
     type="submit"  >Adauga</p-button>
 </form>
 
 
 
+</div>
+
+  <div class="container2">
+    <span class="fa-solid fa-basket-shopping big-icon"></span>
+  </div>
 </div>

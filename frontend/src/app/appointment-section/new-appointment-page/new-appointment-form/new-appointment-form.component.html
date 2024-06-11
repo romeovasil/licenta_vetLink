@@ -1,8 +1,6 @@
-<div class="container">
+<div class="parent-container">
+  <div class="container">
   <form #appointmentForm="ngForm" (ngSubmit)="onSubmit(appointmentForm)">
-
-    <h3>Adauga o programare noua</h3>
-
     <div class="card flex justify-content-center">
             <span class="p-float-label">
                  <p-dropdown [options]="patients"
@@ -61,3 +59,10 @@
 
 
 </div>
+
+
+  <div class="container2">
+    <span class="fa-solid fa-calendar-check big-icon"></span>
+  </div>
+</div>
+

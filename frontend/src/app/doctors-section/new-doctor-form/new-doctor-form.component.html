@@ -1,10 +1,9 @@
+<div class="parent-container">
+  <div class="container">
+    <form #subscriptionForm="ngForm" (ngSubmit)="onSubmit(subscriptionForm)">
 
-<div class="container">
-  <form #subscriptionForm="ngForm" (ngSubmit)="onSubmit(subscriptionForm)">
 
-    <h3>Adauga un doctor nou</h3>
-
-    <div class="card flex justify-content-center">
+      <div class="card flex justify-content-center">
             <span class="p-float-label">
                 <input pInputText
                        id="firstName"
@@ -15,9 +14,9 @@
                 />
                 <label for="firstName">Prenume</label>
             </span>
-    </div>
+      </div>
 
-    <div class="card flex justify-content-center">
+      <div class="card flex justify-content-center">
             <span class="p-float-label">
                 <input pInputText
                        id="lastName"
@@ -28,9 +27,9 @@
                 />
                 <label for="lastName">Nume</label>
             </span>
-    </div>
+      </div>
 
-    <div class="card flex justify-content-center">
+      <div class="card flex justify-content-center">
             <span class="p-float-label">
                 <input pInputText
                        id="speciality"
@@ -41,15 +40,28 @@
                 />
                 <label for="speciality">Specialitate</label>
             </span>
+      </div>
+
+      <p-button
+        [style]="{margin:'30px 70px'}"
+        class="register-button"
+        type="submit">
+        Adauga
+      </p-button>
+    </form>
+  </div>
+
+    <div class="container2">
+      <span class="fa-solid fa-user-doctor big-icon" ></span>
     </div>
-
-    <p-button
-      [style]="{margin:'30px 70px'}"
-      class="register-button"
-      type="submit">
-      Adauga
-    </p-button>
-  </form>
+  </div>
 
 
-</div>
+
+
+
+
+
+
+
+
