@@ -8,3 +8,11 @@
 .card{
   min-height:1000px;
 }
+.rounded-card{
+  border-radius: 20px;
+}
+:host ::ng-deep .p-card {
+  border-radius: 25px !important;
+
+  border: 2px solid black;
+}
