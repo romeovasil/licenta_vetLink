@@ -32,7 +32,18 @@ export class AppComponent implements OnInit {
       {
         label: 'Rezervari',
         icon: 'pi pi-fw pi-file',
-        routerLink: '/appointments'
+        items: [
+          {
+            label: 'Cereri',
+            icon: 'pi pi-inbox',
+            routerLink: '/requests'
+          },
+          {
+            label: 'Programari',
+            icon: 'pi pi-calendar-plus',
+            routerLink: '/appointments'
+          },
+        ]
       },
       {
         label: 'Abonamente',
