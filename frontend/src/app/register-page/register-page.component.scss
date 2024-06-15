@@ -7,6 +7,7 @@
 
 .acontainer {
   flex: 1;
+  margin-top:15%;
   display: flex;
   justify-content: center;
 }
@@ -19,7 +20,7 @@
 }
 
 .background-card {
-  background: #8093d0;
+  background-color: rgba(225, 151, 10, 0.6);
   padding: 50px;
 }
 
@@ -29,10 +30,12 @@
 
 .register-button {
   margin-top: 30px;
-  margin-left: 25%;
+  margin-left: 8%;
+  margin-bottom:30px;
 }
 
 .back-button {
+  margin-top:30px;
   margin-left: 25%;
 }
 

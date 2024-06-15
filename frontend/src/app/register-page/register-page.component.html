@@ -1,5 +1,4 @@
-<div class="main-container">
-  <div class="acontainer">
+ <div class="acontainer">
     <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
       <div class="background-card">
         <div class="card flex justify-content-center">
@@ -24,7 +23,7 @@
                    name="password"
                    required
             />
-            <label for="password">Password</label>
+            <label for="password">Parola</label>
           </span>
         </div>
         <div class="card flex justify-content-center">
@@ -48,13 +47,13 @@
             <label for="lastName">Prenume</label>
           </span>
         </div>
-        <p-button class="register-button" type="submit">register</p-button>
-        <p-button class="back-button" type="button" (click)="backToLogin()">inapoi</p-button>
+        <div>
+          <p-button class="register-button" type="submit">Inregistreaza-te</p-button>
+        </div>
+        <div>
+          <p-button class="back-button" type="button" (click)="backToLogin()">Inapoi</p-button>
+        </div>
       </div>
     </form>
   </div>
-  <div class="icon-container">
-    <!-- Add your icon here -->
-    <img src="/assets/home-screen-background.jpg" alt="Icon" class="icon">
-  </div>
-</div>
+
