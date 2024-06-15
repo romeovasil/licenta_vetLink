@@ -248,14 +248,17 @@ class _SubscriptionsScreenState extends State<SubscriptionsScreen> {
                         child: Container(
                           child: Column(
                             children: [
-                              SizedBox(height: 10),
-                              Container(
-                                padding: const EdgeInsets.all(12.0),
-                                decoration: BoxDecoration(
-                                  color: Colors.red.shade400,
-                                  borderRadius: BorderRadius.circular(10),
+                              SizedBox(height: 15),
+                              SizedBox(
+                                width: 120,
+                                child: Container(
+                                  padding: const EdgeInsets.all(10.0),
+                                  decoration: BoxDecoration(
+                                    color: Colors.red.shade400,
+                                    borderRadius: BorderRadius.circular(10),
                                   ),
-                                  child:  Text('Abonamentul include: '),
+                                  child: Text('Abonamentul include: '),
+                                ),
                               ),
                               SizedBox(height: 20),
                               Column(

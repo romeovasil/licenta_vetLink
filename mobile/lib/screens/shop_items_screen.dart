@@ -81,7 +81,7 @@ class _ShopItemsScreenState extends State<ShopItemsScreen> {
                 crossAxisCount: 2,
               crossAxisSpacing: 10,
               mainAxisSpacing: 10,
-              childAspectRatio: 9/17
+              childAspectRatio: 9/18
             ),
             itemCount: snapshot.data!.length,
             itemBuilder: (context, int i){
@@ -168,7 +168,7 @@ class _ShopItemsScreenState extends State<ShopItemsScreen> {
                                 ),
                               ],
                             ),
-                            const SizedBox(width: 45),
+                            const SizedBox(width: 25),
                              IconButton(
                               onPressed: () async {
 
