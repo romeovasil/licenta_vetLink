@@ -13,8 +13,6 @@ import {ButtonModule} from "primeng/button";
 import {Router} from "@angular/router";
 import {AppointmentDto} from "./domain/appointment-dto";
 import {ConfirmedScheduleDto} from "./domain/confirmed-schedule-dto";
-import {EventcalendarBase} from "@mobiscroll/angular/dist/js/core/components/eventcalendar/eventcalendar";
-
 setOptions({
   theme: 'material',
   themeVariant: 'light',

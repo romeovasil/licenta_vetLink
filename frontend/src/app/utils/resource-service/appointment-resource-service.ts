@@ -28,5 +28,17 @@ export class AppointmentResourceService extends AbstractResourceService<Appointm
     return this.httpClient.post(`http://localhost:8080/api/v1/${this.url}/update-schedule`, updatedScheduleDTO,{headers:authHeaders})
   }
 
+  getAllRequests() {
+    const token = localStorage.getItem("token");
+    const authHeaders = this.headers.set('Authorization', `Bearer ${token}`);
+    return this.httpClient.get(`http://localhost:8080/api/v1/${this.url}/requests`, {headers:authHeaders})
+  }
+
+  deleteRequest(id: number) {
+    const token = localStorage.getItem("token");
+    const authHeaders = this.headers.set('Authorization', `Bearer ${token}`);
+    return this.httpClient.delete(`http://localhost:8080/api/v1/${this.url}/request/${id}`, {headers:authHeaders})
+  }
+
 
 }

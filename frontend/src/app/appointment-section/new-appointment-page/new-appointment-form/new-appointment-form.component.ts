@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormsModule, NgForm} from "@angular/forms";
 import {ChipsModule} from "primeng/chips";
 import {ButtonModule} from "primeng/button";
@@ -21,16 +21,26 @@ import {FormUtils} from "../../../utils/form-utils";
   templateUrl: './new-appointment-form.component.html',
   styleUrl: './new-appointment-form.component.scss'
 })
-export class NewAppointmentFormComponent {
+export class NewAppointmentFormComponent implements OnInit{
   appointmentDTO : AppointmentDto = new AppointmentDto();
   @Input() patients : PatientDto[] = [];
   @Output() submitForm : EventEmitter<AppointmentDto> = new EventEmitter();
-  durations = [0.5,1,1.5,2,2.5,3]
+  durations = [0.5,1,1.5,2,2.5,3];
+
+
+  ngOnInit(): void {
+    const state = window.history.state;
+    if (state && state.patient) {
+      this.appointmentDTO.patientDTO = state.patient;
+      this.appointmentDTO.ownerMail = state.ownerEmail;
+      this.appointmentDTO.requestId = state.requestId;
+    }
+  }
+
   onSubmit(appointmentForm: NgForm) {
     FormUtils.markAllAsDirty(appointmentForm.form);
     FormUtils.markAllAsTouched(appointmentForm.form);
     if (appointmentForm.valid) {
-      console.log(this.appointmentDTO)
       this.submitForm.emit(this.appointmentDTO)
     }
   }

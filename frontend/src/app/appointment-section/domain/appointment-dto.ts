@@ -9,5 +9,8 @@ export class AppointmentDto {
   eventLength: number | null = null;
   unscheduled: boolean = false;
   confirmedScheduleDTO: ConfirmedScheduleDto | null = null
+  date: Date | null = null;
+  requestId: number | null = null;
+  ownerMail: string | null = null;
 
 }

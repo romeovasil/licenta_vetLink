@@ -23,8 +23,9 @@ import {EditPatientPageComponent} from "./patient-section/edit-patient-page/edit
 import {EditDoctorPageComponent} from "./doctors-section/edit-doctor-page/edit-doctor-page.component";
 import {AuthGuard} from "./auth/auth.guard";
 import {EditVetClinicPageComponent} from "./clinic-feature/edit-vet-clinic-page/edit-vet-clinic-page.component";
-
-
+import {
+  AppointmentRequestPageComponent
+} from "./appointment-request-section/appointment-request-page/appointment-request-page.component";
 export const routes: Routes = [
   {path:"",component:LoginPageComponent},
   {path:"register",component:RegisterPageComponent},
@@ -40,8 +41,6 @@ export const routes: Routes = [
       },
       {path: 'new',
       component: AddShopItemPopupComponent},
-
-
     ]
   },
   {
@@ -71,6 +70,11 @@ export const routes: Routes = [
         component: NewAppointmentPageComponent
       },
     ],
+  },
+  {
+    path: "requests",
+    canActivate: [AuthGuard],
+    component: AppointmentRequestPageComponent
   },
   {
     path: "doctors",
@@ -112,7 +116,6 @@ export const routes: Routes = [
       }
     ],
   },
-
 ];
 
 @NgModule({
