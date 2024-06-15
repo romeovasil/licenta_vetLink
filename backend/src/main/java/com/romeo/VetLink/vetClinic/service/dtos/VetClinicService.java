@@ -43,4 +43,9 @@ public class VetClinicService {
 
         return this.vetClinicDTOMapper.mapEntityToDto(vetClinic);
     }
+
+    @Transactional(readOnly = true)
+    public VetClinic getById(Integer id){
+        return this.vetClinicJpaRepository.findById(id).orElseThrow();
+    }
 }

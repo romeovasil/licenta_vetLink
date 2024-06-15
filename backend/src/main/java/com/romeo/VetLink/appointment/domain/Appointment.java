@@ -33,6 +33,8 @@ public class Appointment extends OwnedEntity {
     @JoinColumn(name = "confirmed_schedule_id", foreignKey = @ForeignKey(name = "FK_APPOINTMENT__CONFIRMED_SCHEDULED"))
     private ConfirmedSchedule confirmedSchedule;
 
+    private String customerEmail;
+
     @Override
     public void prePersist(){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

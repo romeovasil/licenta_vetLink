@@ -8,6 +8,7 @@ import com.romeo.VetLink.appointment.service.dtos.AppointmentDTO;
 
 import com.romeo.VetLink.appointment.service.dtos.mapper.AppointmentRequestDTOMapper;
 import com.romeo.VetLink.appointment.service.exceptions.AppointmentNotFoundException;
+import com.romeo.VetLink.config.EmailSenderService;
 import com.romeo.VetLink.doctors.domain.Doctor;
 import com.romeo.VetLink.doctors.domain.DoctorJpaRepository;
 import com.romeo.VetLink.doctors.exceptions.DoctorNotFoundException;
@@ -16,6 +17,7 @@ import com.romeo.VetLink.patients.domain.PatientJpaRepository;
 import com.romeo.VetLink.patients.service.dtos.mapper.PatientDTOMapper;
 import com.romeo.VetLink.user.User;
 import lombok.AllArgsConstructor;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,6 +35,7 @@ public class AppointmentService {
     private final PatientJpaRepository patientJpaRepository;
     private final AppointmentRequestDTOMapper appointmentRequestDTOMapper;
     private final AppointmentRequestJpaRepository appointmentRequestJpaRepository;
+    private final ApplicationEventPublisher applicationEventPublisher;
 
     @Transactional
     public void save (AppointmentDTO appointmentDTO){
@@ -72,6 +75,15 @@ public class AppointmentService {
         appointment.setConfirmedSchedule(confirmedSchedule);
         appointment.setUnscheduled(false);
         this.appointmentJpaRepository.save(appointment);
+
+        if(appointment.getCustomerEmail() != null){
+            applicationEventPublisher.publishEvent(new SendEmailEvent(appointment.getId(),
+                    appointment.getOwner(),
+                    appointment.getCustomerEmail(),
+                    appointment.getConfirmedSchedule().getStart().toString(),
+                    appointment.getConfirmedSchedule().getDoctor().getFirstName() + ' ' + appointment.getConfirmedSchedule().getDoctor().getLastName()));
+
+        }
     }
 
     @Transactional

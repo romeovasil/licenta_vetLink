@@ -28,6 +28,7 @@ public class AppointmentDTOMapper {
         appointment.setPatient(patient);
         appointment.setJob(appointmentDTO.getJob());
         appointment.setEventLength(appointmentDTO.getEventLength());
+        appointment.setCustomerEmail(appointmentDTO.getOwnerMail());
 
         return appointment;
     }
