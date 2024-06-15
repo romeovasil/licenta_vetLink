@@ -14,4 +14,7 @@ public class AppointmentDTO {
 
     private PatientDTO patientDTO;
     private ConfirmedScheduleDTO confirmedScheduleDTO;
+
+    private Integer requestId;
+    private String ownerMail;
 }

@@ -13,11 +13,9 @@ import com.romeo.VetLink.doctors.domain.DoctorJpaRepository;
 import com.romeo.VetLink.doctors.exceptions.DoctorNotFoundException;
 import com.romeo.VetLink.patients.domain.Patient;
 import com.romeo.VetLink.patients.domain.PatientJpaRepository;
-import com.romeo.VetLink.patients.service.PatientService;
 import com.romeo.VetLink.patients.service.dtos.mapper.PatientDTOMapper;
 import com.romeo.VetLink.user.User;
 import lombok.AllArgsConstructor;
-import org.apache.tomcat.util.descriptor.web.ApplicationParameter;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -38,6 +36,9 @@ public class AppointmentService {
 
     @Transactional
     public void save (AppointmentDTO appointmentDTO){
+        if(appointmentDTO.getRequestId() != null){
+            deleteAppointmentRequestById(appointmentDTO.getRequestId());
+        }
         Appointment appointment = this.appointmentJpaRepository.save(this.appointmentDTOMapper.mapDtoToEntity(appointmentDTO));
     }
 
@@ -46,10 +47,12 @@ public class AppointmentService {
         List<Appointment> appointments = this.appointmentJpaRepository.findAllByOwner(user.getClinicId());
         return appointments.stream().map(this.appointmentDTOMapper::mapEntityToDTO).toList();
     }
+
     @Transactional
     public void deleteById(Integer appointmentId) {
         this.appointmentJpaRepository.deleteById(appointmentId);
     }
+
     @Transactional(readOnly = true)
     public void getById(Integer appointmentId) {
         this.appointmentJpaRepository.findById(appointmentId);
@@ -97,5 +100,16 @@ public class AppointmentService {
         appointmentRequestJpaRepository.save(appointmentRequest);
 
         return appointmentRequest;
+    }
+    @Transactional(readOnly = true)
+    public List<AppointmentRequestDTO> getAllAppointmentRequestsByOwner() {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        List<AppointmentRequest> appointmentRequests = this.appointmentRequestJpaRepository.findAllByOwner(user.getClinicId());
+        return appointmentRequests.stream().map(this.appointmentRequestDTOMapper::toDTO).toList();
+    }
+
+    @Transactional
+    public void deleteAppointmentRequestById(Integer appointmentRequestId) {
+        appointmentRequestJpaRepository.deleteById(appointmentRequestId);
     }
 }

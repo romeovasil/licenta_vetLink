@@ -46,4 +46,15 @@ public class AppointmentController {
         appointmentService.updateSchedule(updatedScheduleDTO);
         return ResponseEntity.ok().build();
     }
+
+    @GetMapping("/requests")
+    public ResponseEntity<?> getAllAppointmentRequestsByOwner(){
+        return ResponseEntity.ok(appointmentService.getAllAppointmentRequestsByOwner());
+    }
+
+    @DeleteMapping(value = "/request/{requestId}")
+    public ResponseEntity<?> deleteRequest(@PathVariable Integer requestId){
+        appointmentService.deleteAppointmentRequestById(requestId);
+        return ResponseEntity.ok().build();
+    }
 }

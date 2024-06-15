@@ -5,6 +5,8 @@ import com.romeo.VetLink.patients.domain.Patient;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
+
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Builder
@@ -19,6 +21,7 @@ public class AppointmentRequest extends OwnedEntity {
     private String customerEmail;
     private String customerPhoneNumber;
     private String details;
+    private LocalDate date;
     @ManyToOne
     private Patient patient;
 
