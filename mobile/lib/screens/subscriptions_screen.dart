@@ -167,7 +167,7 @@ class _SubscriptionsScreenState extends State<SubscriptionsScreen> {
                           ClipRRect(
                             borderRadius: BorderRadius.circular(20),
                             child: Image.asset(
-                              'assets/vetclinic.jpg',
+                              'assets/subscription.jpg',
                               fit: BoxFit.cover,
                               width: 250,
                               height: 115,
