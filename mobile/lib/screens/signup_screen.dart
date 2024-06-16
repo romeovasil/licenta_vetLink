@@ -72,7 +72,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 ]),
               ),
               child: Padding(
-                padding: const EdgeInsets.only(top: 60.0, left: 22),
+                padding: const EdgeInsets.only(top: 120.0, left: 22),
                 child: Text(
                   'Inregistreaza-te!',
                   style: TextStyle(
@@ -145,7 +145,7 @@ class _SignupScreenState extends State<SignupScreen> {
                             onTap: signUpUser,
                             child: _isLoading ? const Center(child: CircularProgressIndicator(
                               color: primaryColor,
-                            ),) : const Center(child: Text('SIGN UP', style: TextStyle(
+                            ),) : const Center(child: Text('Salveaza-ti contul', style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
                                 color: Colors.white
@@ -191,126 +191,3 @@ class _SignupScreenState extends State<SignupScreen> {
         ));
   }
 }
-
-
-
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//         body: SafeArea(
-//       child: Stack(
-//         children: [
-//           Positioned.fill(
-//             child: Image.asset(
-//               'assets/wallpaper.jpg',
-//               fit: BoxFit.cover,
-//             ),
-//           ),
-//           Container(
-//             padding: const EdgeInsets.symmetric(horizontal: 32),
-//             width: double.infinity,
-//             child: Column(
-//                 crossAxisAlignment: CrossAxisAlignment.center,
-//                 children: [
-//                   Flexible(flex: 2, child: Container()),
-//                   const Text(
-//                     'Sign up',
-//                     style: TextStyle(
-//                       color: primaryColor,
-//                       fontSize: 32,
-//                       fontWeight: FontWeight.bold,
-//                     ),
-//                   ),
-//
-//                   const SizedBox(
-//                     height: 64,
-//                   ),
-//                   //circularWidget
-//                   const Stack(),
-//                   TextFieldInput(
-//                     hintText: 'Enter your email',
-//                     textInputType: TextInputType.emailAddress,
-//                     textEditingController: _emailController,
-//                   ),
-//                   const SizedBox(
-//                     height: 24,
-//                   ),
-//                   TextFieldInput(
-//                     hintText: 'Enter your username',
-//                     textInputType: TextInputType.text,
-//                     textEditingController: _usernameController,
-//                   ),
-//                   const SizedBox(
-//                     height: 24,
-//                   ),
-//                   TextFieldInput(
-//                     hintText: 'Enter your password',
-//                     textInputType: TextInputType.text,
-//                     isPass: true,
-//                     textEditingController: _passwordController,
-//                   ),
-//                   const SizedBox(
-//                     height: 24,
-//                   ),
-//
-//                   InkWell(
-//                     onTap: signUpUser,
-//                     child: Container(
-//                       width: double.infinity,
-//                       alignment: Alignment.center,
-//                       padding: const EdgeInsets.symmetric(vertical: 12),
-//                       decoration: const ShapeDecoration(
-//                           shape: RoundedRectangleBorder(
-//                             borderRadius: BorderRadius.all(
-//                               Radius.circular(4),
-//                             ),
-//                           ),
-//                           color: blueColor),
-//                       child: _isLoading
-//                           ? const Center(
-//                               child: CircularProgressIndicator(
-//                                 color: primaryColor,
-//                               ),
-//                             )
-//                           : const Text('Log in'),
-//                     ),
-//                   ),
-//                   const SizedBox(
-//                     height: 12,
-//                   ),
-//                   Flexible(flex: 2, child: Container()),
-//                   Row(
-//                     mainAxisAlignment: MainAxisAlignment.center,
-//                     children: [
-//                       Container(
-//                         padding: const EdgeInsets.symmetric(
-//                           vertical: 8,
-//                         ),
-//                         child: const Text("Already have an account?"),
-//                       ),
-//                       GestureDetector(
-//                         onTap: () {
-//                           Navigator.of(context).pushReplacement(
-//                               MaterialPageRoute(
-//                                   builder: (context) => const LoginScreen()));
-//                         },
-//                         child: Container(
-//                           padding: const EdgeInsets.symmetric(
-//                             vertical: 8,
-//                           ),
-//                           child: const Text(
-//                             "Log in ",
-//                             style: TextStyle(fontWeight: FontWeight.bold),
-//                           ),
-//                         ),
-//                       ),
-//                     ],
-//                   )
-//                 ]),
-//           ),
-//         ],
-//       ),
-//     ));
-//   }
-// }

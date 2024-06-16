@@ -1,14 +1,24 @@
 import 'package:flutter/material.dart';
-
 import 'package:provider/provider.dart';
 import 'package:vetlink/screens/clinic_details_screen.dart';
 
 class VetClinicCard extends StatelessWidget {
   final snap;
-  const VetClinicCard({super.key, required this.snap});
+  const VetClinicCard({Key? key, required this.snap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    String imagePath;
+    int nameLength = snap['name'].length;
+    int remainder = nameLength % 3;
+
+    if (remainder == 0) {
+      imagePath = 'assets/vetclinic.jpg';
+    } else if (remainder == 1) {
+      imagePath = 'assets/vetclinic1.jpg';
+    } else {
+      imagePath = 'assets/vetclinic2.jpg';
+    }
 
     return GestureDetector(
       onTap: () {
@@ -35,9 +45,8 @@ class VetClinicCard extends StatelessWidget {
               ).copyWith(right: 0),
             ),
             Container(
-
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
+                borderRadius: BorderRadius.circular(50),
                 color: Colors.orange.shade300,
               ),
               child: Row(
@@ -46,10 +55,10 @@ class VetClinicCard extends StatelessWidget {
                     height: MediaQuery.of(context).size.height * 0.25,
                     width: MediaQuery.of(context).size.width * 0.5,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30)
+                      borderRadius: BorderRadius.circular(30),
                     ),
                     child: Image.asset(
-                      'assets/vetclinic.jpg',
+                      imagePath,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -98,7 +107,7 @@ class VetClinicCard extends StatelessWidget {
                               const SizedBox(width: 8.0),
                               Flexible(
                                 child: Text(
-                                  snap['street']  + ', ' + snap['city'] + ', ' + snap['county'],
+                                  '${snap['street']}, ${snap['city']}, ${snap['county']}',
                                   style: const TextStyle(
                                     color: Colors.white,
                                   ),

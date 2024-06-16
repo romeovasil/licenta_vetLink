@@ -120,7 +120,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               );
             },
-            child: const Text("Sign Out"),
+            child: const Text("Deconecteaza-te"),
             style: TextButton.styleFrom(
               primary: Colors.white,
               textStyle: TextStyle(fontSize: 18),

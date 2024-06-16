@@ -188,11 +188,13 @@ class _SubscriptionsScreenState extends State<SubscriptionsScreen> {
                                         style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),
                                       ),
                                     ),
-                                    Padding(
-                                      padding: EdgeInsets.symmetric(vertical: 2.0, horizontal: 20),
-                                      child: Text(
-                                        subscription.shortDescription,
-                                        style: TextStyle(color: Colors.black26, fontWeight: FontWeight.bold, fontSize: 13),
+                                    Expanded(
+                                      child: Padding(
+                                        padding: EdgeInsets.symmetric(vertical: 2.0, horizontal: 20),
+                                        child: Text(
+                                          subscription.shortDescription,
+                                          style: TextStyle(color: Colors.black26, fontWeight: FontWeight.bold, fontSize: 13),
+                                        ),
                                       ),
                                     ),
                                     Padding(
@@ -270,7 +272,12 @@ class _SubscriptionsScreenState extends State<SubscriptionsScreen> {
                                   );
                                 }).toList(),
                               ),
-                              SizedBox(height: 30),
+                              Expanded(
+                                child: SizedBox(
+                                  height: 10,
+                                ),
+                              ),
+
                               Align(
                                 alignment: Alignment.bottomCenter,
                                 child: ElevatedButton(

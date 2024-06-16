@@ -34,12 +34,7 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Stack(
         children: [
-          Positioned.fill(
-            child: Image.asset(
-              'assets/background.jpg',
-              fit: BoxFit.cover,
-            ),
-          ),
+
           FutureBuilder<List<dynamic>>(
             future: fetchCompanies(),
             builder: (context, snapshot) {

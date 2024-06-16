@@ -23,6 +23,21 @@ class _ClinicDetailsScreenState extends State<ClinicDetailsScreen> {
     super.didChangeDependencies();
   }
 
+  String getImagePath(String name) {
+    int remainder = name.length % 3;
+    switch (remainder) {
+      case 0:
+        return 'assets/vetclinic.jpg';
+      case 1:
+        return 'assets/vetclinic1.jpg';
+      case 2:
+        return 'assets/vetclinic2.jpg';
+      default:
+        return 'assets/vetclinic.jpg';
+    }
+  }
+
+
   @override
   Widget build(BuildContext context) {
     var screenHeight = MediaQuery.of(context).size.height;
@@ -82,7 +97,7 @@ class _ClinicDetailsScreenState extends State<ClinicDetailsScreen> {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(12.0),
                     child: Image.asset(
-                      'assets/vetclinic.jpg',
+                      getImagePath(widget.snap["name"]),
                       height: 300,
                       width: double.infinity,
                       fit: BoxFit.cover,

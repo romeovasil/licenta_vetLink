@@ -63,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ]),
           ),
           child: const Padding(
-            padding: EdgeInsets.only(top: 60.0, left: 22),
+            padding: EdgeInsets.only(top: 120.0, left: 22),
             child: Text(
               'Bine ai venit\nConecteaza-te!',
               style: TextStyle(
@@ -126,7 +126,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         onTap: loginUser,
                         child: _isLoading ? const Center(child: CircularProgressIndicator(
                           color: primaryColor,
-                        ),) : const Center(child: Text('SIGN IN', style: TextStyle(
+                        ),) : const Center(child: Text('Intra in aplicatie', style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
                           color: Colors.white
