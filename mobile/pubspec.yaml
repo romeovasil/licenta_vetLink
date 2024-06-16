@@ -81,6 +81,11 @@ flutter:
     - assets/vetclinic3.jpg
     - assets/subscription.jpg
     - assets/vetclinic.jpg
+    - assets/toy.jpg
+    - assets/food.jpg
+    - assets/accesories.jpg
+    - assets/care.jpg
+    - assets/treatment.jpg
     - assets/dark_background.png
 
   # An image asset can refer to one or more resolution-specific "variants", see

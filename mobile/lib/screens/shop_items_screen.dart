@@ -15,11 +15,9 @@ class ShopItemsScreen extends StatefulWidget {
   final String clinicUuid;
   const ShopItemsScreen({Key? key, required this.clinicUuid}) : super(key: key);
 
-
   @override
   _ShopItemsScreenState createState() => _ShopItemsScreenState();
 }
-
 
 class _ShopItemsScreenState extends State<ShopItemsScreen> {
   late UserProvider userProvider;
@@ -67,61 +65,86 @@ class _ShopItemsScreenState extends State<ShopItemsScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child:  FutureBuilder<List<dynamic>>(
-        future: fetchShopItems(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          }
-          if (snapshot.hasError) {
-            return Center(child: Text("Error: ${snapshot.error}"));
-          }
-        return GridView.builder(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        child: FutureBuilder<List<dynamic>>(
+          future: fetchShopItems(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            if (snapshot.hasError) {
+              return Center(child: Text("Error: ${snapshot.error}"));
+            }
+            return GridView.builder(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-              childAspectRatio: 9/18
-            ),
-            itemCount: snapshot.data!.length,
-            itemBuilder: (context, int i){
-              ShopItem item = snapshot.data![i];
-              return Container(
-                decoration: BoxDecoration(
-                    color:Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                  boxShadow: [
-                    BoxShadow(
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+                childAspectRatio: 9 / 18,
+              ),
+              itemCount: snapshot.data!.length,
+              itemBuilder: (context, int i) {
+                ShopItem item = snapshot.data![i];
+                String imageAsset = 'assets/vetclinic.jpg';
+
+                switch (item.category.toLowerCase()) {
+                  case 'ingrijire':
+                    imageAsset = 'assets/care.jpg';
+                    break;
+                  case 'accesorii':
+                    imageAsset = 'assets/accesories.jpg';
+                    break;
+                  case 'mancare':
+                    imageAsset = 'assets/food.jpg';
+                    break;
+                  case 'jucarii':
+                    imageAsset = 'assets/toy.jpg';
+                    break;
+                  case 'tratement':
+                    imageAsset = 'assets/treatment.jpg';
+                    break;
+                  default:
+                    imageAsset = 'assets/vetclinic.jpg';
+                }
+
+                return Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20),
+                    boxShadow: [
+                      BoxShadow(
                         color: Colors.grey.shade400,
                         blurRadius: 5,
-                        offset: const Offset(3,3))
-                  ]
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                  ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
-                      child: Image.asset(
-                        'assets/vetclinic.jpg',
-                      ),
+                        offset: const Offset(3, 3),
+                      )
+                    ],
                   ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Image.asset(
+                          imageAsset,
+                        ),
+                      ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical:10),
+                        padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 10),
                         child: Row(
                           children: [
                             Container(
                               decoration: BoxDecoration(
-                                color:Colors.red,
-                                borderRadius: BorderRadius.circular(30)
-                              ) ,
-                              child:  Padding(
-                                padding:  EdgeInsets.symmetric(vertical: 7.0, horizontal: 12),
+                                  color: Colors.red,
+                                  borderRadius: BorderRadius.circular(30)
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(vertical: 7.0, horizontal: 12),
                                 child: Text(
                                   item.category,
-                                  style: TextStyle(color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 10),
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 10,
+                                  ),
                                 ),
                               ),
                             ),
@@ -140,20 +163,25 @@ class _ShopItemsScreenState extends State<ShopItemsScreen> {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 8),
-                       Padding(
+                      const SizedBox(height: 1),
+                      Padding(
                         padding: EdgeInsets.symmetric(horizontal: 12.0),
                         child: Text(
                           item.shortDescription,
                           style: TextStyle(
                             fontWeight: FontWeight.w400,
-                            color: Colors.black38,
-                            fontSize: 12,
+                            color: Colors.black54,
+                            fontSize: 14,
                           ),
                         ),
                       ),
-                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                      Expanded(
+                        child: SizedBox(
+                          height: 1,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 22.0),
                         child: Row(
                           children: [
                             Row(
@@ -168,10 +196,13 @@ class _ShopItemsScreenState extends State<ShopItemsScreen> {
                                 ),
                               ],
                             ),
-                            const SizedBox(width: 25),
-                             IconButton(
+                            Expanded(
+                              child: SizedBox(
+                                width: 1,
+                              ),
+                            ),
+                            IconButton(
                               onPressed: () async {
-
                                 await FirestoreMethods().addShopItem(
                                   userProvider.getUser!.uid,
                                   item.owner,
@@ -180,19 +211,22 @@ class _ShopItemsScreenState extends State<ShopItemsScreen> {
                                 );
                               },
                               icon: Icon(CupertinoIcons.add),
-                              color: Colors.red,)
+                              color: Colors.red,
+                            )
                           ],
                         ),
-
                       ),
-
+                      SizedBox(
+                        height: 10,
+                      ),
                     ],
-                ),
-              );
-            }
-    );}
-
+                  ),
+                );
+              },
+            );
+          },
+        ),
       ),
-    ));
+    );
   }
 }
