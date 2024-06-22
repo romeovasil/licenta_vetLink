@@ -29,7 +29,7 @@ class _ClinicDetailsScreenState extends State<ClinicDetailsScreen> {
       case 0:
         return 'assets/vetclinic.jpg';
       case 1:
-        return 'assets/vetclinic1.jpg';
+        return 'assets/vetclinic3.jpg';
       case 2:
         return 'assets/vetclinic2.jpg';
       default:
