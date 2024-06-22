@@ -15,7 +15,7 @@ class VetClinicCard extends StatelessWidget {
     if (remainder == 0) {
       imagePath = 'assets/vetclinic.jpg';
     } else if (remainder == 1) {
-      imagePath = 'assets/vetclinic1.jpg';
+      imagePath = 'assets/vetclinic3.jpg';
     } else {
       imagePath = 'assets/vetclinic2.jpg';
     }
