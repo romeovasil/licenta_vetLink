@@ -8,7 +8,6 @@ import {InputTextModule} from "primeng/inputtext";
 import {MenubarModule} from "primeng/menubar";
 import {ButtonModule} from "primeng/button";
 import {MenuItem} from "primeng/api";
-import {SidenavComponent} from "./sidenav/sidenav.component";
 import {MatSidenavContainer, MatSidenavModule} from "@angular/material/sidenav";
 import {MatGridList, MatGridTile} from "@angular/material/grid-list";
 import {HttpClientModule} from "@angular/common/http";
@@ -16,7 +15,10 @@ import {HttpClientModule} from "@angular/common/http";
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [MbscModule, CommonModule, RouterOutlet, FormsModule, SliderModule, InputTextModule, MenubarModule, ButtonModule, SidenavComponent, MatSidenavContainer, MatSidenavModule, MatGridList, MatGridTile, HttpClientModule],
+  imports: [MbscModule,
+    CommonModule, RouterOutlet, FormsModule, SliderModule,
+    InputTextModule, MenubarModule, ButtonModule,
+    MatSidenavContainer, MatSidenavModule, MatGridList, MatGridTile, HttpClientModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
