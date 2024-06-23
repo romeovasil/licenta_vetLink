@@ -1,5 +1,7 @@
 VetLink - Soluție software pentru conectarea veterinarilor cu iubitorii de animale
 
+Adresa github: https://github.com/romeovasil/licenta_vetLink.git
+
 Pentru a rula aplicatia web sunt necesare urmatoarele: 
   - Node.js și npm (Node Package Manager)
   - Angular CLI
