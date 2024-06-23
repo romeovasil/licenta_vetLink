@@ -145,24 +145,29 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 var customerSubscriptionDTO = snapshot.data!;
                 return Stack(children: [
                   Container(
-                    decoration: BoxDecoration(color: Colors.white60),
+                margin: const EdgeInsets.symmetric(horizontal: 16.0),
+              decoration: BoxDecoration(
+              color: Colors.white24,
+              borderRadius: BorderRadius.circular(20),
+              ),
                     child: Row(
                       children: [
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            SizedBox(height: 10,),
                             ClipRRect(
                               borderRadius: BorderRadius.circular(20),
                               child: Image.asset(
-                                'assets/vetclinic.jpg',
+                                'assets/vetclinic3.jpg',
                                 fit: BoxFit.cover,
-                                width: 250,
+                                width: 175,
                                 height: 115,
                               ),
                             ),
                             Container(
                               height: 110,
-                              width: 260,
+                              width: 200,
                               child: Row(
                                 children: [
                                   Column(
@@ -172,14 +177,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 20),
                                         child: Text(
                                           customerSubscriptionDTO.subscriptionDTO.name,
-                                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),
+                                          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
                                         ),
                                       ),
                                       Padding(
                                         padding: EdgeInsets.symmetric(vertical: 2.0, horizontal: 20),
                                         child: Text(
                                           customerSubscriptionDTO.subscriptionDTO.shortDescription,
-                                          style: TextStyle(color: Colors.black26, fontWeight: FontWeight.bold, fontSize: 13),
+                                          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 13),
                                         ),
                                       ),
                                       Padding(
@@ -189,11 +194,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           child: Row(
                                             mainAxisSize: MainAxisSize.min,
                                             children: [
-                                              Icon(Icons.calendar_today, color: Colors.black, size: 15),
+                                              Icon(Icons.calendar_today, color: Colors.white, size: 15),
                                               SizedBox(width: 4),
                                               Text(
                                                 'Recurenta: ' + customerSubscriptionDTO.subscriptionDTO.recurrence,
-                                                style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 12),
+                                                style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12),
                                               ),
                                             ],
                                           ),
@@ -213,11 +218,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                               crossAxisAlignment: CrossAxisAlignment.start,
                                               mainAxisSize: MainAxisSize.min,
                                               children: [
-                                                Icon(Icons.calendar_today, color: Colors.black, size: 15),
+                                                Icon(Icons.calendar_today, color: Colors.white, size: 15),
                                                 SizedBox(width: 4),
                                                 Text(
                                                   'Pret:   ' + customerSubscriptionDTO.subscriptionDTO.price + ' RON',
-                                                  style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 12),
+                                                  style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12),
                                                 ),
                                               ],
                                             ),
@@ -250,7 +255,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   children: customerSubscriptionDTO.subscriptionDTO.shopItems.map((shopItem) {
                                     return Text(
                                       '- ${shopItem.name}(${shopItem.price} RON) ',
-                                      style: TextStyle(color: Colors.black, fontSize: 12),
+                                      style: TextStyle(color: Colors.white, fontSize: 12),
                                     );
                                   }).toList(),
                                 ),
@@ -260,11 +265,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   children:[
                                      Text(
                                       'Valabil din:    - ${customerSubscriptionDTO.validFrom.toString().substring(0, 10)}',
-                                      style: TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.bold),
+                                      style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold),
                                     ),
                                     Text(
                                       'Pana in data: - ${customerSubscriptionDTO.validUntil.toString().substring(0,10)}',
-                                      style: TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.bold),
+                                      style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold),
                                     )
                                   ],
                                 ),

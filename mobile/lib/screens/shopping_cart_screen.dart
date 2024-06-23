@@ -109,6 +109,27 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
               child: ListView.builder(
                 itemCount: shoppingList.length,
                 itemBuilder: (context, index) {
+                  String imageAsset = 'assets/vetclinic.jpg';
+
+                  switch (shoppingList[index].category.toLowerCase()) {
+                    case 'ingrijire':
+                      imageAsset = 'assets/care.jpg';
+                      break;
+                    case 'accesorii':
+                      imageAsset = 'assets/accesories.jpg';
+                      break;
+                    case 'mancare':
+                      imageAsset = 'assets/food.jpg';
+                      break;
+                    case 'jucarii':
+                      imageAsset = 'assets/toy.jpg';
+                      break;
+                    case 'tratement':
+                      imageAsset = 'assets/treatment.jpg';
+                      break;
+                    default:
+                      imageAsset = 'assets/vetclinic.jpg';
+                  }
                   return Container(
                     margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
                     height: 120.0,
@@ -126,11 +147,16 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                     ),
                     child: Row(
                       children: [
-                        const Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: CircleAvatar(
-                            backgroundImage: AssetImage('assets/vetclinic.jpg'),
-                            radius: 30.0,
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(12.0),
+                            child: Image.asset(
+                              imageAsset,
+                              width: 80.0,
+                              height: 80.0,
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
 
@@ -332,7 +358,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                   borderRadius: BorderRadius.circular(15.0),
                 ),
               ),
-              child: const Text("Avanseaza la plata"),
+              child: const Text("Plaseaza comanda"),
             ),
           ),
         ],
