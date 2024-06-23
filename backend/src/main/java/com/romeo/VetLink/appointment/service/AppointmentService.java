@@ -80,7 +80,7 @@ public class AppointmentService {
             applicationEventPublisher.publishEvent(new SendEmailEvent(appointment.getId(),
                     appointment.getOwner(),
                     appointment.getCustomerEmail(),
-                    appointment.getConfirmedSchedule().getStart().toString(),
+                    appointment.getConfirmedSchedule().getStart().plusHours(3).toString(),
                     appointment.getConfirmedSchedule().getDoctor().getFirstName() + ' ' + appointment.getConfirmedSchedule().getDoctor().getLastName()));
 
         }

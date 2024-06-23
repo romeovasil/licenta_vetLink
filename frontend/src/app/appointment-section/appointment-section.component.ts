@@ -93,7 +93,7 @@ export class AppointmentSectionComponent implements OnInit {
     onEventCreated: (args) => {
       setTimeout(() => {
         this.notify.toast({
-          message: args.event.title + ' added',
+          message: args.event.title + ' salvata',
         });
         let confirmedScheduleDTO : ConfirmedScheduleDto = new ConfirmedScheduleDto();
 
